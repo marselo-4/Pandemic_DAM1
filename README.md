@@ -2,6 +2,12 @@
 
 Este proyecto es parte del Ciclo Formativo de Grado Superior de Desarrollo de Aplicaciones Multiplataforma. Estamos desarrollando un emocionante juego en Java llamado "Pandemic", donde los jugadores asumen el papel de héroes que deben salvar al mundo del malvado villano Silco.
 
+## Desarrolladores
+
+- **[Carlos Martínez Guixà](https://marselo-4.github.io/ms-portfolio/)**
+- **[Alvaro Millanes Sabaté](https://github.com/bazoca333)**
+- **[Lujan Aleu Castillo](https://github.com/LujanIdn)**
+
 ## Descripción del juego
 
 En "Pandemic", los jugadores se enfrentan a la amenaza de Silco, quien busca instaurar una nueva era, diezmar la población mundial y provocar un colapso económico. Los jugadores deberán utilizar sus habilidades estratégicas para detener los malévolos planes de Silco.
@@ -18,10 +24,5 @@ En "Pandemic", los jugadores se enfrentan a la amenaza de Silco, quien busca ins
 
 ## Instalación
 
-Para jugar a "Pandemic", simplemente descarga el repositorio y sigue las instrucciones de instalación incluidas en el archivo README. Asegúrate de tener Java instalado en tu sistema.
+Para jugar a "Pandemic", simplemente descarga el repositorio y sigue las instrucciones de instalación incluidas en el archivo "X". Asegúrate de tener Java instalado en tu sistema.
 
-## Licencia
-
-Este proyecto está bajo la licencia [MIT](https://opensource.org/licenses/MIT). Puedes usar, modificar y distribuir el código según tus necesidades.
-
-¡Únete a nosotros y ayúdanos a salvar al mundo de Silco en "Pandemic"!
