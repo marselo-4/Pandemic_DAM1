@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -7,10 +10,30 @@ public class programa {
 
 public static void main(String[] args) {
 	Scanner scan = new Scanner(System.in);
+	String linea = "";
+
 	
-	System.out.println("Poner linea");
-	String linea = scan.nextLine();
-	System.out.println(getFrase(linea));
+	String nombreFichero = "ciudades.txt";
+
+	try {
+		// Creamos un objeto de tipo FileReader para abrir un fichero de lectura
+		FileReader fileReader = new FileReader(nombreFichero);
+		// Utilizamos el Buffered para recibir lo que hay en el fichero y transformarlo
+		// en c�digo Java
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
+		
+		// Leemos el contenido del fichero
+		linea = bufferedReader.readLine();
+		System.out.println(getFrase(linea));
+		linea = "";
+		bufferedReader.close();
+		fileReader.close();
+
+	} catch (IOException e) {
+		System.out.println("Ha habido un error al intentar abrir el fichero" + e);
+	}
+	
+	
 	
 }
     
