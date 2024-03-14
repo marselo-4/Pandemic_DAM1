@@ -3,18 +3,24 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class programa {
-	//Variables
-	public static String nombreCiudad = "";
-	public static int[] coords = new int[3];
-	public static String[] ciudades = new String[4];
+
 
 public static void main(String[] args) {
 	Scanner scan = new Scanner(System.in);
 	
 	System.out.println("Poner linea");
 	String linea = scan.nextLine();
+	System.out.println(getFrase(linea));
 	
-	String[] frasePartes = linea.split(";");
+}
+    
+private static String getFrase(String linea) {
+	//Variables
+	 String nombreCiudad = "";
+	int[] coords = new int[3];
+	String[] ciudades = new String[4];
+	
+String[] frasePartes = linea.split(";");
 	
 	//Poner coordenadas a la array
 	String[] c = new String[2];
@@ -28,20 +34,8 @@ public static void main(String[] args) {
 	//Poner nombreCiudad y ciudades
 	nombreCiudad = frasePartes[0];
 	ciudades = frasePartes[3].split(",");
-	
-	System.out.println("Silco actua en " + nombreCiudad + " con los números "
-			+ coords[0] + "," + coords[1] + "," + coords[2] + ", y cuyas ciudades"
-					+ " colindantes son " + frasePartes[3]);
-}
-    
-private static void reiniciarArrays() {
-	for (int i = 0; i < ciudades.length; i++) {
-		ciudades[i] = null;
-	}
-	
-	for (int i = 0; i < coords.length; i++) {
-		coords[i] = 0;
-	}
+	String ret = "Silco actua en " + nombreCiudad + " con los números "+ coords[0] + "," + coords[1] + "," + coords[2] + ", y cuyas ciudades" + " colindantes son " + frasePartes[3];
+	return ret;
 }
 
 }//Fin clase
