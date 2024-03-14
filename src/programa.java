@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class programa2 {
+public class programa {
 	//Variables
 	public static String nombreCiudad = "";
 	public static int[] coords = new int[3];
@@ -21,7 +21,6 @@ public static void main(String[] args) {
 	c = frasePartes[2].split(",");
 	for (int i = 0; i < c.length; i++) {
 		coords[i+1] = Integer.parseInt(c[i]);
-		System.out.println(c[i]);
 	}
 	coords[0] = Integer.parseInt(frasePartes[1]);
 	
