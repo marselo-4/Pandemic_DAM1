@@ -1,10 +1,4 @@
-package src;
-
-
-
- /**
-  * main
-  */
+//hola
  public class programa {
  
     public static void main(String[] args) {
