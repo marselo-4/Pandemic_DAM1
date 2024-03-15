@@ -1,8 +1,9 @@
-package src;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public static void main(String[] args) {
 
 	
 	String nombreFichero = "ciudades.txt";
-
+	
 	try {
 		// Creamos un objeto de tipo FileReader para abrir un fichero de lectura
 		FileReader fileReader = new FileReader(nombreFichero);
@@ -23,13 +24,17 @@ public static void main(String[] args) {
 		// en c�digo Java
 		BufferedReader bufferedReader = new BufferedReader(fileReader);
 		
-		// Leemos el contenido del fichero
-		linea = bufferedReader.readLine();
-		System.out.println(getFrase(linea));
-		linea = "";
+		do {
+			// Leemos el contenido del fichero
+			linea = bufferedReader.readLine();
+			if (linea != null) {
+				System.out.println(getFrase(linea));
+
+			}
+
+		} while (linea != null);
 		bufferedReader.close();
 		fileReader.close();
-
 	} catch (IOException e) {
 		System.out.println("Ha habido un error al intentar abrir el fichero" + e);
 	}
@@ -42,7 +47,7 @@ private static String getFrase(String linea) {
 	//Variables
 	 String nombreCiudad = "";
 	int[] coords = new int[3];
-	String[] ciudades = new String[4];
+
 	
 String[] frasePartes = linea.split(";");
 	
@@ -57,7 +62,8 @@ String[] frasePartes = linea.split(";");
 	
 	//Poner nombreCiudad y ciudades
 	nombreCiudad = frasePartes[0];
-	ciudades = frasePartes[3].split(",");
+	ArrayList<String> ciudades = new ArrayList<>(Arrays.asList(frasePartes[3].split(",")));
+	
 	String ret = "Silco actua en " + nombreCiudad + " con los números "+ coords[0] + "," + coords[1] + "," + coords[2] + ", y cuyas ciudades" + " colindantes son " + frasePartes[3];
 	return ret;
 }
