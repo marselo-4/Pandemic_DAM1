@@ -28,7 +28,7 @@ public static void main(String[] args) {
 			// Leemos el contenido del fichero
 			linea = bufferedReader.readLine();
 			if (linea != null) {
-				System.out.println(getFrase(linea));
+				getFrase(linea);
 
 			}
 
@@ -43,7 +43,7 @@ public static void main(String[] args) {
 	
 }
     
-private static String getFrase(String linea) {
+private static void getFrase(String linea) {
 	//Variables
 	 String nombreCiudad = "";
 	int[] coords = new int[2];
@@ -64,9 +64,7 @@ String[] frasePartes = linea.split(";");
 	//Poner nombreCiudad y ciudades
 	nombreCiudad = frasePartes[0];
 	ArrayList<String> ciudades = new ArrayList<>(Arrays.asList(frasePartes[3].split(",")));
-	
-	String ret = "Silco actua en " + nombreCiudad + " con los números "+ tipoVirus + "," + coords[0] + "," + coords[1] + ", y cuyas ciudades" + " colindantes son " + frasePartes[3];
-	return ret;
+
 }
 
 }//Fin clase
