@@ -70,8 +70,7 @@ String[] frasePartes = linea.split(";");
 	//Poner nombreCiudad y ciudades
 	nombreCiudad = frasePartes[0];
 	ArrayList<String> ciudades = new ArrayList<>(Arrays.asList(frasePartes[3].split(",")));
-	Ciudades ci = new Ciudades(nombreCiudad, tipoVirus, coords, ciudades);
-	return ci;
+	return new Ciudades(nombreCiudad, tipoVirus, coords, ciudades);
 }
 
 public static double calcularDistancia(String c1, String c2) {
