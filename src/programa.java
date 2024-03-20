@@ -11,12 +11,14 @@ public class programa {
 
 
 public static void main(String[] args) {
+	ArrayList<Ciudades> ciudades = new ArrayList<>();	
+	
 	Scanner scan = new Scanner(System.in);
 	String linea = "";
 
 	
 	String nombreFichero = "ciudades.txt";
-	
+	//RELLENAR ARRAY
 	try {
 		// Creamos un objeto de tipo FileReader para abrir un fichero de lectura
 		FileReader fileReader = new FileReader(nombreFichero);
@@ -28,7 +30,8 @@ public static void main(String[] args) {
 			// Leemos el contenido del fichero
 			linea = bufferedReader.readLine();
 			if (linea != null) {
-				asignarCiudades(linea);
+				
+				ciudades.add(asignarCiudades(linea));
 
 			}
 
@@ -39,12 +42,15 @@ public static void main(String[] args) {
 		System.out.println("Ha habido un error al intentar abrir el fichero" + e);
 	}
 	
+	//PRINTEAR CIUDADES
+	
 	
 	
 }
     
-private static void asignarCiudades(String linea) {
+private static Ciudades asignarCiudades(String linea) {
 	//Variables
+
 	 String nombreCiudad = "";
 	int[] coords = new int[2];
 	int tipoVirus = -1;
@@ -64,7 +70,13 @@ String[] frasePartes = linea.split(";");
 	//Poner nombreCiudad y ciudades
 	nombreCiudad = frasePartes[0];
 	ArrayList<String> ciudades = new ArrayList<>(Arrays.asList(frasePartes[3].split(",")));
+	Ciudades ci = new Ciudades(nombreCiudad, tipoVirus, coords, ciudades);
+	return ci;
+}
 
+public static double calcularDistancia(String c1, String c2) {
+	//ArrayList<String>
+	return 0;
 }
 
 
