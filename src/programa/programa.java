@@ -47,7 +47,8 @@ public static void main(String[] args) {
 private static String getFrase(String linea) {
 	//Variables
 	 String nombreCiudad = "";
-	int[] coords = new int[3];
+	int[] coords = new int[2];
+	int tipoVirus = -1;
 
 	
 String[] frasePartes = linea.split(";");
@@ -56,16 +57,16 @@ String[] frasePartes = linea.split(";");
 	String[] c = new String[2];
 	c = frasePartes[2].split(",");
 	for (int i = 0; i < c.length; i++) {
-		coords[i+1] = Integer.parseInt(c[i]);
+		coords[i] = Integer.parseInt(c[i]);
 	}
-	coords[0] = Integer.parseInt(frasePartes[1]);
+	tipoVirus = Integer.parseInt(frasePartes[1]);
 	
 	
 	//Poner nombreCiudad y ciudades
 	nombreCiudad = frasePartes[0];
 	ArrayList<String> ciudades = new ArrayList<>(Arrays.asList(frasePartes[3].split(",")));
 	
-	String ret = "Silco actua en " + nombreCiudad + " con los números "+ coords[0] + "," + coords[1] + "," + coords[2] + ", y cuyas ciudades" + " colindantes son " + frasePartes[3];
+	String ret = "Silco actua en " + nombreCiudad + " con los números "+ tipoVirus + "," + coords[0] + "," + coords[1] + ", y cuyas ciudades" + " colindantes son " + frasePartes[3];
 	return ret;
 }
 
