@@ -28,7 +28,7 @@ public static void main(String[] args) {
 			// Leemos el contenido del fichero
 			linea = bufferedReader.readLine();
 			if (linea != null) {
-				getFrase(linea);
+				asignarCiudades(linea);
 
 			}
 
@@ -43,7 +43,7 @@ public static void main(String[] args) {
 	
 }
     
-private static void getFrase(String linea) {
+private static void asignarCiudades(String linea) {
 	//Variables
 	 String nombreCiudad = "";
 	int[] coords = new int[2];
@@ -66,5 +66,6 @@ String[] frasePartes = linea.split(";");
 	ArrayList<String> ciudades = new ArrayList<>(Arrays.asList(frasePartes[3].split(",")));
 
 }
+
 
 }//Fin clase
