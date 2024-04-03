@@ -1,0 +1,227 @@
+La ciudad San Francisco está en las coords 235,315 y sus colindantes son:
+San Francisco está a 73.82km de distancia de Chicago
+San Francisco está a 56.57km de distancia de Los Angeles
+San Francisco está a 970.7km de distancia de Manila
+San Francisco está a 1045.3km de distancia de Tokio
+La ciudad Chicago está en las coords 300,280 y sus colindantes son:
+Chicago está a 73.82km de distancia de San Francisco
+Chicago está a 50.0km de distancia de Montreal
+Chicago está a 44.72km de distancia de Atlanta
+Chicago está a 105.0km de distancia de Mexico DF
+Chicago está a 79.06km de distancia de Los Angeles
+La ciudad Atlanta está en las coords 320,320 y sus colindantes son:
+Atlanta está a 44.72km de distancia de Chicago
+Atlanta está a 72.11km de distancia de Miami
+Atlanta está a 41.23km de distancia de Washington
+La ciudad Montreal está en las coords 350,280 y sus colindantes son:
+Montreal está a 50.0km de distancia de Chicago
+Montreal está a 31.62km de distancia de Nueva York
+Montreal está a 50.99km de distancia de Washington
+La ciudad Nueva York está en las coords 380,290 y sus colindantes son:
+Nueva York está a 31.62km de distancia de Montreal
+Nueva York está a 44.72km de distancia de Washington
+Nueva York está a 325.58km de distancia de Londres
+Nueva York está a 307.0km de distancia de Madrid
+La ciudad Washington está en las coords 360,330 y sus colindantes son:
+Washington está a 50.99km de distancia de Montreal
+Washington está a 44.72km de distancia de Nueva York
+Washington está a 41.23km de distancia de Atlanta
+Washington está a 36.06km de distancia de Miami
+La ciudad Londres está en las coords 700,230 y sus colindantes son:
+Londres está a 325.58km de distancia de Nueva York
+Londres está a 61.39km de distancia de Madrid
+Londres está a 33.6km de distancia de Paris
+Londres está a 68.01km de distancia de Essen
+La ciudad Madrid está en las coords 687,290 y sus colindantes son:
+Madrid está a 307.0km de distancia de Nueva York
+Madrid está a 61.39km de distancia de Londres
+Madrid está a 56.57km de distancia de Paris
+Madrid está a 326.02km de distancia de Sao Paulo
+Madrid está a 58.73km de distancia de Argel
+La ciudad Paris está en las coords 727,250 y sus colindantes son:
+Paris está a 56.57km de distancia de Madrid
+Paris está a 33.6km de distancia de Londres
+Paris está a 66.21km de distancia de Essen
+Paris está a 80.06km de distancia de Argel
+Paris está a 31.76km de distancia de Milan
+La ciudad Essen está en las coords 755,190 y sus colindantes son:
+Essen está a 68.01km de distancia de Londres
+Essen está a 66.21km de distancia de Paris
+Essen está a 63.25km de distancia de San Petersburgo
+Essen está a 45.0km de distancia de Milan
+La ciudad Milan está en las coords 755,235 y sus colindantes son:
+Milan está a 45.0km de distancia de Essen
+Milan está a 31.76km de distancia de Paris
+Milan está a 95.43km de distancia de Estambul
+La ciudad San Petersburgo está en las coords 815,210 y sus colindantes son:
+San Petersburgo está a 63.25km de distancia de Essen
+San Petersburgo está a 85.33km de distancia de Estambul
+San Petersburgo está a 77.62km de distancia de Moscu
+La ciudad Los Angeles está en las coords 275,355 y sus colindantes son:
+Los Angeles está a 56.57km de distancia de San Francisco
+Los Angeles está a 39.05km de distancia de Mexico DF
+Los Angeles está a 79.06km de distancia de Chicago
+Los Angeles está a 1084.49km de distancia de Sidney
+La ciudad Miami está en las coords 380,360 y sus colindantes son:
+Miami está a 36.06km de distancia de Washington
+Miami está a 72.11km de distancia de Atlanta
+Miami está a 83.82km de distancia de Mexico DF
+Miami está a 101.98km de distancia de Bogota
+La ciudad Mexico DF está en las coords 300,385 y sus colindantes son:
+Mexico DF está a 39.05km de distancia de Los Angeles
+Mexico DF está a 83.82km de distancia de Miami
+Mexico DF está a 105.0km de distancia de Chicago
+Mexico DF está a 125.0km de distancia de Bogota
+Mexico DF está a 165.08km de distancia de Lima
+La ciudad Bogota está en las coords 400,460 y sus colindantes son:
+Bogota está a 101.98km de distancia de Miami
+Bogota está a 125.0km de distancia de Mexico DF
+Bogota está a 60.21km de distancia de Lima
+Bogota está a 162.79km de distancia de Sao Paulo
+Bogota está a 216.58km de distancia de Buenos Aires
+La ciudad Lima está en las coords 395,520 y sus colindantes son:
+Lima está a 165.08km de distancia de Mexico DF
+Lima está a 60.21km de distancia de Bogota
+Lima está a 105.95km de distancia de Santiago de Chile
+La ciudad Santiago de Chile está en las coords 430,620 y sus colindantes son:
+Santiago de Chile está a 105.95km de distancia de Lima
+La ciudad Buenos Aires está en las coords 453,670 y sus colindantes son:
+Buenos Aires está a 120.37km de distancia de Sao Paulo
+Buenos Aires está a 216.58km de distancia de Bogota
+La ciudad Sao Paulo está en las coords 520,570 y sus colindantes son:
+Sao Paulo está a 162.79km de distancia de Bogota
+Sao Paulo está a 120.37km de distancia de Buenos Aires
+Sao Paulo está a 224.72km de distancia de Lagos
+Sao Paulo está a 326.02km de distancia de Madrid
+La ciudad Lagos está en las coords 710,450 y sus colindantes son:
+Lagos está a 224.72km de distancia de Sao Paulo
+Lagos está a 108.17km de distancia de Kinsasa
+Lagos está a 105.0km de distancia de Jartum
+La ciudad Kinsasa está en las coords 770,540 y sus colindantes son:
+Kinsasa está a 108.17km de distancia de Lagos
+Kinsasa está a 100.62km de distancia de Jartum
+Kinsasa está a 100.62km de distancia de Johannesburgo
+La ciudad Jartum está en las coords 815,450 y sus colindantes son:
+Jartum está a 100.12km de distancia de El Cairo
+Jartum está a 105.0km de distancia de Lagos
+Jartum está a 100.62km de distancia de Kinsasa
+Jartum está a 180.0km de distancia de Johannesburgo
+La ciudad Johannesburgo está en las coords 815,630 y sus colindantes son:
+Johannesburgo está a 100.62km de distancia de Kinsasa
+Johannesburgo está a 180.0km de distancia de Jartum
+La ciudad Argel está en las coords 730,330 y sus colindantes son:
+Argel está a 58.73km de distancia de Madrid
+Argel está a 80.06km de distancia de Paris
+Argel está a 106.28km de distancia de Estambul
+Argel está a 92.2km de distancia de El Cairo
+La ciudad El Cairo está en las coords 820,350 y sus colindantes son:
+El Cairo está a 92.2km de distancia de Argel
+El Cairo está a 56.89km de distancia de Estambul
+El Cairo está a 67.08km de distancia de Bagdad
+La ciudad Riad está en las coords 895,385 y sus colindantes son:
+Riad está a 82.76km de distancia de El Cairo
+Riad está a 66.71km de distancia de Bagdad
+Riad está a 90.14km de distancia de Karachi
+La ciudad Estambul está en las coords 830,294 y sus colindantes son:
+Estambul está a 106.28km de distancia de Argel
+Estambul está a 56.89km de distancia de El Cairo
+Estambul está a 56.36km de distancia de Bagdad
+Estambul está a 87.73km de distancia de Moscu
+La ciudad Bagdad está en las coords 880,320 y sus colindantes son:
+Bagdad está a 56.36km de distancia de Estambul
+Bagdad está a 105.95km de distancia de Karachi
+Bagdad está a 66.71km de distancia de Riad
+Bagdad está a 67.08km de distancia de El Cairo
+La ciudad Moscu está en las coords 890,230 y sus colindantes son:
+Moscu está a 85.44km de distancia de Teheran
+Moscu está a 87.73km de distancia de Estambul
+Moscu está a 77.62km de distancia de San Petersburgo
+La ciudad Teheran está en las coords 920,310 y sus colindantes son:
+Teheran está a 85.44km de distancia de Moscu
+Teheran está a 41.23km de distancia de Bagdad
+Teheran está a 75.0km de distancia de Karachi
+Teheran está a 106.89km de distancia de Nueva Delhi
+La ciudad Karachi está en las coords 980,355 y sus colindantes son:
+Karachi está a 75.0km de distancia de Teheran
+Karachi está a 105.95km de distancia de Bagdad
+Karachi está a 51.48km de distancia de Nueva Delhi
+Karachi está a 90.14km de distancia de Riad
+Karachi está a 47.17km de distancia de Bombay
+La ciudad Bombay está en las coords 1005,395 y sus colindantes son:
+Bombay está a 47.17km de distancia de Karachi
+Bombay está a 68.01km de distancia de Nueva Delhi
+Bombay está a 33.54km de distancia de Madras
+La ciudad Nueva Delhi está en las coords 1025,330 y sus colindantes son:
+Nueva Delhi está a 106.89km de distancia de Teheran
+Nueva Delhi está a 51.48km de distancia de Karachi
+Nueva Delhi está a 68.01km de distancia de Bombay
+Nueva Delhi está a 80.62km de distancia de Madras
+Nueva Delhi está a 60.21km de distancia de Calcuta
+La ciudad Calcuta está en las coords 1070,370 y sus colindantes son:
+Calcuta está a 60.21km de distancia de Nueva Delhi
+Calcuta está a 95.0km de distancia de Hong Kong
+Calcuta está a 53.15km de distancia de Madras
+Calcuta está a 67.27km de distancia de Bangkok
+La ciudad Madras está en las coords 1035,410 y sus colindantes son:
+Madras está a 33.54km de distancia de Bombay
+Madras está a 80.62km de distancia de Nueva Delhi
+Madras está a 53.15km de distancia de Calcuta
+Madras está a 85.15km de distancia de Bangkok
+Madras está a 162.63km de distancia de Yakarta
+La ciudad Yakarta está en las coords 1150,525 y sus colindantes son:
+Yakarta está a 162.63km de distancia de Madras
+Yakarta está a 114.02km de distancia de Bangkok
+Yakarta está a 96.02km de distancia de Ho Chi Minh
+Yakarta está a 208.09km de distancia de Sidney
+La ciudad Bangkok está en las coords 1120,415 y sus colindantes son:
+Bangkok está a 114.02km de distancia de Yakarta
+Bangkok está a 67.27km de distancia de Calcuta
+Bangkok está a 85.15km de distancia de Madras
+Bangkok está a 31.3km de distancia de Ho Chi Minh
+Bangkok está a 63.64km de distancia de Hong Kong
+La ciudad Hong Kong está en las coords 1165,370 y sus colindantes son:
+Hong Kong está a 63.64km de distancia de Bangkok
+Hong Kong está a 61.4km de distancia de Ho Chi Minh
+Hong Kong está a 40.31km de distancia de Taipei
+Hong Kong está a 61.03km de distancia de Manila
+Hong Kong está a 33.54km de distancia de Shanghai
+La ciudad Shanghai está en las coords 1195,355 y sus colindantes son:
+Shanghai está a 58.52km de distancia de Pekin
+Shanghai está a 33.54km de distancia de Hong Kong
+Shanghai está a 65.3km de distancia de Seul
+Shanghai está a 107.0km de distancia de Tokio
+Shanghai está a 22.36km de distancia de Taipei
+La ciudad Pekin está en las coords 1175,300 y sus colindantes son:
+Pekin está a 50.09km de distancia de Seul
+Pekin está a 58.52km de distancia de Shanghai
+La ciudad Seul está en las coords 1225,297 y sus colindantes son:
+Seul está a 50.09km de distancia de Pekin
+Seul está a 55.44km de distancia de Tokio
+La ciudad Tokio está en las coords 1280,290 y sus colindantes son:
+Tokio está a 1045.3km de distancia de San Francisco
+Tokio está a 55.44km de distancia de Seul
+Tokio está a 39.05km de distancia de Osaka
+Tokio está a 107.0km de distancia de Shanghai
+La ciudad Osaka está en las coords 1255,320 y sus colindantes son:
+Osaka está a 39.05km de distancia de Tokio
+Osaka está a 74.33km de distancia de Taipei
+La ciudad Taipei está en las coords 1205,375 y sus colindantes son:
+Taipei está a 74.33km de distancia de Osaka
+Taipei está a 22.36km de distancia de Shanghai
+Taipei está a 40.31km de distancia de Hong Kong
+Taipei está a 45.28km de distancia de Manila
+La ciudad Ho Chi Minh está en las coords 1148,429 y sus colindantes son:
+Ho Chi Minh está a 96.02km de distancia de Yakarta
+Ho Chi Minh está a 31.3km de distancia de Bangkok
+Ho Chi Minh está a 61.4km de distancia de Hong Kong
+Ho Chi Minh está a 52.77km de distancia de Manila
+La ciudad Manila está en las coords 1200,420 y sus colindantes son:
+Manila está a 970.7km de distancia de San Francisco
+Manila está a 52.77km de distancia de Ho Chi Minh
+Manila está a 45.28km de distancia de Taipei
+Manila está a 61.03km de distancia de Hong Kong
+Manila está a 255.0km de distancia de Sidney
+La ciudad Sidney está en las coords 1320,645 y sus colindantes son:
+Sidney está a 1084.49km de distancia de Los Angeles
+Sidney está a 255.0km de distancia de Manila
+Sidney está a 208.09km de distancia de Yakarta

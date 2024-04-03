@@ -1,6 +1,8 @@
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,6 +11,7 @@ import java.util.Scanner;
 
 public class programa {
 	public static ArrayList<Ciudades> ciudades = new ArrayList<>();	
+	public static ArrayList<String> Frasesciudades = new ArrayList<>();	
 
 public static void main(String[] args) {
 		
@@ -46,15 +49,22 @@ public static void main(String[] args) {
 	for (int i = 0; i < ciudades.size(); i++) {
 		Ciudades ciu = ciudades.get(i);
 		
-		System.out.println("La ciudad " + ciu.getNombre() + " está en las coords " + ciu.getCoords()[0] + "," + ciu.getCoords()[1] + " y sus colindantes son:");
+		Frasesciudades.add("La ciudad " + ciu.getNombre() + " está en las coords " + ciu.getCoords()[0] + "," + ciu.getCoords()[1] + " y sus colindantes son:");
 		
 		for (int j = 0; j < ciu.getColindantes().size(); j++) {
 			String colindante = ciu.getColindantes().get(j);		
 			int posicionArraylist = buscarCiudad(colindante);
-			System.out.println(ciu.getNombre() + " está a "+ calcularDistancia(ciu, ciudades.get(posicionArraylist)) +"km "
-					+ "de distancia de " + colindante);
+			String frase = ciu.getNombre() + " está a "+ calcularDistancia(ciu, ciudades.get(posicionArraylist)) +"km de distancia de " + colindante;
+			Frasesciudades.add(frase);
 		}
 	}
+	
+	for (int i = 0; i < Frasesciudades.size(); i++) {
+		System.out.println(Frasesciudades.get(i));
+	}
+	
+	//Escribir al fichero
+	escribirFichero(Frasesciudades);
 	
 	
 }
@@ -121,5 +131,33 @@ public static double calcularDistancia(Ciudades ciudadMain, Ciudades colindante)
 return distancia;
 }
 
+public static void escribirFichero(ArrayList<String> lista) {
+	// Se utiliza para darle un nombre y la ruta al fichero
+	String nombreFichero = "CiudadesRedactadas.txt";
+
+	try {
+		int contador = 0;
+		// Se utiliza para crear el fichero con el nombre indicado en la variable
+		// nombreFichero
+		FileWriter fileWriter = new FileWriter(nombreFichero, false);
+		// Se utiliza para escribir en el fichero creado por el FileWriter
+		BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+		while (contador < Frasesciudades.size()) {
+			// Escribimos en el fichero
+			bufferedWriter.write(lista.get(contador));
+			// A�adimos un \n en el fichero
+			bufferedWriter.newLine();
+			contador++;
+		}
+		// Aquí cerramos todos los objetos
+		bufferedWriter.close();
+		fileWriter.close();
+		System.out.println("El fichero ha sido modificado correctamente");
+
+	} catch (IOException e) {
+		System.out.println("Ha habido un error de escritura: " + e);
+	}
+}
 
 }//Fin clase
