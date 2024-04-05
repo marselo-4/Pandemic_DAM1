@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class programa {
+public class TxtCiudades {
 	public static ArrayList<Ciudades> ciudades = new ArrayList<>();	
 	public static ArrayList<String> Frasesciudades = new ArrayList<>();	
 
