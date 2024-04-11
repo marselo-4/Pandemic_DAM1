@@ -5,6 +5,7 @@ public class Ciudades {
 
 	private String nombre;
 	private int enfermedad;
+	private int infeccion; // CM: Instancio l'int que faltava
 	private int[] coords = new int[2];
 	ArrayList<String> colindantes =  new ArrayList<>();
 	
@@ -45,6 +46,15 @@ public class Ciudades {
 
 	public void setColindantes(ArrayList<String> colindantes) {
 		this.colindantes = colindantes;
+	}
+	
+	// CM: Getters y Setters de la instancia que he corregido
+	public int getInfeccion() {
+		return infeccion;
+	}
+
+	public void setInfeccion(int infeccion) {
+		this.infeccion = infeccion;
 	}
 	
 }

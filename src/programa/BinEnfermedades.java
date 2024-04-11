@@ -14,7 +14,6 @@ public class BinEnfermedades {
 		//Despres printear totes les ciutats amb la seva enfermetat corresponent.
 		
 		
-		
 	}
 
 }
