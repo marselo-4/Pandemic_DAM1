@@ -70,7 +70,7 @@ public static void main(String[] args) {
 	
 }
     
-private static Ciudades asignarCiudades(String linea) {
+public  static Ciudades asignarCiudades(String linea) {
 	//Variables
 
 	 String nombreCiudad = "";
