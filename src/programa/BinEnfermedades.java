@@ -10,24 +10,17 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class BinEnfermedades {
+	public static ArrayList<Ciudades> ciudades = new ArrayList<>();	
 
-	public BinEnfermedades() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public static void main(String[] args) {
-		
-		//Obrir el fitxer bin y llegirt la primera linea String per veure les instruccions
-		
-		
-		//Despres printear totes les ciutats amb la seva enfermetat corresponent.
-		
-		
+
 		
 		String nombreFichero = "CCP.bin";
 		
@@ -71,68 +64,50 @@ public class BinEnfermedades {
 			System.out.println("Ha habido un error de lectura " + e);
 		}
 		
-		String nombreFichero3 = "ciudades.txt";
+		//--------------------------------------------------------------------------------------
+		
+		String linea = "";
 
+		
+		String nombreFichero2 = "ciudades.txt";
+		//RELLENAR ARRAY
 		try {
 			// Creamos un objeto de tipo FileReader para abrir un fichero de lectura
-			FileReader fileReader = new FileReader(nombreFichero);
+			FileReader fileReader = new FileReader(nombreFichero2);
 			// Utilizamos el Buffered para recibir lo que hay en el fichero y transformarlo
 			// en c�digo Java
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			String linea = null;
+			
 			do {
 				// Leemos el contenido del fichero
 				linea = bufferedReader.readLine();
-				
-				// Si no ha acabado de leer el fichero, printamos el valor de l�nea
 				if (linea != null) {
-					System.out.println(linea);
-				}
-			} while (linea != null);
+					
+					ciudades.add(TxtCiudades.asignarCiudades(linea));
 
+				}
+
+			} while (linea != null);
 			bufferedReader.close();
 			fileReader.close();
-
 		} catch (IOException e) {
 			System.out.println("Ha habido un error al intentar abrir el fichero" + e);
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		String nombreFichero2 = "ciudades-enfermedades.bin";
+		String nombreFichero3 = "ciudades-enfermedades.bin";
 		
 		try {
 			//Lo utilizamos para crear el fichero a partir del nombre
-			FileOutputStream fileOutputStream = new FileOutputStream(nombreFichero2);
+			FileOutputStream fileOutputStream = new FileOutputStream(nombreFichero3);
 			//Este objeto traduce todos los datos de Java a binario
 			DataOutputStream dataOutputStream = new DataOutputStream(fileOutputStream);
 			
-//			dataOutputStream.writeUTF();
-//			
-//			
-//			dataOutputStream.writeInt();
-//			
-//	
-//			dataOutputStream.writeFloat();
+			
+			for (int i = 0; i < ciudades.size(); i++) {
+				
+				dataOutputStream.writeUTF(ciudadEnfermedad(ciudades.get(i)));
+				
+			}
 			
 			dataOutputStream.close();
 			fileOutputStream.close();
@@ -149,6 +124,32 @@ public class BinEnfermedades {
 		} catch (Exception e3) {
 			System.out.println("Ha habido un error no controlado " + e3);
 		}
+		
+	}
+	
+	private static String ciudadEnfermedad(Ciudades c) {
+		String enfermedad = "";
+		String[] enfermedades = {"Alfa", "Beta", "Gama", "Delta"};
+		
+		switch (c.getEnfermedad()) {
+		case 0: 
+				enfermedad = enfermedades[0];
+			break;
+		case 1: 
+			enfermedad = enfermedades[1];
+			
+			break;
+		case 2: 
+			enfermedad = enfermedades[2];
+
+			break;
+		case 3: 
+			enfermedad = enfermedades[3];
+
+			break;
+		default:
+		}
+		return  c.getNombre() + ";" + enfermedad;
 		
 	}
 
