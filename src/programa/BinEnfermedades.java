@@ -69,6 +69,88 @@ public class BinEnfermedades {
 		String linea = "";
 
 		
+		String nombreFichero2 = "ciudades.txt";
+		//RELLENAR ARRAY
+		try {
+			// Creamos un objeto de tipo FileReader para abrir un fichero de lectura
+			FileReader fileReader = new FileReader(nombreFichero2);
+			// Utilizamos el Buffered para recibir lo que hay en el fichero y transformarlo
+			// en c�digo Java
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			
+			do {
+				// Leemos el contenido del fichero
+				linea = bufferedReader.readLine();
+				if (linea != null) {
+					
+					ciudades.add(TxtCiudades.asignarCiudades(linea));
+
+				}
+
+			} while (linea != null);
+			bufferedReader.close();
+			fileReader.close();
+		} catch (IOException e) {
+			System.out.println("Ha habido un error al intentar abrir el fichero" + e);
+		}
+		
+		String nombreFichero3 = "ciudades-enfermedades.bin";
+		
+		try {
+			//Lo utilizamos para crear el fichero a partir del nombre
+			FileOutputStream fileOutputStream = new FileOutputStream(nombreFichero3);
+			//Este objeto traduce todos los datos de Java a binario
+			DataOutputStream dataOutputStream = new DataOutputStream(fileOutputStream);
+			
+			
+			for (int i = 0; i < ciudades.size(); i++) {
+				
+				dataOutputStream.writeUTF(ciudadEnfermedad(ciudades.get(i)));
+				
+			}
+			
+			dataOutputStream.close();
+			fileOutputStream.close();
+		//Capturamos el error cuando el fichero indicado no exista
+		} catch (FileNotFoundException e1) {
+			System.out.println("Fichero no encontrado " + e1);
+		//Capturamos el error si ha habido un error de escrtura
+		} catch (IOException e) {
+			System.out.println("Error en la escritura del fichero " + e);
+		//Capturamos el error si en el scanner nos env�an una letra en vez de un n�mero en el nextInt()
+		} catch (InputMismatchException e2) {
+			System.out.println("Ha habido al leer los datos del usuario");
+		//Capturamos cualquier otra excepci�n
+		} catch (Exception e3) {
+			System.out.println("Ha habido un error no controlado " + e3);
+		}
+		
+	}
+	
+	private static String ciudadEnfermedad(Ciudades c) {
+		String enfermedad = "";
+		String[] enfermedades = {"Alfa", "Beta", "Gama", "Delta"};
+		
+		switch (c.getEnfermedad()) {
+		case 0: 
+				enfermedad = enfermedades[0];
+			break;
+		case 1: 
+			enfermedad = enfermedades[1];
+			
+			break;
+		case 2: 
+			enfermedad = enfermedades[2];
+
+			break;
+		case 3: 
+			enfermedad = enfermedades[3];
+
+			break;
+		default:
+		}
+		return  c.getNombre() + ";" + enfermedad;
+		
 	}
 
 }
@@ -77,6 +159,9 @@ public class BinEnfermedades {
 //del mapa para el que estan ajustadas las coordenadas. Los datos de las enfermedades están ordenados: 
 //codigoEnfermedad (int), nombreEnfermedad(String) y colorEnfermeda (String) para las 4 enfermedades.
 //Después están las cordenadas x y que son dos (int)
+
+
+
 
 
 
