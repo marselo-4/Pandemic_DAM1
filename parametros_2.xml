@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Parametros>
+    <Dificultad id="a">
+        <porcentaje_vacuna>1</porcentaje_vacuna>
+        <brotes_maximos>1</brotes_maximos>
+        <propagacion_turno>1</propagacion_turno>
+        <infeccion_inicial>1</infeccion_inicial>
+    </Dificultad>
+</Parametros>
