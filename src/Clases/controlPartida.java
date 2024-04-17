@@ -1,4 +1,4 @@
-package programa;
+package Clases;
 
 public class controlPartida {
 	
