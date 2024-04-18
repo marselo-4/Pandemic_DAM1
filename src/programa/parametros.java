@@ -17,15 +17,20 @@ import org.w3c.dom.NodeList;
 
 
 public class parametros {
-	private static String fileName = "parametros.xml";
+	private static String fileName = controlDatos.getFicheroXML();
 	private static String fileName2 = "parametros_2.xml";
+	private static String porcentaje_vacuna;
+	private static String brotes_maximos;
+	private static String propagacion_turno;
+	private static String infeccion_inicial;
 
 
 	public static void main(String[] args) {
 		//Un cop haver fet la funcio que llegeix y escriu(esciure un nou parametros2.xml) s'ha de fer que llegeixo el xml y ho cargo a datosPartida.java (afegir nous camps)
 		
-		leerXML();
-		EscribirXML();
+		//leerXML();
+		//EscribirXML();
+		cargarXML();
 	}
 
 	public static void leerXML() {
@@ -68,6 +73,12 @@ public class parametros {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+	
+	}
+	public static void cargarXML() {
+		
+	
 	}
 
 	public static void EscribirXML() {
@@ -136,9 +147,7 @@ public class parametros {
 		
 	}
 	
-	public static void cargarDificultad () {
-		
-	}
+
 	
 
 }

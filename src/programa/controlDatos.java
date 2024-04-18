@@ -7,7 +7,7 @@ public class controlDatos {
 	private String password;
 	private String ficheroTxt;
 	private String ficheroBin;
-	private String ficheroXML;
+	private static String ficheroXML = "parametros.xml";
 	
 	public static void cargarCiudades() {
 		
@@ -77,11 +77,11 @@ public class controlDatos {
 		this.ficheroBin = ficheroBin;
 	}
 
-	public String getFicheroXML() {
+	public static String getFicheroXML() {
 		return ficheroXML;
 	}
 
-	public void setFicheroXML(String ficheroXML) {
+	public  void setFicheroXML(String ficheroXML) {
 		this.ficheroXML = ficheroXML;
 	}
 	
