@@ -16,7 +16,7 @@ public class Marco extends JFrame {
         Panel p = new Panel();
         this.getContentPane().add(p, BorderLayout.CENTER);
 
-        Panel p2 = new Panel();
+        PanelBotonesMenu p2 = new PanelBotonesMenu();
         this.getContentPane().add(p2, BorderLayout.SOUTH);
         
         setVisible(true);

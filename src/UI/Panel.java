@@ -1,37 +1,43 @@
 package UI;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Panel extends JPanel {
+    private ImageIcon icon;
+    private Image scaledImage;
+
     public Panel() {
-        ImageIcon icon = new ImageIcon("img/world_map.png"); // Ruta actualizada
+        icon = new ImageIcon("img/world_map.png"); // Ruta actualizada
+        scaleImage();
+    }
 
-        // Create a JLabel with the loaded image
-        JLabel label = new JLabel(icon);
-        
-        //label.setPreferredSize(new Dimension(990, 660));
-        
-        //label.setBounds(0,0,990, 660 );
-        
-        
-        label.setVisible(true);
+    private void scaleImage() {
+        if (getWidth() > 0 && getHeight() > 0) {
+            scaledImage = icon.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
+        }
+    }
 
-        // Add the label to the panel
-        add(label);
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        
+        if (scaledImage != null) {
+            g.drawImage(scaledImage, 0, 0, this);
+        }
+    }
 
-        JButton b1 = new JButton("Hola");
-        JButton b2 = new JButton("Botón 2");
-        JButton b3 = new JButton("Botón 3");
-        JButton b4 = new JButton("Botón 4");
+    @Override
+    public void invalidate() {
+        super.invalidate();
+        scaleImage();
+    }
 
-        // Add the buttons to the panel
-        add(b1);
-        add(b2);
-        add(b3);
-        add(b4);
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(icon.getIconWidth(), icon.getIconHeight());
     }
 }
