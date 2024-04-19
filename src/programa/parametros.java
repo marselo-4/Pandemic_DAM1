@@ -29,9 +29,9 @@ public class parametros {
 	public static void main(String[] args) {
 		//Un cop haver fet la funcio que llegeix y escriu(esciure un nou parametros2.xml) s'ha de fer que llegeixo el xml y ho cargo a datosPartida.java (afegir nous camps)
 		
-		//leerXML();
-		//EscribirXML();
-		//cargarXML();
+		//leerXML(); Funciona
+		//EscribirXML(); Funciona
+		//cargarXML(); Funciona
 	}
 
 	public static void leerXML() {
@@ -79,7 +79,7 @@ public class parametros {
 	}
 	
 	public static void cargarXML(int porcentaje, int brotes, int ronda, int inicio) {
-		
+		Scanner scan = new Scanner(System.in);
 		try {
 			File inputFile = new File(fileName);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -89,13 +89,17 @@ public class parametros {
 
 
 			NodeList nodeList = doc.getElementsByTagName("dificultad");
-
+			
+			System.out.println("Eliga que dificultad quiere usar Facil/Normal/Dificil");
+			String eleccion = scan.nextLine();
+			
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				Node node = nodeList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
 					Element element = (Element) node;
 					
 					String id = element.getAttribute("id");
+					if (eleccion.equals(id)) {
 					porcentaje = Integer.parseInt(element.getElementsByTagName("Porcentaje_vacuna").item(0)
 							.getTextContent());
 					brotes = Integer.parseInt(element.getElementsByTagName("Brotes_maximos").item(0).getTextContent());
@@ -104,9 +108,11 @@ public class parametros {
 							.getTextContent());
 					inicio = Integer.parseInt(element.getElementsByTagName("Infeccion_inicial").item(0)
 							.getTextContent());
+					}
 					
 				}
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

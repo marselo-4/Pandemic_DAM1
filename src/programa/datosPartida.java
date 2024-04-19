@@ -17,8 +17,6 @@ public class datosPartida {
 	private int rondas;
 	private int acciones;
 	
-	
-	
 	public static void modificarCiudad(String nCiudad, int modificacion) {
 		
 	}
@@ -29,7 +27,6 @@ public class datosPartida {
 	
 	public static void cargarDatos() {
 		
-		//Tinc que fer que els tipos de variable coincideixin(fet) y que es pugui elegir la dificultad
 		parametros.cargarXML(pDesarrollo, brotes_maximos, propagacion_ronda, propagacion_inicio);
 	}
 
