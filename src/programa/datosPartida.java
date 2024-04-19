@@ -10,7 +10,7 @@ public class datosPartida {
 	private int brotes;
 	
 	private static int brotes_maximos;
-	private static float pDesarrollo;
+	private static int pDesarrollo;
 	private static int propagacion_ronda;
 	private static int propagacion_inicio;
 	
@@ -29,6 +29,8 @@ public class datosPartida {
 	
 	public static void cargarDatos() {
 		
+		//Tinc que fer que els tipos de variable coincideixin(fet) y que es pugui elegir la dificultad
+		parametros.cargarXML(pDesarrollo, brotes_maximos, propagacion_ronda, propagacion_inicio);
 	}
 
 	public int getBrotes() {
@@ -51,7 +53,7 @@ public class datosPartida {
 		return pDesarrollo;
 	}
 
-	public void setpDesarrollo(float pDesarrollo) {
+	public void setpDesarrollo(int pDesarrollo) {
 		this.pDesarrollo = pDesarrollo;
 	}
 

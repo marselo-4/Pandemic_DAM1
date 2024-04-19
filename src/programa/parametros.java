@@ -19,10 +19,11 @@ import org.w3c.dom.NodeList;
 public class parametros {
 	private static String fileName = controlDatos.getFicheroXML();
 	private static String fileName2 = "parametros_2.xml";
-	private static String porcentaje_vacuna;
+	
+	/*private static String porcentaje_vacuna;
 	private static String brotes_maximos;
 	private static String propagacion_turno;
-	private static String infeccion_inicial;
+	private static String infeccion_inicial;*/
 
 
 	public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class parametros {
 		
 		//leerXML();
 		//EscribirXML();
-		cargarXML();
+		//cargarXML();
 	}
 
 	public static void leerXML() {
@@ -76,9 +77,39 @@ public class parametros {
 		
 	
 	}
-	public static void cargarXML() {
-		
 	
+	public static void cargarXML(int porcentaje, int brotes, int ronda, int inicio) {
+		
+		try {
+			File inputFile = new File(fileName);
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+			doc.getDocumentElement().normalize();
+
+
+			NodeList nodeList = doc.getElementsByTagName("dificultad");
+
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				Node node = nodeList.item(i);
+				if (node.getNodeType() == Node.ELEMENT_NODE) {
+					Element element = (Element) node;
+					
+					String id = element.getAttribute("id");
+					porcentaje = Integer.parseInt(element.getElementsByTagName("Porcentaje_vacuna").item(0)
+							.getTextContent());
+					brotes = Integer.parseInt(element.getElementsByTagName("Brotes_maximos").item(0).getTextContent());
+
+					ronda = Integer.parseInt(element.getElementsByTagName("Propagacion_turno").item(0)
+							.getTextContent());
+					inicio = Integer.parseInt(element.getElementsByTagName("Infeccion_inicial").item(0)
+							.getTextContent());
+					
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void EscribirXML() {
