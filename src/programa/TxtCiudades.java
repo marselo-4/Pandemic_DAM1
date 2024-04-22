@@ -10,8 +10,6 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
 
-import Clases.Ciudades;
-
 public class TxtCiudades {
 	public static ArrayList<Ciudades> ciudades = new ArrayList<>();	
 	public static ArrayList<String> Frasesciudades = new ArrayList<>();	
@@ -20,7 +18,6 @@ public static void main(String[] args) {
 		
 	Scanner scan = new Scanner(System.in);
 	String linea = "";
-
 	
 	String nombreFichero = "ciudades.txt";
 	//RELLENAR ARRAY
@@ -72,7 +69,7 @@ public static void main(String[] args) {
 	
 }
     
-public  static Ciudades asignarCiudades(String linea) {
+private static Ciudades asignarCiudades(String linea) {
 	//Variables
 
 	 String nombreCiudad = "";
