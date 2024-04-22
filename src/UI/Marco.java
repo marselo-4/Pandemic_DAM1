@@ -1,14 +1,20 @@
 package UI;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 public class Marco extends JFrame {
 
+	Dimension screenSize;
     public Marco() {
+    	this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         setLayout(new BorderLayout());
-        setBounds(450, 200, 1200, 715);
+        //setBounds(450, 200, 1200, 715);
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Pandemic");
         

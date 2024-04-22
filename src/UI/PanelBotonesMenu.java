@@ -1,22 +1,26 @@
 package UI;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class PanelBotonesMenu extends JPanel{
 	public PanelBotonesMenu() {
 		 
-	     JButton b1 = new JButton("Hola");
-	     JButton b2 = new JButton("Botón 2");
-	     JButton b3 = new JButton("Botón 3");
-	     JButton b4 = new JButton("Botón 4");
+		this.setBackground(Color.black);
+		JLabel brotes = new JLabel("Brotes: X");
+		
+		JLabel acciones = new JLabel("Acciones restantes : X");
+		JTextField tf = new JTextField(20);
+		JButton vacuna = new JButton();
+		
+		add(brotes);
+		add(acciones);
 
-	     // Add the buttons to the panel
-	     add(b1);
-	     add(b2);
-	     add(b3);
-	     add(b4);
+		add(tf);
 	}
 }
