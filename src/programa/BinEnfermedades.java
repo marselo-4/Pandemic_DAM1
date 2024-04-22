@@ -15,6 +15,8 @@ import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import Clases.Ciudades;
+
 public class BinEnfermedades {
 	public static ArrayList<Ciudades> ciudades = new ArrayList<>();	
 
