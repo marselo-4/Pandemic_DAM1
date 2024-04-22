@@ -2,6 +2,8 @@ package Clases;
 
 import java.util.ArrayList;
 
+import programa.parametros;
+
 public class datosPartida {
 
 	public static ArrayList<Ciudades> ciudades = new ArrayList<>();	
@@ -26,7 +28,6 @@ public class datosPartida {
 	}
 	
 	public static void cargarDatos() {
-		
 		parametros.cargarXML(pDesarrollo, brotes_maximos, propagacion_ronda, propagacion_inicio);
 	}
 
