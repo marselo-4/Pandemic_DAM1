@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
+import Clases.Ciudades;
 
 public class TxtCiudades {
 	public static ArrayList<Ciudades> ciudades = new ArrayList<>();	
@@ -69,7 +70,7 @@ public static void main(String[] args) {
 	
 }
     
-private static Ciudades asignarCiudades(String linea) {
+public static Ciudades asignarCiudades(String linea) {
 	//Variables
 
 	 String nombreCiudad = "";
