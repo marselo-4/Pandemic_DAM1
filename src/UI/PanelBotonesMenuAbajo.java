@@ -39,7 +39,7 @@ public class PanelBotonesMenuAbajo extends JPanel {
 				new ImageIcon("img/toxichazard.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
 		radioAzul.setIcon(icono_azul);
 		
-		
+		//No funciona mirar overide
 		if (radioAzul.isSelected()) {
 			icono_azul = new ImageIcon(
 					new ImageIcon("img/toxichazard.png").getImage().getScaledInstance(1000, 1000, Image.SCALE_SMOOTH));
@@ -71,19 +71,6 @@ public class PanelBotonesMenuAbajo extends JPanel {
 
 	}
 	
-	 @Override
-     public void actionPerformed(ActionEvent e) {
-         if (radioAzul.isSelected()) {
-             ImageIcon icono_rojo = new ImageIcon(
-                     new ImageIcon("img/toxichazard.png").getImage().getScaledInstance(1000, 1000, Image.SCALE_SMOOTH));
-             radioAzul.setIcon(icono_rojo);
-         } else {
-             ImageIcon icono_rojo = new ImageIcon(
-                     new ImageIcon("img/toxichazard.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
-             radioAzul.setIcon(icono_rojo);
-         }
-     }
-
 
 
 //	 private static void customizeRadioButton(JRadioButton radioButton, Color color) {
