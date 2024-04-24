@@ -11,6 +11,7 @@ public class Marco extends JFrame {
 
 	Dimension screenSize;
     public Marco() {
+    	
     	this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
         setLayout(new BorderLayout());
         //setBounds(450, 200, 1200, 715);
@@ -22,8 +23,13 @@ public class Marco extends JFrame {
         Panel p = new Panel();
         this.getContentPane().add(p, BorderLayout.CENTER);
 
-        PanelBotonesMenu p2 = new PanelBotonesMenu();
+        PanelBotonesMenuAbajo p2 = new PanelBotonesMenuAbajo();
         this.getContentPane().add(p2, BorderLayout.SOUTH);
+
+//        PanelBotonesMenuLateral p3 = new PanelBotonesMenuLateral();
+//        this.getContentPane().add(p3, BorderLayout.WEST);
+
+
         
         setVisible(true);
     }
