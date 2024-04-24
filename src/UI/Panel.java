@@ -12,7 +12,7 @@ public class Panel extends JPanel {
 
     public Panel() {
         icon = new ImageIcon("img/world_map.png"); // Ruta actualizada
-        scaleImage();
+       scaleImage();
     }
 
     private void scaleImage() {
