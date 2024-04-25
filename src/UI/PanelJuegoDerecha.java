@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class PanelBotonesMenuLateral extends JPanel implements ActionListener, ItemListener{
+public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemListener{
     private ImageIcon icono_azul = new ImageIcon(new ImageIcon("img/azul.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
     private ImageIcon icono_azul_grande = new ImageIcon(new ImageIcon("img/azulS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
 
@@ -41,7 +41,7 @@ public class PanelBotonesMenuLateral extends JPanel implements ActionListener, I
     private JLabel labelRojo = new JLabel("0%");
     private JLabel labelAmarillo = new JLabel("0%");
 
-    public PanelBotonesMenuLateral() {
+    public PanelJuegoDerecha() {
         setLayout(new FlowLayout());
 
         this.setBackground(Color.gray);
