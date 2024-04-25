@@ -27,8 +27,8 @@ public class Marco extends JFrame {
         PanelBotonesMenuAbajo p2 = new PanelBotonesMenuAbajo();
         this.getContentPane().add(p2, BorderLayout.SOUTH);
 
-//        PanelBotonesMenuLateral p3 = new PanelBotonesMenuLateral();
-//        this.getContentPane().add(p3, BorderLayout.WEST);
+        PanelBotonesMenuLateral p3 = new PanelBotonesMenuLateral();
+        this.getContentPane().add(p3, BorderLayout.WEST);
 
 
         
