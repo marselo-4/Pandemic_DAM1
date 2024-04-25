@@ -44,16 +44,18 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
     public PanelJuegoDerecha() {
         setLayout(new FlowLayout());
 
-        this.setBackground(Color.gray);
-        setPreferredSize(new Dimension(150, 400));
         ButtonGroup vacunas = new ButtonGroup();
         agregarBotones(vacunas);
-        
 
         JButton desarrollarVac = new JButton("Desarrollar");
         desarrollarVac.setPreferredSize(new Dimension(100, 30));
         vacunas.add(desarrollarVac);
         add(desarrollarVac);
+        
+        this.setBackground(new Color(20, 20, 30)); // Fondo negro azulado
+        setPreferredSize(new Dimension(150, 400));
+        setBorder(BorderFactory.createLineBorder(new Color(0, 255, 0), 3));
+
     }
 
 public void actionPerformed(ActionEvent e) {
@@ -116,6 +118,7 @@ private void agregarBotones(ButtonGroup vacunas) {
     radioAzul.addItemListener(this);
     add(radioAzul);
     add(labelAzul);
+    labelAzul.setForeground(Color.white);
 
     radioNegro.setOpaque(false);
     radioNegro.setContentAreaFilled(false);
@@ -128,6 +131,7 @@ private void agregarBotones(ButtonGroup vacunas) {
     radioNegro.addItemListener(this);
     add(radioNegro);
     add(labelNegro);
+    labelNegro.setForeground(Color.white);
 
 
     radioRojo.setOpaque(false);
@@ -141,6 +145,7 @@ private void agregarBotones(ButtonGroup vacunas) {
     radioRojo.addItemListener(this);
     add(radioRojo);
     add(labelRojo);
+    labelRojo.setForeground(Color.white);
 
     
     radioAmarillo.setOpaque(false);
@@ -154,6 +159,7 @@ private void agregarBotones(ButtonGroup vacunas) {
     radioAmarillo.addItemListener(this);
     add(radioAmarillo);
     add(labelAmarillo);
+    labelAmarillo.setForeground(Color.white);
 
 }
 
