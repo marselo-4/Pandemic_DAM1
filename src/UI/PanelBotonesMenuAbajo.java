@@ -31,7 +31,7 @@ public class PanelBotonesMenuAbajo extends JPanel {
 		setPreferredSize(new Dimension(150, 125)); // Ajustar tamaño del panel
 
 		// Añadir borde verde chillón
-        setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
+        setBorder(BorderFactory.createLineBorder(new Color(0, 0, 20), 2));
 
 		agregarCajadialogo();
 	}

@@ -5,16 +5,21 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class PanelJuegoIzquierda extends JPanel {
     private int circulosMaximos;
     private int circulosActuales;
+    private ImageIcon icono_amarillo = new ImageIcon(new ImageIcon("img/amarillo.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
+
 
     public PanelJuegoIzquierda(int circulosMaximos, int circulosActuales) {
         this.circulosMaximos = circulosMaximos;

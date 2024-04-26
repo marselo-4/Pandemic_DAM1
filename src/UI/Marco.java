@@ -14,7 +14,7 @@ public class Marco extends JFrame {
     	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     	
     	this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-        setLayout(new BorderLayout());
+    	setLayout(new BorderLayout());
         //setBounds(450, 200, 1200, 715);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
