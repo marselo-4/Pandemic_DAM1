@@ -65,8 +65,10 @@ public void agregarCajadialogo() {
         Caja.setFont(new Font("Arial", Font.PLAIN, 12));
     }
     
-    Caja.setBackground(Color.white);
-    Caja.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+    
+    Caja.setForeground(Color.LIGHT_GRAY); 
+    Caja.setBackground(Color.DARK_GRAY);
+    Caja.setBorder(BorderFactory.createLineBorder(Color.black));
     add(panelCaja, BorderLayout.CENTER);
 }
 
