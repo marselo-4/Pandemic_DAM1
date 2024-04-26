@@ -21,7 +21,7 @@ public class Marco extends JFrame {
         setTitle("Pandemic");
         
         // Crear el panel y agregarlo al JFrame
-        Panel p = new Panel();
+        PanelMapa p = new PanelMapa();
         this.getContentPane().add(p, BorderLayout.CENTER);
 
         PanelBotonesMenuAbajo p2 = new PanelBotonesMenuAbajo();

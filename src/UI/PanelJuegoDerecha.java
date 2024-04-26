@@ -62,24 +62,28 @@ public void actionPerformed(ActionEvent e) {
     if (e.getSource() == radioAzul) {
         if (radioAzul.isSelected()) {
             radioAzul.setIcon(icono_azul_grande);
+            PanelBotonesMenuAbajo.textosCaja("Vacuna azul seleccionada");
         } else {
             radioAzul.setIcon(icono_azul);
         }
     } else if (e.getSource() == radioNegro) {
         if (radioNegro.isSelected()) {
             radioNegro.setIcon(icono_negro_grande);
+            PanelBotonesMenuAbajo.textosCaja("Vacuna negra seleccionada");
         } else {
             radioNegro.setIcon(icono_negro);
         }
     } else if (e.getSource() == radioAmarillo) {
         if (radioAmarillo.isSelected()) {
             radioAmarillo.setIcon(icono_amarillo_grande);
+            PanelBotonesMenuAbajo.textosCaja("Vacuna amarilla seleccionada");
         } else {
             radioAmarillo.setIcon(icono_amarillo);
         }
     } else if (e.getSource() == radioRojo) {
         if (radioRojo.isSelected()) {
             radioRojo.setIcon(icono_rojo_grande);
+            PanelBotonesMenuAbajo.textosCaja("Vacuna roja seleccionada");
         } else {
             radioRojo.setIcon(icono_rojo);
         }
@@ -107,6 +111,7 @@ public void itemStateChanged(ItemEvent e) {
 }
 
 private void agregarBotones(ButtonGroup vacunas) {
+	
 	radioAzul.setOpaque(false);
     radioAzul.setContentAreaFilled(false);
     radioAzul.setBorderPainted(false);

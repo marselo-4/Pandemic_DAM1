@@ -6,11 +6,11 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class Panel extends JPanel {
+public class PanelMapa extends JPanel {
     private ImageIcon icon;
     private Image scaledImage;
 
-    public Panel() {
+    public PanelMapa() {
         icon = new ImageIcon("img/world_map.png"); // Ruta actualizada
        scaleImage();
     }
