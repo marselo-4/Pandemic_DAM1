@@ -11,6 +11,7 @@ public class Marco extends JFrame {
 
 	Dimension screenSize;
     public Marco() {
+    	setSize(1920,1080);
     	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
     	
     	this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
