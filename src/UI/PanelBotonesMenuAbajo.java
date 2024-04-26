@@ -31,13 +31,15 @@ public class PanelBotonesMenuAbajo extends JPanel {
 		setPreferredSize(new Dimension(150, 125)); // Ajustar tamaño del panel
 
 		// Añadir borde verde chillón
-		setBorder(BorderFactory.createLineBorder(new Color(0, 255, 0), 3));
+        setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
 
 		agregarCajadialogo();
 	}
 
+	
+
 	public void agregarCajadialogo() {
-		Font fuentePersonalizada = new Font("Courier New", Font.BOLD, 18);
+		Font fuentePersonalizada = new Font("DisposableDroid BB", Font.PLAIN, 30);
 		JPanel panelCaja = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0)); // Usa FlowLayout centrado sin espacios
 		panelCaja.setBackground(new Color(20, 20, 30));
 		Caja = new JTextArea();
@@ -45,7 +47,8 @@ public class PanelBotonesMenuAbajo extends JPanel {
 		Caja.setEditable(false);
 		Caja.setPreferredSize(new Dimension(700, 117));
 		Caja.setFont(fuentePersonalizada);
-		Caja.setBackground(Color.WHITE);
+
+		Caja.setBackground(Color.white);
 		Caja.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		add(panelCaja, BorderLayout.CENTER);
 
@@ -62,7 +65,7 @@ public class PanelBotonesMenuAbajo extends JPanel {
 				});
 				try {
 					// Simulamos un pequeño retraso entre cada caracter para el efecto de escritura
-					TimeUnit.MILLISECONDS.sleep(80);
+					TimeUnit.MILLISECONDS.sleep(5);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
