@@ -11,7 +11,7 @@ public class PanelMapa extends JPanel {
     private Image scaledImage;
 
     public PanelMapa() {
-        icon = new ImageIcon("img/world_map.png"); // Ruta actualizada
+        icon = new ImageIcon("img/mapa.jpg"); // Ruta actualizada
        scaleImage();
     }
 

@@ -42,20 +42,15 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
     private JLabel labelAmarillo = new JLabel("0%");
 
     public PanelJuegoDerecha() {
+    	
         setLayout(new FlowLayout());
-
         ButtonGroup vacunas = new ButtonGroup();
         agregarBotones(vacunas);
-
-        JButton desarrollarVac = new JButton("Desarrollar");
-        desarrollarVac.setPreferredSize(new Dimension(100, 30));
-        vacunas.add(desarrollarVac);
-        add(desarrollarVac);
-        
         this.setBackground(new Color(20, 20, 30)); // Fondo negro azulado
         setPreferredSize(new Dimension(150, 400));
-        setBorder(BorderFactory.createLineBorder(new Color(0, 255, 0), 3));
-
+        setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
+        
+        Desarollar_y_curar();
     }
 
 public void actionPerformed(ActionEvent e) {
@@ -166,6 +161,32 @@ private void agregarBotones(ButtonGroup vacunas) {
     add(labelAmarillo);
     labelAmarillo.setForeground(Color.white);
 
+}
+
+public void Desarollar_y_curar() {
+	 JPanel panel_botones_derecha = new JPanel();
+	    panel_botones_derecha.setLayout(null);
+	    add(panel_botones_derecha);
+	    
+		JButton curarCiudad = new JButton();
+		curarCiudad.setOpaque(false);
+		curarCiudad.setBorderPainted(false);
+	    curarCiudad.setContentAreaFilled(false);
+	    curarCiudad.setBounds(500, 550, 85, 85); // Desplaza el botón curarCiudad hacia abajo
+	    
+	    ImageIcon curarCiudadimg = new ImageIcon(new ImageIcon("img/cur_ciudad.png").getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));
+	    curarCiudad.setIcon(curarCiudadimg);
+		add(curarCiudad);
+
+		JButton DesarollarVacuna = new JButton();
+		DesarollarVacuna.setBorderPainted(false);
+		DesarollarVacuna.setOpaque(false);
+	    DesarollarVacuna.setContentAreaFilled(false);
+	    DesarollarVacuna.setBounds(500, 650, 85, 85); // Desplaza el botón DesarollarVacuna hacia abajo
+	    ImageIcon desvacunaimg = new ImageIcon(new ImageIcon("img/des_vacuna.png").getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));
+	    DesarollarVacuna.setIcon(desvacunaimg);
+		add(DesarollarVacuna);
+	
 }
 
 }

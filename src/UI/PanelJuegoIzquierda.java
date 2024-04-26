@@ -25,7 +25,7 @@ public class PanelJuegoIzquierda extends JPanel{
 
         this.setBackground(new Color(20, 20, 30)); // Fondo negro azulado
         setPreferredSize(new Dimension(130, 400));
-        setBorder(BorderFactory.createLineBorder(new Color(0, 255, 0), 3));
+        setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
 
     }
 
