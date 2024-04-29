@@ -3,12 +3,17 @@ package UI;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -41,18 +46,36 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
     private JLabel labelRojo = new JLabel("0%");
     private JLabel labelAmarillo = new JLabel("0%");
 
+    private BufferedImage imagenFondo;
+
     public PanelJuegoDerecha() {
     	
         setLayout(new FlowLayout());
         ButtonGroup vacunas = new ButtonGroup();
         agregarBotones(vacunas);
-        this.setBackground(new Color(20, 20, 30)); // Fondo negro azulado
         setPreferredSize(new Dimension(150, 400));
         //setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
-        
+        cargarFondo();
+
         Desarollar_y_curar();
     }
 
+    private void cargarFondo() {
+        try {
+            imagenFondo = ImageIO.read(new File("img/lateral.png")); // Ruta del fondo
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        // Dibujar fondo
+        if (imagenFondo != null) {
+            g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+        }
+    }
 public void actionPerformed(ActionEvent e) {
     if (e.getSource() == radioAzul) {
         if (radioAzul.isSelected()) {
