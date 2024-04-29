@@ -2,6 +2,8 @@ package UI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class PanelBotonesMenuAbajo extends JPanel {
@@ -31,28 +33,45 @@ public class PanelBotonesMenuAbajo extends JPanel {
 		setPreferredSize(new Dimension(150, 125)); // Ajustar tamaño del panel
 
 		// Añadir borde verde chillón
-        setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
+        setBorder(BorderFactory.createLineBorder(new Color(0, 0, 20), 2));
 
 		agregarCajadialogo();
 	}
 
 	
 
-	public void agregarCajadialogo() {
-		Font fuentePersonalizada = new Font("DisposableDroid BB", Font.PLAIN, 30);
-		JPanel panelCaja = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0)); // Usa FlowLayout centrado sin espacios
-		panelCaja.setBackground(new Color(20, 20, 30));
-		Caja = new JTextArea();
-		panelCaja.add(Caja);
-		Caja.setEditable(false);
-		Caja.setPreferredSize(new Dimension(700, 117));
-		Caja.setFont(fuentePersonalizada);
+public void agregarCajadialogo() {
+    File fontFile = new File("fonts/DisposableDroidBB.ttf");
+    Font fuentePersonalizada = null;
+    
+    try {
+        fuentePersonalizada = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+        fuentePersonalizada = fuentePersonalizada.deriveFont(25f); // Modifica el tamaño a 16 puntos
+    } catch (IOException | FontFormatException e) {
+        e.printStackTrace();
+    }
+    
+    JPanel panelCaja = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+    panelCaja.setBackground(new Color(20, 20, 30));
+    Caja = new JTextArea();
+    panelCaja.add(Caja);
+    Caja.setEditable(false);
+    Caja.setPreferredSize(new Dimension(700, 117));
+    
+    if (fuentePersonalizada != null) {
+        Caja.setFont(fuentePersonalizada);
+    } else {
+        // Fuente predeterminada en caso de que la fuente no se cargue correctamente
+        Caja.setFont(new Font("Arial", Font.PLAIN, 12));
+    }
+    
+    
+    Caja.setForeground(Color.LIGHT_GRAY); 
+    Caja.setBackground(Color.DARK_GRAY);
+    Caja.setBorder(BorderFactory.createLineBorder(Color.black));
+    add(panelCaja, BorderLayout.CENTER);
+}
 
-		Caja.setBackground(Color.white);
-		Caja.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		add(panelCaja, BorderLayout.CENTER);
-
-	}
 
 	public static void textosCaja(String texto) {
 		// Creamos un hilo para el efecto de escritura
