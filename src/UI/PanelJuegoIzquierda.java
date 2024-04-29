@@ -1,29 +1,32 @@
 package UI;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.geom.Ellipse2D;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class PanelJuegoIzquierda extends JPanel {
     private int circulosMaximos;
     private int circulosActuales;
+    private BufferedImage imagen;
 
     public PanelJuegoIzquierda(int circulosMaximos, int circulosActuales) {
         this.circulosMaximos = circulosMaximos;
         this.circulosActuales = circulosActuales;
 
+        try {
+            imagen = ImageIO.read(new File("img/brote.png")); // Ruta 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         setLayout(new FlowLayout());
         setBackground(new Color(20, 20, 30)); // Fondo negro azulado
-        setPreferredSize(new Dimension(130, 400));
-        setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
+        setPreferredSize(new Dimension(150, 400));
+        //setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
 
         JButton sumarButton = new JButton("Sumar");
         sumarButton.addActionListener(e -> {
@@ -40,17 +43,22 @@ public class PanelJuegoIzquierda extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        int circleSize = 30; // Tamaño del círculo
-        int padding = 5; // Espacio entre los círculos
-        int startX = 25; // Posición inicial en X
-        int startY = 45; // Posición inicial en Y
+        int circleSize = 50; // Tamaño del círculo
+        int padding = 8; // Espacio entre los círculos
+        int startX = 23; // Posición inicial en X
+        int startY = 130; // Posición inicial en Y
 
         for (int i = 0; i < circulosMaximos; i++) {
             int x = startX + (i % 2 == 0 ? 0 : circleSize + padding);
             int y = startY + (i * (circleSize + padding));
-            Color color = i < circulosActuales ? Color.RED : Color.GRAY;
-            g2d.setColor(color);
-            g2d.fill(new Ellipse2D.Double(x, y, circleSize, circleSize));
+            Image image = i < circulosActuales ? imagen : null;
+            if (image != null) {
+                g2d.drawImage(image, x, y, circleSize, circleSize, null);
+            } else {
+                Color color = Color.GRAY;
+                g2d.setColor(color);
+                g2d.fill(new Ellipse2D.Double(x, y, circleSize, circleSize));
+            }
         }
     }
 

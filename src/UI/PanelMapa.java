@@ -24,8 +24,7 @@ public class PanelMapa extends JPanel implements ActionListener, ItemListener {
     ButtonGroup IconosCiudades = new ButtonGroup();
 
 
-    public PanelMapa() {
-
+    public PanelMapa() { // testea botones si funcionan todos con print
         icon = new ImageIcon("img/mapa.jpg");  //Ruta actualizada
        scaleImage();
        setLayout(null);
@@ -201,8 +200,8 @@ public class PanelMapa extends JPanel implements ActionListener, ItemListener {
         return new Dimension(icon.getIconWidth(), icon.getIconHeight());
     }
     
-
     public void crearBotonciudad(CiudadBoton Ciudad, String rutaimg, int x, int y, int w, int h) {
+
         Ciudad.setOpaque(false);
         Ciudad.setBorderPainted(false);
         Ciudad.setContentAreaFilled(false);
