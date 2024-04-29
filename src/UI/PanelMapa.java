@@ -18,7 +18,6 @@ public class PanelMapa extends JPanel {
     public PanelMapa() {
         icon = new ImageIcon("img/mapa.jpg");  //Ruta actualizada
        scaleImage();
-       AñadirBotonesCiudades();
        setLayout(null);
      
        JRadioButton SanFrancisco = new JRadioButton(); 
@@ -93,77 +92,77 @@ public class PanelMapa extends JPanel {
        JRadioButton Johannesburgo = new JRadioButton(); 
        crearBotonciudad(Johannesburgo, "img/IconoCiudadAmarillo.png",  840,  655,  35,  35);
 
-//        JRadioButton Argel = new JRadioButton(); 
-//        crearBotonciudad(Argel, "img/IconoCiudadVerde.png",  730,  330, 35,  35);
-// 
-//        JRadioButton ElCairo = new JRadioButton(); 
-//        crearBotonciudad(ElCairo, "img/IconoCiudadVerde.png",  820,  350,  35,  35);
-// 
-//        JRadioButton Riad = new JRadioButton(); 
-//        crearBotonciudad(Riad, "img/IconoCiudadVerde.png",  895,  895,  35,  35);
-// 
-//        JRadioButton Estambul = new JRadioButton(); 
-//        crearBotonciudad(Estambul, "img/IconoCiudadVerde.png",  830,  294,  35,  35);
-// 
-//        JRadioButton Bagdad = new JRadioButton(); 
-//        crearBotonciudad(Bagdad, "img/IconoCiudadVerde.png",  880,  320,  35,  35);
-// 
-//        JRadioButton Moscu = new JRadioButton(); 
-//        crearBotonciudad(Moscu, "img/IconoCiudadVerde.png",  890,  320,  35,  35);
-// 
-//        JRadioButton Teheran = new JRadioButton(); 
-//        crearBotonciudad(Teheran, "img/IconoCiudadVerde.png",  920,  310,  35,  35);
-// 
-//        JRadioButton Karachi = new JRadioButton(); 
-//        crearBotonciudad(Karachi, "img/IconoCiudadVerde.png",  980,  355,  35,  35);
-// 
-//        JRadioButton Bombay = new JRadioButton(); 
-//        crearBotonciudad(Bombay, "img/IconoCiudadVerde.png",  1005,  395,  35,  35);
-//       
-//        JRadioButton NuevaDelhi = new JRadioButton(); 
-//        crearBotonciudad(NuevaDelhi, "img/IconoCiudadVerde.png",  1025,  395,  35,  35);
-// 
-//        JRadioButton Calcuta = new JRadioButton(); 
-//        crearBotonciudad(Calcuta, "img/IconoCiudadVerde.png",  1070,  370,  35,  35);
-// 
-//        JRadioButton Madras = new JRadioButton(); 
-//        crearBotonciudad(Madras, "img/IconoCiudadVerde.png",  1035,  410,  35,  35);
-// 
-//        JRadioButton Yakarta = new JRadioButton(); 
-//        crearBotonciudad(Yakarta, "img/IconoCiudadRojo.png",  1150,  525,  35,  35);
-// 
-//        JRadioButton Bangkok = new JRadioButton(); 
-//        crearBotonciudad(Bangkok, "img/IconoCiudadRojo.png",  1120,  415,  35,  35);
-// 
-//        JRadioButton HongKong = new JRadioButton(); 
-//        crearBotonciudad(HongKong, "img/IconoCiudadRojo.png",  1165,  370,  35,  35);
-// 
-//        JRadioButton Shanghai = new JRadioButton(); 
-//        crearBotonciudad(Shanghai, "img/IconoCiudadRojo.png",  1195,  355,  35,  35);
-// 
-//        JRadioButton Pekin = new JRadioButton(); 
-//        crearBotonciudad(Pekin, "img/IconoCiudadRojo.png",  1175,  300,  35,  35);
-// 
-//        JRadioButton Seul = new JRadioButton(); 
-//        crearBotonciudad(Seul, "img/IconoCiudadRojo.png",  1225,  297,  35,  35);
-// 
-//        JRadioButton Tokio = new JRadioButton(); 
-//        crearBotonciudad(Tokio, "img/IconoCiudadRojo.png",  1280,  290,  35,  35);
-// 
-//        JRadioButton Osaka = new JRadioButton(); 
-//        crearBotonciudad(Osaka, "img/IconoCiudadRojo.png",  1255,  320,  35,  35);
-// 
-//        JRadioButton Taipei = new JRadioButton(); 
-//        crearBotonciudad(Taipei, "img/IconoCiudadRojo.png",  1205,  375,  35,  35);
-// 
-//        JRadioButton HoChiMinh = new JRadioButton(); 
-//        crearBotonciudad(HoChiMinh, "img/IconoCiudadRojo.png",  1148,  429,  35,  35);
-// 
-//        JRadioButton Manila = new JRadioButton(); 
-//        crearBotonciudad(Manila, "img/IconoCiudadRojo.png",  1200,  420,  35,  35);
-// 
-//        JRadioButton Sidney = new JRadioButton(); 
-//        crearBotonciudad(Sidney, "img/IconoCiudadRojo.png",  1320,  645,  35,  35);       
+        JRadioButton Argel = new JRadioButton(); 
+        crearBotonciudad(Argel, "img/IconoCiudadVerde.png",  725,  330, 35,  35);
+ 
+        JRadioButton ElCairo = new JRadioButton(); 
+        crearBotonciudad(ElCairo, "img/IconoCiudadVerde.png",  855,  365,  35,  35);
+ 
+        JRadioButton Riad = new JRadioButton(); 
+        crearBotonciudad(Riad, "img/IconoCiudadVerde.png",  945,  385,  35,  35);
+ 
+        JRadioButton Estambul = new JRadioButton(); 
+        crearBotonciudad(Estambul, "img/IconoCiudadVerde.png",  835,  290,  35,  35);
+ 
+        JRadioButton Bagdad = new JRadioButton(); 
+        crearBotonciudad(Bagdad, "img/IconoCiudadVerde.png",  925,  340,  35,  35);
+ 
+        JRadioButton Moscu = new JRadioButton(); 
+        crearBotonciudad(Moscu, "img/IconoCiudadVerde.png",  895,  215,  35,  35);
+ 
+        JRadioButton Teheran = new JRadioButton(); 
+        crearBotonciudad(Teheran, "img/IconoCiudadVerde.png",  965,  325,  35,  35);
+ 
+        JRadioButton Karachi = new JRadioButton(); 
+        crearBotonciudad(Karachi, "img/IconoCiudadVerde.png",  1050,  375,  35,  35);
+ 
+        JRadioButton Bombay = new JRadioButton(); 
+        crearBotonciudad(Bombay, "img/IconoCiudadVerde.png",  1100,  415,  35,  35);
+       
+        JRadioButton NuevaDelhi = new JRadioButton(); 
+        crearBotonciudad(NuevaDelhi, "img/IconoCiudadVerde.png",  1120,  370,  35,  35);
+ 
+        JRadioButton Calcuta = new JRadioButton(); 
+        crearBotonciudad(Calcuta, "img/IconoCiudadVerde.png",  1160,  405,  35,  35);
+ 
+        JRadioButton Madras = new JRadioButton(); 
+        crearBotonciudad(Madras, "img/IconoCiudadVerde.png",  1130,  450,  35,  35);
+ 
+        JRadioButton Yakarta = new JRadioButton(); 
+        crearBotonciudad(Yakarta, "img/IconoCiudadRojo.png",  1285,  565,  35,  35);
+ 
+        JRadioButton Bangkok = new JRadioButton(); 
+        crearBotonciudad(Bangkok, "img/IconoCiudadRojo.png",  1245,  450,  35,  35);
+ 
+        JRadioButton HongKong = new JRadioButton(); 
+        crearBotonciudad(HongKong, "img/IconoCiudadRojo.png",  1315,  395,  35,  35);
+ 
+        JRadioButton Shanghai = new JRadioButton(); 
+        crearBotonciudad(Shanghai, "img/IconoCiudadRojo.png",  1325,  350,  35,  35);
+ 
+        JRadioButton Pekin = new JRadioButton(); 
+        crearBotonciudad(Pekin, "img/IconoCiudadRojo.png",  1290,  295,  35,  35);
+ 
+        JRadioButton Seul = new JRadioButton(); 
+        crearBotonciudad(Seul, "img/IconoCiudadRojo.png",  1350,  320,  35,  35);
+ 
+        JRadioButton Tokio = new JRadioButton(); 
+        crearBotonciudad(Tokio, "img/IconoCiudadRojo.png",  1415,  315,  35,  35);
+ 
+        JRadioButton Osaka = new JRadioButton(); 
+        crearBotonciudad(Osaka, "img/IconoCiudadRojo.png",  1390,  330,  35,  35);
+ 
+        JRadioButton Taipei = new JRadioButton(); 
+        crearBotonciudad(Taipei, "img/IconoCiudadRojo.png",  1350,  375,  35,  35);
+ 
+        JRadioButton HoChiMinh = new JRadioButton(); 
+        crearBotonciudad(HoChiMinh, "img/IconoCiudadRojo.png",  1280,  450,  35,  35);
+ 
+        JRadioButton Manila = new JRadioButton(); 
+        crearBotonciudad(Manila, "img/IconoCiudadRojo.png",  1350,  440,  35,  35);
+ 
+        JRadioButton Sidney = new JRadioButton(); 
+        crearBotonciudad(Sidney, "img/IconoCiudadRojo.png",  1480,  710,  35,  35);       
     }
 
     private void scaleImage() {
@@ -204,74 +203,4 @@ public class PanelMapa extends JPanel {
         IconosCiudades.add(Ciudad);
         add(Ciudad);
     }
-    
-    public  void AñadirBotonesCiudades(){
-        ButtonGroup IconosCiudades = new ButtonGroup();
-        
-        
-        JRadioButton sanFranciscoRadioButton = new JRadioButton();
-        sanFranciscoRadioButton.setOpaque(false);
-        sanFranciscoRadioButton.setBorderPainted(false);
-        sanFranciscoRadioButton.setContentAreaFilled(false);
-        sanFranciscoRadioButton.setBounds(235, 315, 100, 100 );
-        ImageIcon icono = new ImageIcon(new ImageIcon("img/iconoCiudadNaranja.png").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
-        sanFranciscoRadioButton.setIcon(icono);
-        IconosCiudades.add(sanFranciscoRadioButton);
-        add(sanFranciscoRadioButton);
- 
-
-        JRadioButton chicagoRadioButton = new JRadioButton("Chicago");
-        JRadioButton atlantaRadioButton = new JRadioButton("Atlanta");
-        JRadioButton montrealRadioButton = new JRadioButton("Montreal");
-        JRadioButton nuevaYorkRadioButton = new JRadioButton("Nueva York");
-        JRadioButton washingtonRadioButton = new JRadioButton("Washington");
-        JRadioButton londresRadioButton = new JRadioButton("Londres");
-        JRadioButton madridRadioButton = new JRadioButton("Madrid");
-        JRadioButton parisRadioButton = new JRadioButton("Paris");
-        JRadioButton essenRadioButton = new JRadioButton("Essen");
-        JRadioButton milanRadioButton = new JRadioButton("Milan");
-        JRadioButton sanPetersburgoRadioButton = new JRadioButton("San Petersburgo");
-        JRadioButton losAngelesRadioButton = new JRadioButton("Los Angeles");
-        JRadioButton miamiRadioButton = new JRadioButton("Miami");
-        JRadioButton mexicoDFRadioButton = new JRadioButton("Mexico DF");
-        JRadioButton bogotaRadioButton = new JRadioButton("Bogota");
-        JRadioButton limaRadioButton = new JRadioButton("Lima");
-        JRadioButton santiagoDeChileRadioButton = new JRadioButton("Santiago de Chile");
-        JRadioButton buenosAiresRadioButton = new JRadioButton("Buenos Aires");
-        JRadioButton saoPauloRadioButton = new JRadioButton("Sao Paulo");
-        JRadioButton lagosRadioButton = new JRadioButton("Lagos");
-        JRadioButton kinsasaRadioButton = new JRadioButton("Kinsasa");
-        JRadioButton jartumRadioButton = new JRadioButton("Jartum");
-        JRadioButton johannesburgoRadioButton = new JRadioButton("Johannesburgo");
-        JRadioButton argelRadioButton = new JRadioButton("Argel");
-        JRadioButton elCairoRadioButton = new JRadioButton("El Cairo");
-        JRadioButton riadRadioButton = new JRadioButton("Riad");
-        JRadioButton estambulRadioButton = new JRadioButton("Estambul");
-        JRadioButton bagdadRadioButton = new JRadioButton("Bagdad");
-        JRadioButton moscuRadioButton = new JRadioButton("Moscu");
-        JRadioButton teheranRadioButton = new JRadioButton("Teheran");
-        JRadioButton karachiRadioButton = new JRadioButton("Karachi");
-        JRadioButton bombayRadioButton = new JRadioButton("Bombay");
-        JRadioButton nuevaDelhiRadioButton = new JRadioButton("Nueva Delhi");
-        JRadioButton calcutaRadioButton = new JRadioButton("Calcuta");
-        JRadioButton madrasRadioButton = new JRadioButton("Madras");
-        JRadioButton yakartaRadioButton = new JRadioButton("Yakarta");
-        JRadioButton bangkokRadioButton = new JRadioButton("Bangkok");
-        JRadioButton hongKongRadioButton = new JRadioButton("Hong Kong");
-        JRadioButton shanghaiRadioButton = new JRadioButton("Shanghai");
-        JRadioButton pekinRadioButton = new JRadioButton("Pekin");
-        JRadioButton seulRadioButton = new JRadioButton("Seul");
-        JRadioButton tokioRadioButton = new JRadioButton("Tokio");
-        JRadioButton osakaRadioButton = new JRadioButton("Osaka");
-        JRadioButton taipeiRadioButton = new JRadioButton("Taipei");
-        JRadioButton hoChiMinhRadioButton = new JRadioButton("Ho Chi Minh");
-        JRadioButton manilaRadioButton = new JRadioButton("Manila");
-        JRadioButton sidneyRadioButton = new JRadioButton("Sidney");
-
-
-    	
-    }
-    
-    
-    
 }
