@@ -3,19 +3,21 @@ package UI;
 import java.awt.*;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-public class PanelMapa extends JPanel {
+public class PanelMapa extends JPanel implements ActionListener{
     private ImageIcon icon;
     private Image scaledImage;
     ButtonGroup IconosCiudades = new ButtonGroup();
 
 
-    public PanelMapa() {
+    public PanelMapa() { // testea botones si funcionan todos con print
         icon = new ImageIcon("img/mapa.jpg");  //Ruta actualizada
        scaleImage();
        setLayout(null);
@@ -191,6 +193,10 @@ public class PanelMapa extends JPanel {
         return new Dimension(icon.getIconWidth(), icon.getIconHeight());
     }
     
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    	
+    }
     
     
     public void crearBotonciudad(JRadioButton Ciudad, String rutaimg, int x, int y, int w, int h) {
@@ -202,5 +208,6 @@ public class PanelMapa extends JPanel {
         Ciudad.setIcon(icono);
         IconosCiudades.add(Ciudad);
         add(Ciudad);
+        
     }
 }

@@ -13,7 +13,6 @@ public class PanelBotonesMenuAbajo extends JPanel {
 	public PanelBotonesMenuAbajo() {
 		// setLayout(new BoxLayout(this, BoxLayout.X_AXIS)); // Usar BoxLayout
 		// horizontal
-
 		setLayout(new BorderLayout());
 
 		// Espacio en blanco para empujar el JLabel hacia la derecha
@@ -67,8 +66,8 @@ public void agregarCajadialogo() {
     
     
     Caja.setForeground(Color.LIGHT_GRAY); 
-    Caja.setBackground(Color.DARK_GRAY);
-    Caja.setBorder(BorderFactory.createLineBorder(Color.black));
+    Caja.setBackground(new Color(20, 20, 30));
+    //Caja.setBorder(BorderFactory.createLineBorder(Color.black));
     add(panelCaja, BorderLayout.CENTER);
 }
 

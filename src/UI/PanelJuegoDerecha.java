@@ -22,8 +22,8 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
     private ImageIcon icono_azul = new ImageIcon(new ImageIcon("img/azul.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
     private ImageIcon icono_azul_grande = new ImageIcon(new ImageIcon("img/azulS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
 
-    private ImageIcon icono_negro = new ImageIcon(new ImageIcon("img/negro.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
-    private ImageIcon icono_negro_grande = new ImageIcon(new ImageIcon("img/negroS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
+    private ImageIcon icono_negro = new ImageIcon(new ImageIcon("img/verde.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
+    private ImageIcon icono_negro_grande = new ImageIcon(new ImageIcon("img/verdeS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
 
     private ImageIcon icono_amarillo = new ImageIcon(new ImageIcon("img/amarillo.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
     private ImageIcon icono_amarillo_grande = new ImageIcon(new ImageIcon("img/amarilloS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
@@ -48,7 +48,7 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
         agregarBotones(vacunas);
         this.setBackground(new Color(20, 20, 30)); // Fondo negro azulado
         setPreferredSize(new Dimension(150, 400));
-        setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
+        //setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
         
         Desarollar_y_curar();
     }
@@ -57,7 +57,7 @@ public void actionPerformed(ActionEvent e) {
     if (e.getSource() == radioAzul) {
         if (radioAzul.isSelected()) {
             radioAzul.setIcon(icono_azul_grande);
-            PanelBotonesMenuAbajo.textosCaja("Vacuna azul seleccionada");
+            PanelBotonesMenuAbajo.textosCaja("Vacuna azul seleccionada sjbsjdbsjds dsdsdnsdsdsd sdojqowwidn"); // esta es el num max de car del textbox
         } else {
             radioAzul.setIcon(icono_azul);
         }
@@ -90,6 +90,7 @@ public void itemStateChanged(ItemEvent e) {
         if (!radioAzul.isSelected()) {
             radioAzul.setIcon(icono_azul);
         }
+        radioAzul.setSize(200, 200);
     } else if (e.getSource() == radioNegro) {
         if (!radioNegro.isSelected()) {
             radioNegro.setIcon(icono_negro);
@@ -176,12 +177,14 @@ public void Desarollar_y_curar() {
 	    
 	    ImageIcon curarCiudadimg = new ImageIcon(new ImageIcon("img/cur_ciudad.png").getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));
 	    curarCiudad.setIcon(curarCiudadimg);
+	    curarCiudad.setFocusPainted(false);
 		add(curarCiudad);
 
 		JButton DesarollarVacuna = new JButton();
 		DesarollarVacuna.setBorderPainted(false);
 		DesarollarVacuna.setOpaque(false);
 	    DesarollarVacuna.setContentAreaFilled(false);
+	    DesarollarVacuna.setFocusPainted(false);
 	    DesarollarVacuna.setBounds(500, 650, 85, 85); // Desplaza el botón DesarollarVacuna hacia abajo
 	    ImageIcon desvacunaimg = new ImageIcon(new ImageIcon("img/des_vacuna.png").getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));
 	    DesarollarVacuna.setIcon(desvacunaimg);
