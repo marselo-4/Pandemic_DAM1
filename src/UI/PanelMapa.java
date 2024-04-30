@@ -208,6 +208,8 @@ public class PanelMapa extends JPanel implements ActionListener{
         Ciudad.setIcon(icono);
         IconosCiudades.add(Ciudad);
         add(Ciudad);
+  
         
     }
+  
 }
