@@ -1,5 +1,6 @@
 package UI;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -27,8 +28,8 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
     private ImageIcon icono_azul = new ImageIcon(new ImageIcon("img/azul.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
     private ImageIcon icono_azul_grande = new ImageIcon(new ImageIcon("img/azulS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
 
-    private ImageIcon icono_negro = new ImageIcon(new ImageIcon("img/verde.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
-    private ImageIcon icono_negro_grande = new ImageIcon(new ImageIcon("img/verdeS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
+    private ImageIcon icono_verde = new ImageIcon(new ImageIcon("img/verde.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
+    private ImageIcon icono_verde_grande = new ImageIcon(new ImageIcon("img/verdeS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
 
     private ImageIcon icono_amarillo = new ImageIcon(new ImageIcon("img/amarillo.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
     private ImageIcon icono_amarillo_grande = new ImageIcon(new ImageIcon("img/amarilloS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
@@ -37,7 +38,7 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
     private ImageIcon icono_rojo_grande = new ImageIcon(new ImageIcon("img/rojoS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
 
     private JRadioButton radioAzul = new JRadioButton(icono_azul);
-    private JRadioButton radioNegro = new JRadioButton(icono_negro);
+    private JRadioButton radioNegro = new JRadioButton(icono_verde);
     private JRadioButton radioRojo = new JRadioButton(icono_rojo);
     private JRadioButton radioAmarillo = new JRadioButton(icono_amarillo);
     
@@ -49,15 +50,16 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
     private BufferedImage imagenFondo;
 
     public PanelJuegoDerecha() {
-    	
         setLayout(new FlowLayout());
-        ButtonGroup vacunas = new ButtonGroup();
-        agregarBotones(vacunas);
+    	//setLayout(null);
         setPreferredSize(new Dimension(150, 400));
-        //setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
-        cargarFondo();
+		//this.setBackground(new Color(20, 20, 30)); // Fondo negro azulado
 
-        Desarollar_y_curar();
+        ButtonGroup vacunas = new ButtonGroup();
+        
+        agregarBotones(vacunas);
+        BotonesDesarollar_curar();
+        cargarFondo();
     }
 
     private void cargarFondo() {
@@ -80,16 +82,16 @@ public void actionPerformed(ActionEvent e) {
     if (e.getSource() == radioAzul) {
         if (radioAzul.isSelected()) {
             radioAzul.setIcon(icono_azul_grande);
-            PanelBotonesMenuAbajo.textosCaja("Vacuna azul seleccionada sjbsjdbsjds dsdsdnsdsdsd sdojqowwidn"); // esta es el num max de car del textbox
+            PanelBotonesMenuAbajo.textosCaja("Vacuna azul seleccionada sjbsjdbsjds dsdsdnsdsdsd sdojqowwidn"); 
         } else {
             radioAzul.setIcon(icono_azul);
         }
     } else if (e.getSource() == radioNegro) {
         if (radioNegro.isSelected()) {
-            radioNegro.setIcon(icono_negro_grande);
-            PanelBotonesMenuAbajo.textosCaja("Vacuna negra seleccionada");
+            radioNegro.setIcon(icono_verde_grande);
+            PanelBotonesMenuAbajo.textosCaja("Vacuna negra seleccionada, voy a escribir un texto largo aver que pasa cuando te pasas de los char que haviamos marcado he puesto dos metodos que enteoris deberian arreglarlo cd jusjuas lol 4k xd");
         } else {
-            radioNegro.setIcon(icono_negro);
+            radioNegro.setIcon(icono_verde);
         }
     } else if (e.getSource() == radioAmarillo) {
         if (radioAmarillo.isSelected()) {
@@ -113,10 +115,9 @@ public void itemStateChanged(ItemEvent e) {
         if (!radioAzul.isSelected()) {
             radioAzul.setIcon(icono_azul);
         }
-        radioAzul.setSize(200, 200);
     } else if (e.getSource() == radioNegro) {
         if (!radioNegro.isSelected()) {
-            radioNegro.setIcon(icono_negro);
+            radioNegro.setIcon(icono_verde);
         }
     } else if (e.getSource() == radioAmarillo) {
         if (!radioAmarillo.isSelected()) {
@@ -131,6 +132,7 @@ public void itemStateChanged(ItemEvent e) {
 
 private void agregarBotones(ButtonGroup vacunas) {
 	
+
 	radioAzul.setOpaque(false);
     radioAzul.setContentAreaFilled(false);
     radioAzul.setBorderPainted(false);
@@ -187,10 +189,8 @@ private void agregarBotones(ButtonGroup vacunas) {
 
 }
 
-public void Desarollar_y_curar() {
-	 JPanel panel_botones_derecha = new JPanel();
-	    panel_botones_derecha.setLayout(null);
-	    add(panel_botones_derecha);
+public void BotonesDesarollar_curar() {
+	   
 	    
 		JButton curarCiudad = new JButton();
 		curarCiudad.setOpaque(false);
@@ -202,7 +202,7 @@ public void Desarollar_y_curar() {
 	    curarCiudad.setIcon(curarCiudadimg);
 	    curarCiudad.setFocusPainted(false);
 		add(curarCiudad);
-
+		
 		JButton DesarollarVacuna = new JButton();
 		DesarollarVacuna.setBorderPainted(false);
 		DesarollarVacuna.setOpaque(false);
@@ -212,6 +212,8 @@ public void Desarollar_y_curar() {
 	    ImageIcon desvacunaimg = new ImageIcon(new ImageIcon("img/des_vacuna.png").getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));
 	    DesarollarVacuna.setIcon(desvacunaimg);
 		add(DesarollarVacuna);
+		
+
 	
 }
 

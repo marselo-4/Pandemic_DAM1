@@ -2,6 +2,9 @@ package UI;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import Backend.logicaJuego;
+
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
@@ -69,7 +72,7 @@ public class PanelJuegoIzquierda extends JPanel {
 
     public void setNumeroCirculosActuales(int circulosActuales) {
         this.circulosActuales = circulosActuales;
-        repaint(); // Vuelve a pintar los círculos cuando cambia el número de círculos actuales
+        repaint();
     }
 
     public int getNumeroCirculosActuales() {
