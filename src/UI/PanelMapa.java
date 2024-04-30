@@ -253,23 +253,23 @@ public class PanelMapa extends JPanel implements ActionListener, ItemListener {
     	ImageIcon iconoRojo = new ImageIcon("img/IconoCiudadRojo.png");
     	ImageIcon iconoOAmarillo = new ImageIcon("img/IconoCiudadAmarillo.png");
 
-    	ImageIcon imagenEscaladaVerde = new ImageIcon(new ImageIcon("img/IconoCiudadVerde.png").getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
-    	ImageIcon imagenEscaladaAzul = new ImageIcon(new ImageIcon("img/IconoCiudadAzul.png").getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
-    	ImageIcon imagenEscaladaRojo = new ImageIcon(new ImageIcon("img/IconoCiudadRojo.png").getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
-    	ImageIcon imagenEscaladaAmarillo = new ImageIcon(new ImageIcon("img/IconoCiudadAmarillo.png").getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
+    	ImageIcon imagenEscaladaVerde = new ImageIcon(new ImageIcon("img/IconoCiudadVerde.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
+    	ImageIcon imagenEscaladaAzul = new ImageIcon(new ImageIcon("img/IconoCiudadAzul.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
+    	ImageIcon imagenEscaladaRojo = new ImageIcon(new ImageIcon("img/IconoCiudadRojo.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
+    	ImageIcon imagenEscaladaAmarillo = new ImageIcon(new ImageIcon("img/IconoCiudadAmarillo.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 
     	if (e.getSource() instanceof CiudadBoton) {
             if (selectedButton.getColor().equals("Azul")) {
-            	selectedButton.setIcon(iconoAzul);
+            	selectedButton.setIcon(imagenEscaladaAzul);
             	selectedButton.setSize(35,35);
 			}else if (selectedButton.getColor().equals("Rojo")) {
-            	selectedButton.setIcon(iconoRojo);
+            	selectedButton.setIcon(imagenEscaladaRojo);
             	selectedButton.setSize(35,35);
 			}else if (selectedButton.getColor().equals("Verde")) {
-            	selectedButton.setIcon(iconoVerde);
+            	selectedButton.setIcon(imagenEscaladaVerde);
             	selectedButton.setSize(35,35);
 			}else if (selectedButton.getColor().equals("Amarillo")) {
-            	selectedButton.setIcon(iconoOAmarillo);
+            	selectedButton.setIcon(imagenEscaladaAmarillo);
             	selectedButton.setSize(35,35);
 			}
         } 
