@@ -15,7 +15,7 @@ import javax.swing.JRadioButton;
 
 import Clases.CiudadBoton;
 
-public class PanelMapa extends JPanel implements ActionListener, ItemListener {
+public class PanelMapa extends JPanel{
 	
 
 

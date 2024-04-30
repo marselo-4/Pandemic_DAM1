@@ -50,14 +50,16 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
     private BufferedImage imagenFondo;
 
     public PanelJuegoDerecha() {
-        //setLayout(new FlowLayout());
-    	setLayout(null);
+        setLayout(new FlowLayout());
+    	//setLayout(null);
         setPreferredSize(new Dimension(150, 400));
-        
+		//this.setBackground(new Color(20, 20, 30)); // Fondo negro azulado
+
         ButtonGroup vacunas = new ButtonGroup();
         
         agregarBotones(vacunas);
         BotonesDesarollar_curar();
+        cargarFondo();
     }
 
     private void cargarFondo() {
