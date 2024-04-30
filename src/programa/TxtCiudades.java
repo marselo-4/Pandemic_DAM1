@@ -87,12 +87,31 @@ String[] frasePartes = linea.split(";");
 		coords[i] = Integer.parseInt(a[i]);
 	}
 	tipoVirus = Integer.parseInt(frasePartes[1]);
+	String tipoEnfermedad = "";
+	String[] enfermedades = { "Alfa", "Beta", "Gama", "Delta" };
+	
+	switch (tipoVirus) {
+	case 1:
+		tipoEnfermedad = enfermedades[0];
+		break;
+	case 2:
+		tipoEnfermedad = enfermedades[1];
+		break;
+	case 3:
+		tipoEnfermedad = enfermedades[2];
+		break;
+	case 4:
+		tipoEnfermedad = enfermedades[3];
+		break;
+	default:
+		break;
+	}
 	
 	
 	//Poner nombreCiudad y ciudades
 	nombreCiudad = frasePartes[0];
 	ArrayList<String> ciudades = new ArrayList<>(Arrays.asList(frasePartes[3].split(",")));
-	return new Ciudades(nombreCiudad, tipoVirus, coords, ciudades);
+	return new Ciudades(nombreCiudad, tipoEnfermedad, tipoVirus, coords, ciudades);
 }
 
 private static int buscarCiudad(String nombre) {

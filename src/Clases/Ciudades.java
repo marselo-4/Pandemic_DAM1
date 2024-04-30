@@ -4,14 +4,15 @@ import java.util.ArrayList;
 public class Ciudades {
 
 	private String nombre;
-	private int enfermedad;
+	private String enfermedad;
 	private int infeccion; // CM: Instancio l'int que faltava
 	private int[] coords = new int[2];
 	ArrayList<String> colindantes =  new ArrayList<>();
 	
-	public Ciudades(String nombre, int enfermedad, int[] coords, ArrayList<String> colindantes) {
+	public Ciudades(String nombre, String enfermedad, int infeccion, int[] coords, ArrayList<String> colindantes) {
 		this.nombre = nombre;
 		this.enfermedad = enfermedad;
+		this.infeccion = infeccion;
 		this.coords = coords;
 		this.colindantes = colindantes;
 	}
@@ -24,11 +25,11 @@ public class Ciudades {
 		this.nombre = nombre;
 	}
 
-	public int getEnfermedad() {
+	public String getEnfermedad() {
 		return enfermedad;
 	}
 
-	public void setEnfermedad(int enfermedad) {
+	public void setEnfermedad(String enfermedad) {
 		this.enfermedad = enfermedad;
 	}
 
