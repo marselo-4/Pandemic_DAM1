@@ -127,7 +127,7 @@ public class BinEnfermedades {
 		String enfermedad = "";
 		String[] enfermedades = { "Alfa", "Beta", "Gama", "Delta" };
 
-		switch (c.getEnfermedad()) {
+		switch (c.getInfeccion()) {
 		case 0:
 			enfermedad = enfermedades[0];
 			break;

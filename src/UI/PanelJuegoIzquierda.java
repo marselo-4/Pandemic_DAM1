@@ -12,21 +12,21 @@ public class PanelJuegoIzquierda extends JPanel {
     private int circulosMaximos;
     private int circulosActuales;
     private BufferedImage imagen;
+    private BufferedImage imagenFondo;
 
     public PanelJuegoIzquierda(int circulosMaximos, int circulosActuales) {
         this.circulosMaximos = circulosMaximos;
         this.circulosActuales = circulosActuales;
 
         try {
-            imagen = ImageIO.read(new File("img/brote.png")); // Ruta 
+            imagen = ImageIO.read(new File("img/brote.png")); // Ruta
+            imagenFondo = ImageIO.read(new File("img/lateral.png")); // Ruta del fondo
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         setLayout(new FlowLayout());
-        setBackground(new Color(20, 20, 30)); // Fondo negro azulado
         setPreferredSize(new Dimension(150, 400));
-        //setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
 
         JButton sumarButton = new JButton("Sumar");
         sumarButton.addActionListener(e -> {
@@ -42,6 +42,11 @@ public class PanelJuegoIzquierda extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+
+        // Dibujar fondo lateral
+        if (imagenFondo != null) {
+            g2d.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+        }
 
         int circleSize = 50; // Tamaño del círculo
         int padding = 8; // Espacio entre los círculos
