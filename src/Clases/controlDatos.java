@@ -2,7 +2,7 @@ package Clases;
 
 public class controlDatos {
 
-	private String url;
+	private String url = "";
 	private String user;
 	private String password;
 	private String ficheroTxt;
