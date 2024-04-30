@@ -2,9 +2,9 @@ package Clases;
 
 public class controlDatos {
 
-	private String url = "";
-	private String user;
-	private String password;
+	private String url = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; // testing a casa cambiar ip a  jdbc:oracle:thin:@oracle.ilera.com:1521:xe
+	private static final String USER = "DAM1_2324_ALE_LUJAN";
+	private String password = "Lujan1234.";
 	private String ficheroTxt;
 	private String ficheroBin;
 	private static String ficheroXML = "parametros.xml";
@@ -22,10 +22,24 @@ public class controlDatos {
 	}
 	
 	public static void cargarPartida() {
+	// El boto de cargar partida del menu te ha de deixar elegit entre tta la llista de guardados
 		
+		//setar l'estat de totes les ciutats
+		
+		//setear l'estat de totes les vacunes
+		
+		//setear el nº de brotes actius
 	}
 	
 	public static void guardarPartida() {
+		// Un boto de guardar partida sempre visible en pantalla ha d fer saltar esta funcio
+		
+		//Guardar l'estat de totes les ciutats
+		
+		//Guardar l'estat de totes les vacunes
+		
+		//Guardar el nº de brotes actius
+		
 		
 	}
 	
