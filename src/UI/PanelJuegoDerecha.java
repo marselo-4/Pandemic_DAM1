@@ -25,6 +25,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemListener{
+	private ImageIcon espacio = new ImageIcon(new ImageIcon("img/espacio.png").getImage().getScaledInstance(65, 45, Image.SCALE_SMOOTH));
     private ImageIcon icono_azul = new ImageIcon(new ImageIcon("img/azul.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
     private ImageIcon icono_azul_grande = new ImageIcon(new ImageIcon("img/azulS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
 
@@ -36,7 +37,8 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
 
     private ImageIcon icono_rojo = new ImageIcon(new ImageIcon("img/rojo.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
     private ImageIcon icono_rojo_grande = new ImageIcon(new ImageIcon("img/rojoS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
-
+    
+    private JRadioButton espaciado = new JRadioButton(espacio);
     private JRadioButton radioAzul = new JRadioButton(icono_azul);
     private JRadioButton radioNegro = new JRadioButton(icono_verde);
     private JRadioButton radioRojo = new JRadioButton(icono_rojo);
@@ -86,7 +88,9 @@ public void actionPerformed(ActionEvent e) {
         } else {
             radioAzul.setIcon(icono_azul);
         }
-    } else if (e.getSource() == radioNegro) {
+    }else if (e.getSource() == espaciado) {
+    	
+    }else if (e.getSource() == radioNegro) {
         if (radioNegro.isSelected()) {
             radioNegro.setIcon(icono_verde_grande);
             PanelBotonesMenuAbajo.textosCaja("Vacuna negra seleccionada, voy a escribir un texto largo aver que pasa cuando te pasas de los char que haviamos marcado he puesto dos metodos que enteoris deberian arreglarlo cd jusjuas lol 4k xd");
@@ -115,7 +119,9 @@ public void itemStateChanged(ItemEvent e) {
         if (!radioAzul.isSelected()) {
             radioAzul.setIcon(icono_azul);
         }
-    } else if (e.getSource() == radioNegro) {
+    }else if (e.getSource() == espaciado) {
+    	
+    }else if (e.getSource() == radioNegro) {
         if (!radioNegro.isSelected()) {
             radioNegro.setIcon(icono_verde);
         }
@@ -132,7 +138,17 @@ public void itemStateChanged(ItemEvent e) {
 
 private void agregarBotones(ButtonGroup vacunas) {
 	
-
+	espaciado.setOpaque(false);
+	espaciado.setContentAreaFilled(false);
+	espaciado.setBorderPainted(false);
+	espaciado.setFocusPainted(true);
+	espaciado.setForeground(Color.black);
+	espaciado.setPreferredSize(new Dimension(100, 70));
+	espaciado.add(radioAzul);
+	espaciado.addActionListener(this);
+	espaciado.addItemListener(this);
+    add(espaciado);
+    
 	radioAzul.setOpaque(false);
     radioAzul.setContentAreaFilled(false);
     radioAzul.setBorderPainted(false);
