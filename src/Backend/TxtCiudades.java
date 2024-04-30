@@ -17,7 +17,6 @@ public class TxtCiudades {
 
 public static void main(String[] args) {
 		
-	Scanner scan = new Scanner(System.in);
 	String linea = "";
 	
 	String nombreFichero = "ciudades.txt";
