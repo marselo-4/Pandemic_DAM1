@@ -1,4 +1,25 @@
+<<<<<<< HEAD
 	package UI;
+=======
+package UI;
+
+import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+import Clases.CiudadBoton;
+
+public class PanelMapa extends JPanel{
+>>>>>>> origin/Version-pre
 	
 	import java.awt.*;
 	import java.awt.Graphics;
@@ -179,6 +200,7 @@ import programa.TxtCiudades;
 	       CiudadBoton Sidney = new CiudadBoton(linkearCiudad("Sídney"));
 	       crearBotonciudad(Sidney, "img/IconoCiudadRojo.png", 1480, 710, 35, 35);
        
+<<<<<<< HEAD
 	    }
 	
 	    private void scaleImage() {
@@ -237,3 +259,92 @@ import programa.TxtCiudades;
 	    }
   
 	}
+=======
+        CiudadBoton NuevaDelhi = new CiudadBoton("Verde"); 
+        crearBotonciudad(NuevaDelhi, "img/IconoCiudadVerde.png",  1120,  370,  35,  35);
+ 
+        CiudadBoton Calcuta = new CiudadBoton("Verde"); 
+        crearBotonciudad(Calcuta, "img/IconoCiudadVerde.png",  1160,  405,  35,  35);
+ 
+        CiudadBoton Madras = new CiudadBoton("Verde"); 
+        crearBotonciudad(Madras, "img/IconoCiudadVerde.png",  1130,  450,  35,  35);
+ 
+        CiudadBoton Yakarta = new CiudadBoton("Rojo"); 
+        crearBotonciudad(Yakarta, "img/IconoCiudadRojo.png",  1285,  565,  35,  35);
+ 
+        CiudadBoton Bangkok = new CiudadBoton("Rojo"); 
+        crearBotonciudad(Bangkok, "img/IconoCiudadRojo.png",  1245,  450,  35,  35);
+ 
+        CiudadBoton HongKong = new CiudadBoton("Rojo"); 
+        crearBotonciudad(HongKong, "img/IconoCiudadRojo.png",  1315,  395,  35,  35);
+ 
+        CiudadBoton Shanghai = new CiudadBoton("Rojo"); 
+        crearBotonciudad(Shanghai, "img/IconoCiudadRojo.png",  1325,  350,  35,  35);
+ 
+        CiudadBoton Pekin = new CiudadBoton("Rojo"); 
+        crearBotonciudad(Pekin, "img/IconoCiudadRojo.png",  1290,  295,  35,  35);
+ 
+        CiudadBoton Seul = new CiudadBoton("Rojo"); 
+        crearBotonciudad(Seul, "img/IconoCiudadRojo.png",  1350,  320,  35,  35);
+ 
+        CiudadBoton Tokio = new CiudadBoton("Rojo"); 
+        crearBotonciudad(Tokio, "img/IconoCiudadRojo.png",  1415,  315,  35,  35);
+ 
+        CiudadBoton Osaka = new CiudadBoton("Rojo"); 
+        crearBotonciudad(Osaka, "img/IconoCiudadRojo.png",  1390,  330,  35,  35);
+ 
+        CiudadBoton Taipei = new CiudadBoton("Rojo"); 
+        crearBotonciudad(Taipei, "img/IconoCiudadRojo.png",  1350,  375,  35,  35);
+ 
+        CiudadBoton HoChiMinh = new CiudadBoton("Rojo"); 
+        crearBotonciudad(HoChiMinh, "img/IconoCiudadRojo.png",  1280,  450,  35,  35);
+ 
+        CiudadBoton Manila = new CiudadBoton("Rojo"); 
+        crearBotonciudad(Manila, "img/IconoCiudadRojo.png",  1350,  440,  35,  35);
+ 
+        CiudadBoton Sidney = new CiudadBoton("Rojo"); 
+        crearBotonciudad(Sidney, "img/IconoCiudadRojo.png",  1480,  710,  35,  35);       
+    }
+
+    private void scaleImage() {
+        if (getWidth() > 0 && getHeight() > 0) {
+            scaledImage = icon.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
+        }
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        
+        if (scaledImage != null) {
+            g.drawImage(scaledImage, 0, 0, this);
+        }
+    }
+
+    @Override
+    public void invalidate() {
+        super.invalidate();
+        scaleImage();
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(icon.getIconWidth(), icon.getIconHeight());
+    }
+    
+    public void crearBotonciudad(CiudadBoton Ciudad, String rutaimg, int x, int y, int w, int h) {
+
+        Ciudad.setOpaque(false);
+        Ciudad.setBorderPainted(false);
+        Ciudad.setContentAreaFilled(false);
+        Ciudad.setBounds(x, y, w, h );
+        ImageIcon icono = new ImageIcon(new ImageIcon(rutaimg).getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH));
+        Ciudad.setIcon(icono);
+        IconosCiudades.add(Ciudad);
+        add(Ciudad);
+  
+        
+    }
+  
+}
+>>>>>>> origin/Version-pre

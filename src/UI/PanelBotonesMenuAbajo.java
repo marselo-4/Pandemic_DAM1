@@ -13,6 +13,7 @@ public class PanelBotonesMenuAbajo extends JPanel {
 	public PanelBotonesMenuAbajo() {
 		// setLayout(new BoxLayout(this, BoxLayout.X_AXIS)); // Usar BoxLayout
 		// horizontal
+		
 		setLayout(new BorderLayout());
 
 		// Espacio en blanco para empujar el JLabel hacia la derecha
@@ -31,8 +32,7 @@ public class PanelBotonesMenuAbajo extends JPanel {
 		this.setBackground(new Color(20, 20, 30)); // Fondo negro azulado
 		setPreferredSize(new Dimension(150, 125)); // Ajustar tamaño del panel
 
-		// Añadir borde verde chillón
-        setBorder(BorderFactory.createLineBorder(new Color(0, 0, 20), 2));
+
 
 		agregarCajadialogo();
 	}
@@ -45,7 +45,7 @@ public void agregarCajadialogo() {
     
     try {
         fuentePersonalizada = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-        fuentePersonalizada = fuentePersonalizada.deriveFont(25f); // Modifica el tamaño a 16 puntos
+        fuentePersonalizada = fuentePersonalizada.deriveFont(25f); // Modifica el tamaño
     } catch (IOException | FontFormatException e) {
         e.printStackTrace();
     }
@@ -55,20 +55,20 @@ public void agregarCajadialogo() {
     Caja = new JTextArea();
     panelCaja.add(Caja);
     Caja.setEditable(false);
+    Caja.setLineWrap(true);
+    Caja.setWrapStyleWord(true);
     Caja.setPreferredSize(new Dimension(700, 117));
-    
+    Caja.setForeground(Color.WHITE); 
+    Caja.setBackground(new Color(20, 20, 30));
+    add(panelCaja, BorderLayout.CENTER);
+
     if (fuentePersonalizada != null) {
         Caja.setFont(fuentePersonalizada);
     } else {
         // Fuente predeterminada en caso de que la fuente no se cargue correctamente
         Caja.setFont(new Font("Arial", Font.PLAIN, 12));
     }
-    
-    
-    Caja.setForeground(Color.LIGHT_GRAY); 
-    Caja.setBackground(new Color(20, 20, 30));
-    //Caja.setBorder(BorderFactory.createLineBorder(Color.black));
-    add(panelCaja, BorderLayout.CENTER);
+   
 }
 
 
