@@ -3,7 +3,7 @@ package Clases;
 public class controlDatos {
 
 	private String url = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; // testing a casa cambiar ip a  jdbc:oracle:thin:@oracle.ilera.com:1521:xe
-	private static final String USER = "DAM1_2324_ALE_LUJAN";
+	private String USER = "DAM1_2324_ALE_LUJAN";
 	private String password = "Lujan1234.";
 	private String ficheroTxt;
 	private String ficheroBin;
@@ -60,11 +60,11 @@ public class controlDatos {
 	}
 
 	public String getUser() {
-		return user;
+		return USER;
 	}
 
 	public void setUser(String user) {
-		this.user = user;
+		this.USER = user;
 	}
 
 	public String getPassword() {
@@ -98,5 +98,26 @@ public class controlDatos {
 	public  void setFicheroXML(String ficheroXML) {
 		this.ficheroXML = ficheroXML;
 	}
-	
+
 }
+
+
+/*
+ * CREATE OR REPLACE TYPE VACUNA AS OBJECT (
+color VARCHAR2(20),
+porcentage NUMBER(3)
+);
+
+CREATE OR REPLACE TYPE CIUDAD AS OBJECT (
+nombre VARCHAR2(20),
+infeccion NUMBER(1)
+);
+
+CREATE TABLE PartidasGuardadas (
+NPartida NUMBER(4) PRIMARY KEY,
+FECHA DATE DEFAULT SYSDATE,
+azul VACUNA,
+rojo VACUNA,
+amarillo VACUNA,
+verde VACUNA
+);*/
