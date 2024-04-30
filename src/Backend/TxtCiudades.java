@@ -1,4 +1,4 @@
-package programa;
+package Backend;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -90,28 +90,11 @@ String[] frasePartes = linea.split(";");
 	String tipoEnfermedad = "";
 	String[] enfermedades = { "Alfa", "Beta", "Gama", "Delta" };
 	
-	switch (tipoVirus) {
-	case 1:
-		tipoEnfermedad = enfermedades[0];
-		break;
-	case 2:
-		tipoEnfermedad = enfermedades[1];
-		break;
-	case 3:
-		tipoEnfermedad = enfermedades[2];
-		break;
-	case 4:
-		tipoEnfermedad = enfermedades[3];
-		break;
-	default:
-		break;
-	}
-	
 	
 	//Poner nombreCiudad y ciudades
 	nombreCiudad = frasePartes[0];
 	ArrayList<String> ciudades = new ArrayList<>(Arrays.asList(frasePartes[3].split(",")));
-	return new Ciudades(nombreCiudad, tipoEnfermedad, tipoVirus, coords, ciudades);
+	return new Ciudades(nombreCiudad, tipoEnfermedad, coords, ciudades);
 }
 
 private static int buscarCiudad(String nombre) {

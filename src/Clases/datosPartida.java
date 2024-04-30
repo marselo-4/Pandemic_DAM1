@@ -2,7 +2,7 @@ package Clases;
 
 import java.util.ArrayList;
 
-import programa.parametros;
+import Backend.parametros;
 
 public class datosPartida {
 
