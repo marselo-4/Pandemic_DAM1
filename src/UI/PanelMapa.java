@@ -25,7 +25,7 @@ import Clases.Ciudades;
 	
 	    private ImageIcon icon;
 	    private Image scaledImage;
-	    ButtonGroup IconosCiudades = new ButtonGroup();
+	    public static ButtonGroup IconosCiudades = new ButtonGroup();
 	
 	
 	    public PanelMapa() { // testea botones si funcionan todos con print
@@ -34,7 +34,6 @@ import Clases.Ciudades;
 	       setLayout(null);
 	       setDoubleBuffered(true);
 	       
-	     logicaJuego.crearBotonesCiudades();
 
        
 	    }
@@ -65,20 +64,7 @@ import Clases.Ciudades;
 	        return new Dimension(icon.getIconWidth(), icon.getIconHeight());
 	    }
 	    
-	    public void crearBotonciudad(PanelMapa p,CiudadBoton Ciudad, String rutaimg, int x, int y, int w, int h) {
-	
-	        Ciudad.setOpaque(false);
-	        Ciudad.setBorderPainted(false);
-	        Ciudad.setContentAreaFilled(false);
-	        Ciudad.setBounds(x, y, w, h );
-	        ImageIcon icono = new ImageIcon(new ImageIcon(rutaimg).getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH));
-	        Ciudad.setIcon(icono);
-	        IconosCiudades.add(Ciudad);
-	        
-	        
-	        add(Ciudad);
-	        Ciudad.addActionListener(this);
-	    }
+
 	    
 //	    private static Ciudades linkearCiudad(String nombre) {
 //	    	for (int i = 0; i < array.length; i++) {

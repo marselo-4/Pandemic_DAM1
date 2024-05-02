@@ -1,14 +1,18 @@
 package Backend;
 
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
+import javax.swing.ImageIcon;
 
 import Clases.CiudadBoton;
 import Clases.controlDatos;
 import Clases.controlPartida;
 import Clases.datosPartida;
 import UI.LanzadorPartida;
+import UI.PanelMapa;
 
 public class logicaJuego {
 	public static controlDatos cd = new controlDatos();
@@ -42,9 +46,17 @@ public class logicaJuego {
 		
 	}
 	
+	public static void printArray() {
+		System.out.println("Posiciones array " + dp.ciudades.size());
+		for (int i = 0; i < dp.ciudades.size(); i++) {
+			System.out.println(dp.ciudades.get(i).getEnfermedad());
+		}
+	}
+	
 	public static void crearBotonesCiudades() {
 		for (int i = 0; i < dp.ciudades.size(); i++) {
 			String rutaImg = "";
+			System.out.println(dp.ciudades.get(i).getEnfermedad());
 			switch (dp.ciudades.get(i).getEnfermedad()) {
 			case "Alfa":
 				rutaImg = "img/IconoCiudadAzul.png";
@@ -64,10 +76,24 @@ public class logicaJuego {
 			}
 			
 			CiudadBoton c = new CiudadBoton();
-			LanzadorPartida.p.crearBotonciudad(LanzadorPartida.p, c, rutaImg, dp.ciudades.get(i).getCoords()[0], dp.ciudades.get(i).getCoords()[1], 35, 35);
+			crearBotonciudad(LanzadorPartida.p, c, rutaImg, dp.ciudades.get(i).getCoords()[0], dp.ciudades.get(i).getCoords()[1], 35, 35);
 		}
 	}
 	
-	
+    public static void crearBotonciudad(PanelMapa p,CiudadBoton Ciudad, String rutaimg, int x, int y, int w, int h) {
+    	
+        Ciudad.setOpaque(false);
+        Ciudad.setBorderPainted(false);
+        Ciudad.setContentAreaFilled(false);
+        Ciudad.setBounds(x, y, w, h );
+        ImageIcon icono = new ImageIcon(new ImageIcon(rutaimg).getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH));
+        Ciudad.setIcon(icono);
+        PanelMapa.IconosCiudades.add(Ciudad);
+        
+        
+        p.add(Ciudad);
+        System.out.println("Botón " + rutaimg + "se intentó crear en " + p);
+        Ciudad.addActionListener(p);
+    }
 	
 }

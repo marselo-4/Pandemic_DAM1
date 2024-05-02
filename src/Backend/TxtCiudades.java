@@ -82,12 +82,32 @@ String[] frasePartes = linea.split(";");
 	//Poner coordenadas a la array
 	String[] a = new String[2];
 	a = frasePartes[2].split(",");
+	String enfermedad = "";
 	for (int i = 0; i < a.length; i++) {
 		coords[i] = Integer.parseInt(a[i]);
 	}
 	tipoVirus = Integer.parseInt(frasePartes[1]);
 	String tipoEnfermedad = "";
 	String[] enfermedades = { "Alfa", "Beta", "Gama", "Delta" };
+	System.out.println(frasePartes[1]);
+	switch (Integer.parseInt(frasePartes[1])) {
+	case 0:
+		enfermedad = enfermedades[0];
+		break;
+	case 1:
+		enfermedad = enfermedades[1];
+
+		break;
+	case 2:
+		enfermedad = enfermedades[2];
+
+		break;
+	case 3:
+		enfermedad = enfermedades[3];
+
+		break;
+	default:
+	}
 	
 	
 	//Poner nombreCiudad y ciudades

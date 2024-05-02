@@ -8,13 +8,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Backend.logicaJuego;
+
 public class LanzadorPartida extends JPanel {
 	public static PanelMapa p = new PanelMapa();
 	public static PanelBotonesMenuAbajo p2 = new PanelBotonesMenuAbajo();
 	public static PanelJuegoIzquierda p3 = new PanelJuegoIzquierda(10, 0);
 	public static PanelJuegoDerecha p4 = new PanelJuegoDerecha();
 	
-	public LanzadorPartida() {
+	public LanzadorPartida() { 
     	setSize(1920,1080);
     	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         setLayout(new BorderLayout());
@@ -24,8 +26,11 @@ public class LanzadorPartida extends JPanel {
         this.add(p3, BorderLayout.WEST);
         this.add(p4, BorderLayout.EAST);
 
+
         //Álvaro: he puesto los paneles públicos para poder editarlos desde el backend si es necesario
-        
+        logicaJuego.crearArrayCiudades();
+        //logicaJuego.printArray();
+        logicaJuego.crearBotonesCiudades();
         setVisible(true);
 	}
 }
