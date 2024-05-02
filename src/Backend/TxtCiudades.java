@@ -113,7 +113,7 @@ String[] frasePartes = linea.split(";");
 	//Poner nombreCiudad y ciudades
 	nombreCiudad = frasePartes[0];
 	ArrayList<String> ciudades = new ArrayList<>(Arrays.asList(frasePartes[3].split(",")));
-	return new Ciudades(nombreCiudad, tipoEnfermedad, coords, ciudades);
+	return new Ciudades(nombreCiudad, enfermedad, coords, ciudades);
 }
 
 private static int buscarCiudad(String nombre) {

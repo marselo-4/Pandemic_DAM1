@@ -92,7 +92,7 @@ public class logicaJuego {
         
         
         p.add(Ciudad);
-        System.out.println("Botón " + rutaimg + "se intentó crear en " + p);
+        //System.out.println("Botón " + rutaimg + "se intentó crear en " + p);
         Ciudad.addActionListener(p);
     }
 	
