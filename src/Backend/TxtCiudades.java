@@ -1,4 +1,4 @@
-package programa;
+package Backend;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,7 +17,6 @@ public class TxtCiudades {
 
 public static void main(String[] args) {
 		
-	Scanner scan = new Scanner(System.in);
 	String linea = "";
 	
 	String nombreFichero = "ciudades.txt";
@@ -83,16 +82,38 @@ String[] frasePartes = linea.split(";");
 	//Poner coordenadas a la array
 	String[] a = new String[2];
 	a = frasePartes[2].split(",");
+	String enfermedad = "";
 	for (int i = 0; i < a.length; i++) {
 		coords[i] = Integer.parseInt(a[i]);
 	}
 	tipoVirus = Integer.parseInt(frasePartes[1]);
+	String tipoEnfermedad = "";
+	String[] enfermedades = { "Alfa", "Beta", "Gama", "Delta" };
+	System.out.println(frasePartes[1]);
+	switch (Integer.parseInt(frasePartes[1])) {
+	case 0:
+		enfermedad = enfermedades[0];
+		break;
+	case 1:
+		enfermedad = enfermedades[1];
+
+		break;
+	case 2:
+		enfermedad = enfermedades[2];
+
+		break;
+	case 3:
+		enfermedad = enfermedades[3];
+
+		break;
+	default:
+	}
 	
 	
 	//Poner nombreCiudad y ciudades
 	nombreCiudad = frasePartes[0];
 	ArrayList<String> ciudades = new ArrayList<>(Arrays.asList(frasePartes[3].split(",")));
-	return new Ciudades(nombreCiudad, tipoVirus, coords, ciudades);
+	return new Ciudades(nombreCiudad, enfermedad, coords, ciudades);
 }
 
 private static int buscarCiudad(String nombre) {

@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PanelBotonesMenuAbajo extends JPanel {
 
-	private static JTextArea Caja;
+	public static JTextArea Caja;
 
 	public PanelBotonesMenuAbajo() {
 		// setLayout(new BoxLayout(this, BoxLayout.X_AXIS)); // Usar BoxLayout
@@ -72,22 +72,4 @@ public void agregarCajadialogo() {
 }
 
 
-	public static void textosCaja(String texto) {
-		// Creamos un hilo para el efecto de escritura
-		new Thread(() -> {
-			for (int i = 0; i <= texto.length(); i++) {
-				final int index = i;
-				// Actualizamos la caja de texto en el hilo de la interfaz de usuario (Swing)
-				SwingUtilities.invokeLater(() -> {
-					Caja.setText(texto.substring(0, index));
-				});
-				try {
-					// Simulamos un pequeño retraso entre cada caracter para el efecto de escritura
-					TimeUnit.MILLISECONDS.sleep(5);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}).start();
-	}
 }

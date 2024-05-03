@@ -4,22 +4,23 @@ import javax.swing.*;
 import java.awt.*;
 
 public class CiudadBoton extends JRadioButton {
-	private String color;
-    
-    public CiudadBoton(String color) {
+	private Ciudades ciudad;
+
+	public CiudadBoton() {
 		super();
-		this.color = color;
+
 	}
 
-	public String getColor() {
-		return color;
+	public Ciudades getCiudad() {
+		return ciudad;
 	}
 
-	public void setColor(String color) {
-		this.color = color;
+	public void setCiudad(Ciudades ciudad) {
+		this.ciudad = ciudad;
 	}
-    
-    
-
+	
+	public void linkearCiudad() {
+		
+	}
 
 }
