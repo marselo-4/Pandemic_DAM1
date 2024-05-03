@@ -13,12 +13,14 @@ import java.util.concurrent.TimeUnit;
 public class PanelBotonesMenuAbajo extends JPanel implements ActionListener {
 
     private static JTextPane Caja;
+    public JButton acciones;
 
     public PanelBotonesMenuAbajo() {
         setLayout(new BorderLayout());
 
         ImageIcon icon = new ImageIcon("img/tierraR.gif");
         ImageIcon iconoguardar = new ImageIcon("img/guardar.png");
+        displayAcciones(); // MIRAR
         JLabel lbl = new JLabel(icon);
         lbl.setPreferredSize(new Dimension(150, 100));
         add(lbl, BorderLayout.EAST);
@@ -92,6 +94,29 @@ public class PanelBotonesMenuAbajo extends JPanel implements ActionListener {
                 }
             }
         }).start();
+    }
+    
+    public void displayAcciones() { // REVISAR
+    	
+    	String source = "src/images/imagen1.jpg";// Mu he inventat
+    	acciones = new JButton();
+    	int accionesRestantes = 3;
+    	
+    	if(accionesRestantes == 3) {
+    		source = "src/images/imagen4";// Mu he inventat
+    	}else if (accionesRestantes == 2) {
+    		source = "src/images/imagen3";// Mu he inventat
+    	}else if (accionesRestantes == 1) {
+    		source = "src/images/imagen2";// Mu he inventat
+    	}else if (accionesRestantes == 0) {
+    		source = "src/images/imagen1";// Mu he inventat
+    	}
+    	acciones.setIcon(new ImageIcon(new ImageIcon(source).getImage().getScaledInstance(300, 30, java.awt.Image.SCALE_SMOOTH)));
+        acciones.setPreferredSize(new Dimension(100, 100));
+    	add(acciones, BorderLayout.EAST);
+    	
+
+    	
     }
 
 
