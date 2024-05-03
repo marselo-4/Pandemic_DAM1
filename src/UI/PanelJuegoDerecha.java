@@ -24,6 +24,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import Backend.logicaJuego;
+
 public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemListener{
     private ImageIcon icono_azul = new ImageIcon(new ImageIcon("img/azul.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
     private ImageIcon icono_azul_grande = new ImageIcon(new ImageIcon("img/azulS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
@@ -82,28 +84,28 @@ public void actionPerformed(ActionEvent e) {
     if (e.getSource() == radioAzul) {
         if (radioAzul.isSelected()) {
             radioAzul.setIcon(icono_azul_grande);
-            PanelBotonesMenuAbajo.textosCaja("Vacuna azul seleccionada sjbsjdbsjds dsdsdnsdsdsd sdojqowwidn"); 
+            logicaJuego.textosCaja("Vacuna azul seleccionada sjbsjdbsjds dsdsdnsdsdsd sdojqowwidn"); 
         } else {
             radioAzul.setIcon(icono_azul);
         }
     } else if (e.getSource() == radioNegro) {
         if (radioNegro.isSelected()) {
             radioNegro.setIcon(icono_verde_grande);
-            PanelBotonesMenuAbajo.textosCaja("Vacuna negra seleccionada, voy a escribir un texto largo aver que pasa cuando te pasas de los char que haviamos marcado he puesto dos metodos que enteoris deberian arreglarlo cd jusjuas lol 4k xd");
+            logicaJuego.textosCaja("Vacuna negra seleccionada, voy a escribir un texto largo aver que pasa cuando te pasas de los char que haviamos marcado he puesto dos metodos que enteoris deberian arreglarlo cd jusjuas lol 4k xd");
         } else {
             radioNegro.setIcon(icono_verde);
         }
     } else if (e.getSource() == radioAmarillo) {
         if (radioAmarillo.isSelected()) {
             radioAmarillo.setIcon(icono_amarillo_grande);
-            PanelBotonesMenuAbajo.textosCaja("Vacuna amarilla seleccionada");
+            logicaJuego.textosCaja("Vacuna amarilla seleccionada");
         } else {
             radioAmarillo.setIcon(icono_amarillo);
         }
     } else if (e.getSource() == radioRojo) {
         if (radioRojo.isSelected()) {
             radioRojo.setIcon(icono_rojo_grande);
-            PanelBotonesMenuAbajo.textosCaja("Vacuna roja seleccionada");
+            logicaJuego.textosCaja("Vacuna roja seleccionada");
         } else {
             radioRojo.setIcon(icono_rojo);
         }
