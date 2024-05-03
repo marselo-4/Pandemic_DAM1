@@ -17,9 +17,10 @@ public class controlDatos {
 		Connection con = conectarBaseDatos();
 
 		if (con != null) {
+			
 			guardarPartida(con);
 			//select(con);
-			con.close();
+			//con.close();
 		}
 
 	}
@@ -103,7 +104,7 @@ public class controlDatos {
 		int Npartida = 88;
 		String NombreJ = "";
 		int rondas = 0;
-		String Fecha = "SYSDATE";
+		String Fecha = "03/05/2024";
 		int acciones_restantes = 0;
 		int brotes = 0;
 		String nombreVacuna = "";
@@ -116,7 +117,13 @@ public class controlDatos {
 		//VACUNA('Rojo', 40), VACUNA('Amarillo', 20), VACUNA('Verde', 10), Lista_ciudades(CIUDAD('San Francisco', 3), CIUDAD('Atlanta', 1)))";
 			
 		
-		String sql = "INSERT INTO PartidasGuardadas VALUES(" + Npartida + ", '" + NombreJ + "', "  +  rondas + ", TO_DATE('"  + Fecha + "', 'DD/MM/YYYY') , "  +  acciones_restantes + ",  "  +  brotes + ", VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + "), VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , Lista_ciudades(CIUDAD('"  +  nombreCiudad + "', "  +  infeccionCiudad + ")))";
+		String sql = "INSERT INTO PartidasGuardadas VALUES(" + Npartida + ", '" + NombreJ + "', "  +  rondas + ", TO_DATE('"  + Fecha + "', 'DD/MM/YYYY') , "
+				+ acciones_restantes + ",  "  +  brotes + ", VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + "), "
+						+ "VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ")"
+								+ " , VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , Lista_ciudades(CIUDAD('"  +  nombreCiudad + "', "
+						+  infeccionCiudad + ")))";
+		
+		System.out.println(sql);
 
 			
 		try {

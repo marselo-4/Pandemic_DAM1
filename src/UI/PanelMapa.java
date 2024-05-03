@@ -78,8 +78,8 @@ import Clases.Ciudades;
 	    	CiudadBoton selectedButton = (CiudadBoton) e.getSource();
 	
 	    	if (e.getSource() instanceof CiudadBoton) {
-	    		logicaJuego.textosCaja("La ciudad " + selectedButton.getCiudad().getNombre() + " ha sido seleccionada. Su nivel de infeccion es "
-	    				+ selectedButton.getCiudad().getInfeccion() + " Pulse el boton Curar ciudad para reducir la infeccion a " + (selectedButton.getCiudad().getInfeccion() - 1) ); 
+	    		logicaJuego.textosCaja("Ciudad " + selectedButton.getCiudad().getNombre() + " seleccionada. Su nivel de infeccion es "
+	    				+ selectedButton.getCiudad().getInfeccion()); 
 	        } 
 	    }
   
