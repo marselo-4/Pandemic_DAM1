@@ -70,27 +70,12 @@ public class controlDatos {
 		//setear el nº de brotes actius
 		
 		
-		String sql = "SELECT p.* FROM PERSONA p";
 
 		
 		
 	}
 	
 	public static void guardarPartida(Connection con) {
-//		CREATE TABLE PartidasGuardadas (
-//				NPartida NUMBER(5) PRIMARY KEY,
-//				NombreJ VARCHAR2(100),
-//				Rondas NUMBER(5),
-//				Fecha DATE DEFAULT SYSDATE,
-//				Acciones_restantes NUMBER(1),
-//				Brotes NUMBER(2),
-//				Azul VACUNA,
-//				Rojo VACUNA,
-//				Amarillo VACUNA,
-//				Verde VACUNA,
-//				lista_ciudades Lista_ciudades 
-//				);
-
 		// Un boto de guardar partida sempre visible en pantalla ha d fer saltar esta funcio
 		
 		//Guardar l'estat de totes les ciutats
@@ -103,7 +88,7 @@ public class controlDatos {
 		int Npartida = 88;
 		String NombreJ = "";
 		int rondas = 0;
-		String Fecha = "SYSDATE";
+		String Fecha = "03/05/2024";
 		int acciones_restantes = 0;
 		int brotes = 0;
 		String nombreVacuna = "";
@@ -112,10 +97,7 @@ public class controlDatos {
 		int infeccionCiudad = 0; 
 		
 		
-		//String sql = "INSERT INTO PartidasGuardadas VALUES( 69, 'Juan', 10, null, 2, 9 , VACUNA('Azul', 30),  
-		//VACUNA('Rojo', 40), VACUNA('Amarillo', 20), VACUNA('Verde', 10), Lista_ciudades(CIUDAD('San Francisco', 3), CIUDAD('Atlanta', 1)))";
-			
-		
+		//String sql = "INSERT INTO PartidasGuardadas VALUES( 55, 'Juan', 10, null, 2, 9 , VACUNA('Azul', 30), VACUNA('Rojo', 40), VACUNA('Amarillo', 20), VACUNA('Verde', 10), Lista_ciudades(CIUDAD('San Francisco', 3), CIUDAD('Atlanta', 1)))";
 		String sql = "INSERT INTO PartidasGuardadas VALUES(" + Npartida + ", '" + NombreJ + "', "  +  rondas + ", TO_DATE('"  + Fecha + "', 'DD/MM/YYYY') , "  +  acciones_restantes + ",  "  +  brotes + ", VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + "), VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , Lista_ciudades(CIUDAD('"  +  nombreCiudad + "', "  +  infeccionCiudad + ")))";
 
 			
