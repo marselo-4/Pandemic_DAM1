@@ -85,7 +85,7 @@ public class controlDatos {
 		//Guardar el nº de brotes actius
 		
 		
-		int Npartida = 88;
+		int Npartida = 10; //No repetir xq peta x unique constraint
 		String NombreJ = "";
 		int rondas = 0;
 		String Fecha = "03/05/2024";
@@ -96,8 +96,7 @@ public class controlDatos {
 		String nombreCiudad = "";
 		int infeccionCiudad = 0; 
 		
-		
-		//String sql = "INSERT INTO PartidasGuardadas VALUES( 55, 'Juan', 10, null, 2, 9 , VACUNA('Azul', 30), VACUNA('Rojo', 40), VACUNA('Amarillo', 20), VACUNA('Verde', 10), Lista_ciudades(CIUDAD('San Francisco', 3), CIUDAD('Atlanta', 1)))";
+
 		String sql = "INSERT INTO PartidasGuardadas VALUES(" + Npartida + ", '" + NombreJ + "', "  +  rondas + ", TO_DATE('"  + Fecha + "', 'DD/MM/YYYY') , "  +  acciones_restantes + ",  "  +  brotes + ", VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + "), VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , Lista_ciudades(CIUDAD('"  +  nombreCiudad + "', "  +  infeccionCiudad + ")))";
 
 			
