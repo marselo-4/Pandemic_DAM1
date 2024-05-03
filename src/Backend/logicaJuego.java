@@ -45,13 +45,7 @@ public class logicaJuego {
 		}
 		
 	}
-	
-	public static void printArray() {
-		System.out.println("Posiciones array " + dp.ciudades.size());
-		for (int i = 0; i < dp.ciudades.size(); i++) {
-			System.out.println(dp.ciudades.get(i).getEnfermedad());
-		}
-	}
+
 	
 	public static void crearBotonesCiudades() {
 		for (int i = 0; i < dp.ciudades.size(); i++) {
