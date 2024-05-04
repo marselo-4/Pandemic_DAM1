@@ -13,6 +13,7 @@ import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
@@ -25,42 +26,44 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import Backend.logicaJuego;
+import Clases.VacunaBoton;
 
 public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemListener{
-    private ImageIcon icono_azul = new ImageIcon(new ImageIcon("img/azul.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
-    private ImageIcon icono_azul_grande = new ImageIcon(new ImageIcon("img/azulS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
+	Random rand = new Random();
+	
+	public static ImageIcon icono_azul = new ImageIcon(new ImageIcon("img/azul.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
+    public static ImageIcon icono_azul_grande = new ImageIcon(new ImageIcon("img/azulS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
+    public static ImageIcon icono_verde = new ImageIcon(new ImageIcon("img/verde.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
+    public static ImageIcon icono_verde_grande = new ImageIcon(new ImageIcon("img/verdeS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
+    public static ImageIcon icono_amarillo = new ImageIcon(new ImageIcon("img/amarillo.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
+    public static ImageIcon icono_amarillo_grande = new ImageIcon(new ImageIcon("img/amarilloS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
+    public static ImageIcon icono_rojo = new ImageIcon(new ImageIcon("img/rojo.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
+    public static ImageIcon icono_rojo_grande = new ImageIcon(new ImageIcon("img/rojoS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
 
-    private ImageIcon icono_verde = new ImageIcon(new ImageIcon("img/verde.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
-    private ImageIcon icono_verde_grande = new ImageIcon(new ImageIcon("img/verdeS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
-
-    private ImageIcon icono_amarillo = new ImageIcon(new ImageIcon("img/amarillo.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
-    private ImageIcon icono_amarillo_grande = new ImageIcon(new ImageIcon("img/amarilloS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
-
-    private ImageIcon icono_rojo = new ImageIcon(new ImageIcon("img/rojo.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
-    private ImageIcon icono_rojo_grande = new ImageIcon(new ImageIcon("img/rojoS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
-
-    private JRadioButton radioAzul = new JRadioButton(icono_azul);
-    private JRadioButton radioNegro = new JRadioButton(icono_verde);
-    private JRadioButton radioRojo = new JRadioButton(icono_rojo);
-    private JRadioButton radioAmarillo = new JRadioButton(icono_amarillo);
+    public static VacunaBoton radioAzul = new VacunaBoton();
+    public static VacunaBoton radioVerde = new VacunaBoton();
+    public static VacunaBoton radioRojo = new VacunaBoton();
+    public static VacunaBoton radioAmarillo = new VacunaBoton();
+    public static ButtonGroup vacunas = new ButtonGroup();
     
-    private JLabel labelAzul = new JLabel("0%");
-    private JLabel labelNegro = new JLabel("0%");
-    private JLabel labelRojo = new JLabel("0%");
-    private JLabel labelAmarillo = new JLabel("0%");
+    public static JLabel labelAzul = new JLabel("0%");
+    public static JLabel labelVerde = new JLabel("0%");
+    public static JLabel labelRojo = new JLabel("0%");
+    public static JLabel labelAmarillo = new JLabel("0%");
+    
+    public static JButton curarCiudad = new JButton();
+    public static JButton DesarollarVacuna = new JButton();
+   
+    private int vacunaSeleccionada = -1;
 
     private BufferedImage imagenFondo;
 
     public PanelJuegoDerecha() {
         setLayout(new FlowLayout());
-    	//setLayout(null);
         setPreferredSize(new Dimension(150, 400));
-		//this.setBackground(new Color(20, 20, 30)); // Fondo negro azulado
 
-        ButtonGroup vacunas = new ButtonGroup();
         
-        agregarBotones(vacunas);
-        BotonesDesarollar_curar();
+        
         cargarFondo();
     }
 
@@ -85,20 +88,23 @@ public void actionPerformed(ActionEvent e) {
         if (radioAzul.isSelected()) {
             radioAzul.setIcon(icono_azul_grande);
             logicaJuego.textosCaja("Vacuna azul seleccionada sjbsjdbsjds dsdsdnsdsdsd sdojqowwidn"); 
+            vacunaSeleccionada = 1;
         } else {
             radioAzul.setIcon(icono_azul);
         }
-    } else if (e.getSource() == radioNegro) {
-        if (radioNegro.isSelected()) {
-            radioNegro.setIcon(icono_verde_grande);
+    } else if (e.getSource() == radioVerde) {
+        if (radioVerde.isSelected()) {
+            radioVerde.setIcon(icono_verde_grande);
             logicaJuego.textosCaja("Vacuna negra seleccionada, voy a escribir un texto largo aver que pasa cuando te pasas de los char que haviamos marcado he puesto dos metodos que enteoris deberian arreglarlo cd jusjuas lol 4k xd");
+            vacunaSeleccionada = 2;
         } else {
-            radioNegro.setIcon(icono_verde);
+            radioVerde.setIcon(icono_verde);
         }
     } else if (e.getSource() == radioAmarillo) {
         if (radioAmarillo.isSelected()) {
             radioAmarillo.setIcon(icono_amarillo_grande);
             logicaJuego.textosCaja("Vacuna amarilla seleccionada");
+            vacunaSeleccionada = 3;
         } else {
             radioAmarillo.setIcon(icono_amarillo);
         }
@@ -106,10 +112,43 @@ public void actionPerformed(ActionEvent e) {
         if (radioRojo.isSelected()) {
             radioRojo.setIcon(icono_rojo_grande);
             logicaJuego.textosCaja("Vacuna roja seleccionada");
+            vacunaSeleccionada = 4;
         } else {
             radioRojo.setIcon(icono_rojo);
         }
+    }else if (e.getSource() == DesarollarVacuna) { 
+        // Deshabilitar el botón mientras se realiza la animación
+        DesarollarVacuna.setEnabled(false);
+
+        int int_random = rand.nextInt(5,20);
+        switch (vacunaSeleccionada) {
+            case 1:
+
+            	logicaJuego.animateJLabel(labelAzul, radioAzul.getVacuna().getPorcentaje(), int_random, radioAzul.getVacuna(), () -> {
+                    // Este bloque de código se ejecuta cuando la animación ha terminado
+                    DesarollarVacuna.setEnabled(true); // Habilitar el botón nuevamente
+                });
+                break;
+            case 2:
+                logicaJuego.animateJLabel(labelVerde, radioVerde.getVacuna().getPorcentaje(), int_random, radioVerde.getVacuna(), () -> {
+                    DesarollarVacuna.setEnabled(true);
+                });
+                break;
+            case 3:
+                logicaJuego.animateJLabel(labelAmarillo, radioAmarillo.getVacuna().getPorcentaje(), int_random, radioAmarillo.getVacuna(), () -> {
+                    DesarollarVacuna.setEnabled(true);
+                });
+                break;
+            case 4:
+                logicaJuego.animateJLabel(labelRojo, radioRojo.getVacuna().getPorcentaje(), int_random, radioRojo.getVacuna(), () -> {
+                    DesarollarVacuna.setEnabled(true);
+                });
+                break;
+            default:
+                break;
+        }
     }
+
 }
 
 public void itemStateChanged(ItemEvent e) {
@@ -117,9 +156,9 @@ public void itemStateChanged(ItemEvent e) {
         if (!radioAzul.isSelected()) {
             radioAzul.setIcon(icono_azul);
         }
-    } else if (e.getSource() == radioNegro) {
-        if (!radioNegro.isSelected()) {
-            radioNegro.setIcon(icono_verde);
+    } else if (e.getSource() == radioVerde) {
+        if (!radioVerde.isSelected()) {
+            radioVerde.setIcon(icono_verde);
         }
     } else if (e.getSource() == radioAmarillo) {
         if (!radioAmarillo.isSelected()) {
@@ -130,93 +169,6 @@ public void itemStateChanged(ItemEvent e) {
             radioRojo.setIcon(icono_rojo);
         }
     }
-}
-
-private void agregarBotones(ButtonGroup vacunas) {
-	
-
-	radioAzul.setOpaque(false);
-    radioAzul.setContentAreaFilled(false);
-    radioAzul.setBorderPainted(false);
-    radioAzul.setFocusPainted(true);
-    radioAzul.setForeground(Color.black);
-    radioAzul.setPreferredSize(new Dimension(100, 100));
-    vacunas.add(radioAzul);
-    radioAzul.addActionListener(this);
-    radioAzul.addItemListener(this);
-    add(radioAzul);
-    add(labelAzul);
-    labelAzul.setForeground(Color.white);
-
-    radioNegro.setOpaque(false);
-    radioNegro.setContentAreaFilled(false);
-    radioNegro.setBorderPainted(false);
-    radioNegro.setFocusPainted(true);
-    radioNegro.setForeground(Color.black);
-    radioNegro.setPreferredSize(new Dimension(100, 100));
-    vacunas.add(radioNegro);
-    radioNegro.addActionListener(this);
-    radioNegro.addItemListener(this);
-    add(radioNegro);
-    add(labelNegro);
-    labelNegro.setForeground(Color.white);
-
-
-    radioRojo.setOpaque(false);
-    radioRojo.setContentAreaFilled(false);
-    radioRojo.setBorderPainted(false);
-    radioRojo.setFocusPainted(true);
-    radioRojo.setForeground(Color.black);
-    radioRojo.setPreferredSize(new Dimension(100, 100));
-    vacunas.add(radioRojo);
-    radioRojo.addActionListener(this);
-    radioRojo.addItemListener(this);
-    add(radioRojo);
-    add(labelRojo);
-    labelRojo.setForeground(Color.white);
-
-    
-    radioAmarillo.setOpaque(false);
-    radioAmarillo.setContentAreaFilled(false);
-    radioAmarillo.setBorderPainted(false);
-    radioAmarillo.setFocusPainted(true);
-    radioAmarillo.setForeground(Color.black);
-    radioAmarillo.setPreferredSize(new Dimension(100, 100));
-    vacunas.add(radioAmarillo);
-    radioAmarillo.addActionListener(this);
-    radioAmarillo.addItemListener(this);
-    add(radioAmarillo);
-    add(labelAmarillo);
-    labelAmarillo.setForeground(Color.white);
-
-}
-
-public void BotonesDesarollar_curar() {
-	   
-	    
-		JButton curarCiudad = new JButton();
-		curarCiudad.setOpaque(false);
-		curarCiudad.setBorderPainted(false);
-	    curarCiudad.setContentAreaFilled(false);
-	    curarCiudad.setBounds(500, 550, 85, 85); // Desplaza el botón curarCiudad hacia abajo
-	    
-	    ImageIcon curarCiudadimg = new ImageIcon(new ImageIcon("img/cur_ciudad.png").getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));
-	    curarCiudad.setIcon(curarCiudadimg);
-	    curarCiudad.setFocusPainted(false);
-		add(curarCiudad);
-		
-		JButton DesarollarVacuna = new JButton();
-		DesarollarVacuna.setBorderPainted(false);
-		DesarollarVacuna.setOpaque(false);
-	    DesarollarVacuna.setContentAreaFilled(false);
-	    DesarollarVacuna.setFocusPainted(false);
-	    DesarollarVacuna.setBounds(500, 650, 85, 85); // Desplaza el botón DesarollarVacuna hacia abajo
-	    ImageIcon desvacunaimg = new ImageIcon(new ImageIcon("img/des_vacuna.png").getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));
-	    DesarollarVacuna.setIcon(desvacunaimg);
-		add(DesarollarVacuna);
-		
-
-	
 }
 
 }

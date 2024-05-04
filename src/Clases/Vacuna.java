@@ -1,11 +1,16 @@
 package Clases;
 
 public class Vacuna {
-	
 	private String nombre;
 	private String color;
-	private float porcentaje;
+	private int porcentaje;
 	
+	public Vacuna(String nombre, String color, int porcentaje) {
+		super();
+		this.nombre = nombre;
+		this.color = color;
+		this.porcentaje = porcentaje;
+	}
 	public static void desarrollarVacuna(float personaje) {
 		
 	}
@@ -26,11 +31,11 @@ public class Vacuna {
 		this.color = color;
 	}
 
-	public float getPorcentaje() {
+	public int getPorcentaje() {
 		return porcentaje;
 	}
 
-	public void setPorcentaje(float porcentaje) {
+	public void setPorcentaje(int porcentaje) {
 		this.porcentaje = porcentaje;
 	}
 }
