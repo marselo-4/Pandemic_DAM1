@@ -3,10 +3,11 @@ package Clases;
 
 import java.sql.*;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class controlDatos {
 
-	private static String URL = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; //casa cambiar ip a  jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
+	private static String URL = "jdbc:oracle:thin:@oracle.ilerna.com:1521:xe"; //casa cambiar ip a  jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
 	private static String USER = "DAM1_2324_ALE_LUJAN";
 	private static String PWD = "Lujan1234.";
 	private String ficheroTxt;
@@ -17,8 +18,8 @@ public class controlDatos {
 		Connection con = conectarBaseDatos();
 
 		if (con != null) {
-			guardarPartida(con);
-			//select(con);
+			//guardarPartida(con);
+			cargarPartida(con);
 			con.close();
 		}
 
@@ -70,10 +71,58 @@ public class controlDatos {
 		//setear el nº de brotes actius
 		
 		
+		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.color, p.Azul.porcentage,  c.nombre, c.infeccion "
+				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c "
+				+ "where npartida = 3";
+		
+		ArrayList<Ciudades> C = new ArrayList<Ciudades>();
 
-		
-		
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			if (rs.isBeforeFirst()) {
+				while (rs.next()) {
+					int Npartida = rs.getInt("Npartida");
+					String NombreJ = rs.getString("NombreJ");
+					int Rondas = rs.getInt("Rondas");
+					String Fecha = rs.getString("Fecha");
+					int Acciones_restantes = rs.getInt("Acciones_restantes");
+					int Brotes = rs.getInt("Brotes");
+					
+					
+					Struct Vacuna = (Struct) rs.getObject("Azul");
+					Object[] valoresVacuna = Vacuna.getAttributes();
+					String color = (String) valoresVacuna[0];
+					int porcentage = (int) valoresVacuna[1];
+					
+				
+					Struct Ciudad = (Struct) rs.getObject("Lista_ciudades");
+					Object[] valoresCiudad = Vacuna.getAttributes();
+					String nombre = (String) valoresCiudad[0];
+					int infeccion = (int) valoresCiudad[1];
+					
+					
+					System.out.println(Vacuna.toString());
+					System.out.println(Ciudad.toString());
+
+
+					//Ciudades cd = new Ciudades();
+
+					/*C.add(cd);*/				}
+			} else {
+				System.out.println("No he encontrado nada");
+			}
+			
+			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
+		
+	
 	
 	public static void guardarPartida(Connection con) {
 		// Un boto de guardar partida sempre visible en pantalla ha d fer saltar esta funcio
@@ -85,19 +134,25 @@ public class controlDatos {
 		//Guardar el nº de brotes actius
 		
 		
-		int Npartida = 10; //No repetir xq peta x unique constraint
-		String NombreJ = "";
-		int rondas = 0;
-		String Fecha = "03/05/2024";
-		int acciones_restantes = 0;
-		int brotes = 0;
-		String nombreVacuna = "";
-		int porcentageVacuna = 0;
-		String nombreCiudad = "";
-		int infeccionCiudad = 0; 
+		//int Npartida = 0; //No repetir xq peta x unique constraint
+		String NombreJ = "test_selectJava";
+		String dificultad = "Normal";
+		int rondas = 10;
+		//String Fecha = "03/05/2024";
+		int acciones_restantes = 1;
+		int brotes = 3;
+		String nombreVacuna = "Azul";
+		String nombreVacuna2 = "Rojo";
+		String nombreVacuna3 = "Amarillo";
+		String nombreVacuna4 = "Verde";
+		int porcentageVacuna = 50;
+		String nombreCiudad = "Chicago";
+		int infeccionCiudad = 1; 
 		
 
-		String sql = "INSERT INTO PartidasGuardadas VALUES(" + Npartida + ", '" + NombreJ + "', "  +  rondas + ", TO_DATE('"  + Fecha + "', 'DD/MM/YYYY') , "  +  acciones_restantes + ",  "  +  brotes + ", VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + "), VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna + "', "  +  porcentageVacuna + ") , Lista_ciudades(CIUDAD('"  +  nombreCiudad + "', "  +  infeccionCiudad + ")))";
+		String sql = "INSERT INTO PartidasGuardadas VALUES( NUM_PARTIDA.NEXTVAL  , '" + NombreJ + "',  '" + dificultad + "', "  +  rondas + ", SYSDATE , "  +  acciones_restantes + ",  "  +  brotes + ", VACUNA('"  +  nombreVacuna + "', "  +  
+		porcentageVacuna + "), VACUNA('"  +  nombreVacuna2 + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna3 + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna4 + "', "  +  porcentageVacuna + ") , "
+				+ "Lista_ciudades(CIUDAD('"  +  nombreCiudad + "', "  +  infeccionCiudad + ")))";
 
 			
 		try {
@@ -108,7 +163,6 @@ public class controlDatos {
 		} catch (SQLException e) {
 			System.out.println("Ha habido un error en el Insert " + e);
 		}
-		
 	}
 	
 	public static void cargarRecord() {
