@@ -18,8 +18,8 @@ public class controlDatos {
 		Connection con = conectarBaseDatos();
 
 		if (con != null) {
-			//guardarPartida(con);
-			cargarPartida(con);
+			guardarPartida(con);
+			//cargarPartida(con);
 			con.close();
 		}
 
@@ -32,7 +32,7 @@ public class controlDatos {
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(URL, USER, PWD);
+			con = DriverManager.getConnection(URL, USER, PWD);  
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado el driver " + e);
 		} catch (SQLException e) {
@@ -85,10 +85,13 @@ public class controlDatos {
 				while (rs.next()) {
 					int Npartida = rs.getInt("Npartida");
 					String NombreJ = rs.getString("NombreJ");
+					String Dificultad = rs.getString("dificultad");
 					int Rondas = rs.getInt("Rondas");
 					String Fecha = rs.getString("Fecha");
 					int Acciones_restantes = rs.getInt("Acciones_restantes");
 					int Brotes = rs.getInt("Brotes");
+					
+					
 					
 					
 					Struct Vacuna = (Struct) rs.getObject("Azul");
@@ -96,15 +99,20 @@ public class controlDatos {
 					String color = (String) valoresVacuna[0];
 					int porcentage = (int) valoresVacuna[1];
 					
-				
-					Struct Ciudad = (Struct) rs.getObject("Lista_ciudades");
-					Object[] valoresCiudad = Vacuna.getAttributes();
-					String nombre = (String) valoresCiudad[0];
-					int infeccion = (int) valoresCiudad[1];
+	
+//					Array ciudadArray = rs.getArray("Lista_ciudades");
+//					Object[] ciudadObjects = (Object[]) ciudadArray.getArray();
+//					for (Object ciudadObject : ciudadObjects) {
+//					    Struct ciudadStruct = (Struct) ciudadObject;
+//					    Object[] ciudadAttributes = ciudadStruct.getAttributes();
+//					    String ciudadNombre = (String) ciudadAttributes[0];
+//					    int ciudadInfeccion = (int) ciudadAttributes[1];
+//					}
+
 					
 					
-					System.out.println(Vacuna.toString());
-					System.out.println(Ciudad.toString());
+//					System.out.println(Vacuna.toString());
+//					System.out.println(Ciudad.toString());
 
 
 					//Ciudades cd = new Ciudades();
@@ -125,29 +133,25 @@ public class controlDatos {
 	
 	
 	public static void guardarPartida(Connection con) {
-		// Un boto de guardar partida sempre visible en pantalla ha d fer saltar esta funcio
-		
-		//Guardar l'estat de totes les ciutats
-		
-		//Guardar l'estat de totes les vacunes
-		
-		//Guardar el nº de brotes actius
+
 		
 		
 		//int Npartida = 0; //No repetir xq peta x unique constraint
-		String NombreJ = "test_selectJava";
-		String dificultad = "Normal";
-		int rondas = 10;
+		String NombreJ = "test_selectJava2";  // Se ha de fer que salto una pantalla de introduzca nombre y gurardarho en esta variable
+		String dificultad = "Dificil"; // Se ha de treure del xml
+		int rondas = 10; //Contador de rondes
 		//String Fecha = "03/05/2024";
-		int acciones_restantes = 1;
-		int brotes = 3;
-		String nombreVacuna = "Azul";
-		String nombreVacuna2 = "Rojo";
-		String nombreVacuna3 = "Amarillo";
-		String nombreVacuna4 = "Verde";
-		int porcentageVacuna = 50;
-		String nombreCiudad = "Chicago";
-		int infeccionCiudad = 1; 
+		int acciones_restantes = 4; // Contador de accions
+		int brotes = 7; // Contador de brotes
+		
+		String nombreVacuna = "Azul"; //Objecte vacuna
+		String nombreVacuna2 = "Rojo"; //Objecte vacuna
+		String nombreVacuna3 = "Amarillo"; //Objecte vacuna
+		String nombreVacuna4 = "Verde"; //Objecte vacuna
+		int porcentageVacuna = 50; //Objecte vacuna
+		
+		String nombreCiudad = "Milan"; //Objecte ciutat
+		int infeccionCiudad = 3;  //Objecte ciutat
 		
 
 		String sql = "INSERT INTO PartidasGuardadas VALUES( NUM_PARTIDA.NEXTVAL  , '" + NombreJ + "',  '" + dificultad + "', "  +  rondas + ", SYSDATE , "  +  acciones_restantes + ",  "  +  brotes + ", VACUNA('"  +  nombreVacuna + "', "  +  
