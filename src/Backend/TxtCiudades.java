@@ -89,7 +89,6 @@ String[] frasePartes = linea.split(";");
 	tipoVirus = Integer.parseInt(frasePartes[1]);
 	String tipoEnfermedad = "";
 	String[] enfermedades = { "Alfa", "Beta", "Gama", "Delta" };
-	System.out.println(frasePartes[1]);
 	switch (Integer.parseInt(frasePartes[1])) {
 	case 0:
 		enfermedad = enfermedades[0];
