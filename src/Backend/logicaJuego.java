@@ -106,7 +106,7 @@ public class logicaJuego {
 			c.setCiudad(dp.ciudades.get(i));
 			crearBotonciudad(LanzadorPartida.p, c, rutaImg, dp.ciudades.get(i).getCoords()[0], dp.ciudades.get(i).getCoords()[1], 35, 35);
 			
-		}
+		}  
 	}
 	
     public static void crearBotonciudad(PanelMapa p,CiudadBoton Ciudad, String rutaimg, int x, int y, int w, int h) {
