@@ -21,6 +21,7 @@ import Clases.controlDatos;
 public class parametros {
 	private static String fileName = controlDatos.getFicheroXML();
 	private static String fileName2 = "parametros_2.xml";
+	private static String eleccion = "";
 	
 	/*private static String porcentaje_vacuna;
 	private static String brotes_maximos;
@@ -93,7 +94,7 @@ public class parametros {
 			NodeList nodeList = doc.getElementsByTagName("dificultad");
 			
 			System.out.println("Eliga que dificultad quiere usar Facil/Normal/Dificil");
-			String eleccion = scan.nextLine();
+			eleccion = scan.nextLine();
 			
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				Node node = nodeList.item(i);
@@ -184,6 +185,14 @@ public class parametros {
 	        }
 			
 		
+	}
+
+	public static String getEleccion() {
+		return eleccion;
+	}
+
+	public static void setEleccion(String eleccion) {
+		parametros.eleccion = eleccion;
 	}
 	
 

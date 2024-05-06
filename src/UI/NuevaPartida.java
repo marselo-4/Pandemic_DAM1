@@ -2,6 +2,9 @@ package UI;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import Backend.parametros;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -108,18 +111,22 @@ public class NuevaPartida extends JPanel implements ActionListener {
             frame.remove(NuevaPartida.this);
             frame.add(new LanzadorPartida());
             frame.setVisible(true);
+            parametros.setEleccion("Facil");
         }else if (e.getSource() == medio) {
             System.out.println("Has escogido el nivel medio");
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(NuevaPartida.this);
             frame.remove(NuevaPartida.this);
             frame.add(new LanzadorPartida());
             frame.setVisible(true);
+            parametros.setEleccion("Normal");
         }else if (e.getSource() == dificil) {
             System.out.println("Has escogido el nivel difícil");
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(NuevaPartida.this);
             frame.remove(NuevaPartida.this);
             frame.add(new LanzadorPartida()); 
             frame.setVisible(true);
+            parametros.setEleccion("Dificil");
+
         }
     }
 }
