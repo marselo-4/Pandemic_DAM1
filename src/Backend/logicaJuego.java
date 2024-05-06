@@ -3,9 +3,11 @@ package Backend;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Panel;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.ButtonGroup;
@@ -103,6 +105,7 @@ public class logicaJuego {
 			CiudadBoton c = new CiudadBoton();
 			c.setCiudad(dp.ciudades.get(i));
 			crearBotonciudad(LanzadorPartida.p, c, rutaImg, dp.ciudades.get(i).getCoords()[0], dp.ciudades.get(i).getCoords()[1], 35, 35);
+			
 		}
 	}
 	
@@ -120,6 +123,7 @@ public class logicaJuego {
         p.add(Ciudad);
         //System.out.println("Botón " + rutaimg + "se intentó crear en " + p);
         Ciudad.addActionListener(p);
+        PanelMapa.botonesCiudadesArray.add(Ciudad);
     }
 	
     //VACUNAS
@@ -220,7 +224,7 @@ public class logicaJuego {
 
 	}
 
-public static void animateJLabel(JLabel label, int percentage, int sumar, Vacuna v, Runnable callback) {
+	public static void animateJLabel(JLabel label, int percentage, int sumar, Vacuna v, Runnable callback) {
     int resultado_final = percentage + sumar;
     
     if (resultado_final > 100) {
@@ -255,6 +259,108 @@ public static void animateJLabel(JLabel label, int percentage, int sumar, Vacuna
             callback.run();
         }
     }).start();
+}
+
+	//GAMEPLAY
+public static void empezarPartida(int dificultad){
+    Random rand = new Random();
+    int numCiudadesInfectadas = 0;
+    
+    // Definir el tamaño del array según la dificultad
+    int[] ciudadesInfectadasComienzo;
+    switch (dificultad) {
+        case 1:
+            ciudadesInfectadasComienzo = new int[8];
+            break;
+        case 2:
+            ciudadesInfectadasComienzo = new int[12];
+            break;
+        case 3:
+            ciudadesInfectadasComienzo = new int[16];
+            break;
+        default:
+            ciudadesInfectadasComienzo = new int[8];
+            break;
+    }
+    
+    for (int i = 0; i < ciudadesInfectadasComienzo.length; i++) {
+        int r = rand.nextInt(0, dp.ciudades.size());
+        ciudadesInfectadasComienzo[i] = r;
+    }
+    
+    // Poner acciones en 4
+    dp.setAcciones(4);
+    PanelBotonesMenuAbajo.lblAcciones.setText("Acciones: " + dp.getAcciones());
+    
+    // Turno en 1
+    dp.setRondas(1);
+    PanelBotonesMenuAbajo.lblTurno.setText("Turno: " + dp.getRondas());
+    
+    // Número random de ciudades para infectarse
+    for (int i = 0; i < ciudadesInfectadasComienzo.length; i++) {
+        
+        String enfermedad = PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).getCiudad().getEnfermedad();
+        switch (enfermedad) {
+        case "Alfa":
+            if (dificultad >= 2) {
+                if (rand.nextBoolean()) {
+                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_azul1);
+                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
+                } else {
+                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_azul2);
+                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(2);
+                }
+            } else {
+                PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_azul1);
+                dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
+            }
+            break;
+        case "Beta":
+            if (dificultad >= 2) {
+                if (rand.nextBoolean()) {
+                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_roja1);
+                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
+                } else {
+                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_roja2);
+                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(2);
+                }
+            } else {
+                PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_roja1);
+                dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
+            }
+            break;
+        case "Gama":
+            if (dificultad >= 2) {
+                if (rand.nextBoolean()) {
+                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_verde1);
+                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
+                } else {
+                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_verde2);
+                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(2);
+                }
+            } else {
+                PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_verde1);
+                dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
+            }
+            break;
+        case "Delta":
+            if (dificultad >= 2) {
+                if (rand.nextBoolean()) {
+                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_amarilla1);
+                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
+                } else {
+                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_amarilla2);
+                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(2);
+                }
+            } else {
+                PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_amarilla1);
+                dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
+            }
+            break;
+        default:
+            break;
+    }
+    }
 }
 
 

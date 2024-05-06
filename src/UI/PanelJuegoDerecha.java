@@ -145,6 +145,7 @@ public void actionPerformed(ActionEvent e) {
                 });
                 break;
             default:
+            	DesarollarVacuna.setEnabled(true);
                 break;
         }
     }

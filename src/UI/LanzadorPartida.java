@@ -30,6 +30,7 @@ public class LanzadorPartida extends JPanel {
         //Álvaro: he puesto los paneles públicos para poder editarlos desde el backend si es necesario
         logicaJuego.crearArrayCiudades();
         logicaJuego.crearBotonesCiudades();
+        logicaJuego.empezarPartida(3);
         
         logicaJuego.crearVacunas(p4.vacunas, p4);
         logicaJuego.BotonesDesarollar_curar(p4);
