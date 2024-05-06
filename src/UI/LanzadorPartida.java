@@ -14,7 +14,7 @@ import Clases.datosPartida;
 public class LanzadorPartida extends JPanel {
 	public static PanelMapa p = new PanelMapa();
 	public static PanelBotonesMenuAbajo p2 = new PanelBotonesMenuAbajo();
-	apublic static PanelJuegoIzquierda p3 = new PanelJuegoIzquierda(logicaJuego.dp.getBrotes_maximos(), 0);
+	public static PanelJuegoIzquierda p3 = new PanelJuegoIzquierda(logicaJuego.dp.getBrotes_maximos(), 0);
 	public static PanelJuegoDerecha p4 = new PanelJuegoDerecha();
 	
 	public LanzadorPartida() { 
