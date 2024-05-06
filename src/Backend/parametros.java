@@ -81,8 +81,8 @@ public class parametros {
 	
 	}
 	
-	public static void cargarXML(int porcentaje, int brotes, int ronda, int inicio) {
-		Scanner scan = new Scanner(System.in);
+	public static int[] cargarXML(int porcentaje, int brotes, int ronda, int inicio) {
+		int[] ret = new int[4];
 		try {
 			File inputFile = new File(fileName);
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -92,10 +92,7 @@ public class parametros {
 
 
 			NodeList nodeList = doc.getElementsByTagName("dificultad");
-			
-			System.out.println("Eliga que dificultad quiere usar Facil/Normal/Dificil");
-			eleccion = scan.nextLine();
-			
+						
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				Node node = nodeList.item(i);
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
@@ -115,10 +112,15 @@ public class parametros {
 					
 				}
 			}
-
+			
+			ret[0] = porcentaje;
+			ret[1] = brotes;
+			ret[2] = ronda;
+			ret[3] = inicio;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return ret;
 	}
 
 	public static void EscribirXML() {

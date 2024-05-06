@@ -266,22 +266,13 @@ public static void empezarPartida(int dificultad){
     Random rand = new Random();
     int numCiudadesInfectadas = 0;
     
+    dp.cargarDatos();
+    System.out.println(parametros.getEleccion());
+    dp.print();
+    
+    
     // Definir el tamaño del array según la dificultad
-    int[] ciudadesInfectadasComienzo;
-    switch (dificultad) {
-        case 1:
-            ciudadesInfectadasComienzo = new int[8];
-            break;
-        case 2:
-            ciudadesInfectadasComienzo = new int[12];
-            break;
-        case 3:
-            ciudadesInfectadasComienzo = new int[16];
-            break;
-        default:
-            ciudadesInfectadasComienzo = new int[8];
-            break;
-    }
+    int[] ciudadesInfectadasComienzo = new int[dp.getPropagacion_inicio()];
     
     for (int i = 0; i < ciudadesInfectadasComienzo.length; i++) {
         int r = rand.nextInt(0, dp.ciudades.size());

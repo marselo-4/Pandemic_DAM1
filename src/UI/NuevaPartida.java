@@ -106,12 +106,13 @@ public class NuevaPartida extends JPanel implements ActionListener {
             frame.add(new PanelPrincipal());
             frame.setVisible(true);
         }else if (e.getSource() == facil) {
+            parametros.setEleccion("Facil");
             System.out.println("Has escogido el nivel fácil");
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(NuevaPartida.this);
             frame.remove(NuevaPartida.this);
             frame.add(new LanzadorPartida());
             frame.setVisible(true);
-            parametros.setEleccion("Facil");
+
         }else if (e.getSource() == medio) {
             System.out.println("Has escogido el nivel medio");
             JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(NuevaPartida.this);
