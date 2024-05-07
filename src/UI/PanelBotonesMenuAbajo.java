@@ -79,6 +79,7 @@ public void agregarCajadialogo() {
     btnFinalizarTurno.setFocusPainted(false);
     btnFinalizarTurno.addActionListener(e -> {
         // Lógica para finalizar el turno
+    	logicaJuego.nuevoTurno();
     });
     panelSuperior.add(btnFinalizarTurno);
     
