@@ -129,7 +129,7 @@ public class logicaJuego {
     //VACUNAS
     public static void crearVacunas(ButtonGroup vacunas, PanelJuegoDerecha p) {
 
-    	Vacuna v = new Vacuna("Alpha", "azul", 0);
+    	Vacuna v = new Vacuna("Alfa", "azul", 0);
     	Vacuna v2 = new Vacuna("Beta", "verde", 0);
     	Vacuna v3 = new Vacuna("Gamma", "rojo", 0);
     	Vacuna v4 = new Vacuna("Delta", "amarillo", 0);

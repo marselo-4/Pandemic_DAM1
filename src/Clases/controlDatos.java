@@ -8,6 +8,7 @@ import java.util.Iterator;
 
 import Backend.TxtCiudades;
 import Backend.logicaJuego;
+import Backend.parametros;
 import UI.PanelJuegoDerecha;
 
 public class controlDatos {
@@ -128,7 +129,6 @@ public class controlDatos {
 						
 					}
 					
-					
 
 
 					//Ciudades cd = new Ciudades();
@@ -153,26 +153,29 @@ public class controlDatos {
 	}
 	
 	public static void guardarPartida(Connection con) {
+	
+		String NombreJ = "test_selectJava2";  
+		String dificultad = parametros.getEleccion(); 
+		int rondas = logicaJuego.dp.getRondas();
+		int acciones_restantes = logicaJuego.dp.getAcciones(); 
+		int brotes = logicaJuego.dp.getBrotes(); 
+		
+		String nombreAzul = PanelJuegoDerecha.radioAzul.getVacuna().getNombre();
+		String colorAzul = PanelJuegoDerecha.radioAzul.getVacuna().getColor();
+		int porcentageAzul =  PanelJuegoDerecha.radioAzul.getVacuna().getPorcentaje(); 
+		
+		String nombreRojo =  PanelJuegoDerecha.radioRojo.getVacuna().getNombre(); 
+		int porcentageRojo =  PanelJuegoDerecha.radioRojo.getVacuna().getPorcentaje(); 
+		String colorRojo =  PanelJuegoDerecha.radioRojo.getVacuna().getColor();
 
-		
-		
-		//int Npartida = 0; //No repetir xq peta x unique constraint
-		String NombreJ = "test_selectJava2";  // Se ha de fer que salto una pantalla de introduzca nombre y gurardarho en esta variable
-		String dificultad = "Dificil"; // Se ha de treure del xml
-		int rondas = 10; //Contador de rondes
-		//String Fecha = "03/05/2024";
-		int acciones_restantes = 4; // Contador de accions
-		int brotes = 7; // Contador de brotes
-		
-		String nombreVacuna = "Azul"; //Objecte vacuna
-		String nombreVacuna2 = "Rojo"; //Objecte vacuna
-		String nombreVacuna3 = "Amarillo"; //Objecte vacuna
-		String nombreVacuna4 = "Verde"; //Objecte vacuna
-		int porcentageVacuna = 50; //Objecte vacuna
-		
-		String nombreCiudad = "Milan"; //Objecte ciutat
-		int infeccionCiudad = 3;  //Objecte ciutat
-		
+		String nombreAmarillo =  PanelJuegoDerecha.radioAmarillo.getVacuna().getNombre(); 
+		int porcentageAmarillo =  PanelJuegoDerecha.radioAmarillo.getVacuna().getPorcentaje(); 
+		String colorAmarillo = PanelJuegoDerecha.radioAmarillo.getVacuna().getColor();
+
+		String nombreVerde =  PanelJuegoDerecha.radioVerde.getVacuna().getNombre(); 
+		int porcentageVerde =  PanelJuegoDerecha.radioRojo.getVacuna().getPorcentaje(); 
+		String colorVerde = PanelJuegoDerecha.radioRojo.getVacuna().getColor();
+
 		String ciudadesInsert = "";
 		logicaJuego.crearArrayCiudades();
 		
@@ -186,13 +189,9 @@ public class controlDatos {
 				ciudadesInsert += ciudadSQL;
 			}	
 		}
-		
-		
-
-		
-		String sql = "INSERT INTO PartidasGuardadas VALUES( NUM_PARTIDA.NEXTVAL  , '" + NombreJ + "',  '" + dificultad + "', "  +  rondas + ", SYSDATE , "  +  acciones_restantes + ",  "  +  brotes + ", VACUNA('"  +  nombreVacuna + "', "  +  
-		porcentageVacuna + "), VACUNA('"  +  nombreVacuna2 + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna3 + "', "  +  porcentageVacuna + ") , VACUNA('"  +  nombreVacuna4 + "', "  +  porcentageVacuna + ") , "
-				+ "Lista_ciudades(" + ciudadesInsert +"))";
+			
+				String sql = "INSERT INTO PartidasGuardadas VALUES(NUM_PARTIDA.NEXTVAL, '" + NombreJ + "', '" + dificultad + "', " + rondas + ", SYSDATE, " + acciones_restantes + ", " + brotes 
+				+ ", VACUNA('" + nombreAzul + "', '" + colorAzul + "', " + porcentageAzul + ") , VACUNA('" + nombreRojo + "', '" + colorRojo + "', " + porcentageRojo + ") , VACUNA('" + nombreAmarillo + "', '" + colorAmarillo + "', " + porcentageAmarillo + ") , VACUNA('" + nombreVerde + "', '" + colorVerde + "', " + porcentageVerde + ")  Lista_ciudades(" + ciudadesInsert + "))";
 
 			
 		try {
