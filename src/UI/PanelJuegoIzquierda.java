@@ -12,8 +12,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class PanelJuegoIzquierda extends JPanel {
-    private int circulosMaximos;
-    private int circulosActuales;
+    public static int circulosMaximos;
+    public static int circulosActuales;
     private BufferedImage imagen;
     private BufferedImage imagenFondo;
 
