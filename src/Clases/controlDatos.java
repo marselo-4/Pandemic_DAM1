@@ -4,8 +4,11 @@ package Clases;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
+import Backend.TxtCiudades;
 import Backend.logicaJuego;
+import UI.PanelJuegoDerecha;
 
 public class controlDatos {
 
@@ -21,14 +24,14 @@ public class controlDatos {
 
 		if (con != null) {
 			
-			guardarPartida(con);
-			//cargarPartida(con);
+			//guardarPartida(con);
+			cargarPartida(con);
 			con.close();
 		}
 
 	}
 	
-	private static Connection conectarBaseDatos() {
+	public static Connection conectarBaseDatos() {
 		Connection con = null;
 
 		System.out.println("Intentando conectarse a la base de datos");
@@ -74,11 +77,10 @@ public class controlDatos {
 		//setear el nº de brotes actius
 		
 		
-		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.color, p.Azul.porcentage,  c.nombre, c.infeccion "
+		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.color, p.Azul.porcentage, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.color, p.Verde.porcentage, c.nombre, c.infeccion "
 				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c "
-				+ "where npartida = 3";
+				+ "where npartida = 5";
 		
-		ArrayList<Ciudades> C = new ArrayList<Ciudades>();
 
 		try {
 			Statement st = con.createStatement();
@@ -93,33 +95,40 @@ public class controlDatos {
 					String Fecha = rs.getString("Fecha");
 					int Acciones_restantes = rs.getInt("Acciones_restantes");
 					int Brotes = rs.getInt("Brotes");
-					System.out.println();
 				
+					
 					String colorA = rs.getString("AZUL.color");
 					int porcentageA = rs.getInt("AZUL.porcentage");
+				
+					PanelJuegoDerecha.radioAzul.getVacuna().setPorcentaje(porcentageA);
+					PanelJuegoDerecha.labelAzul.setText(porcentageA + "%");
 					
 					String colorR = rs.getString("ROJO.color");
 					int porcentageR = rs.getInt("ROJO.porcentage");
 					
-					String colorAM = rs.getString("ROJO.color");
-					int porcentageAM = rs.getInt("ROJO.porcentage");
-					
-					String colorV = rs.getString("ROJO.color");
-					int porcentageV = rs.getInt("ROJO.porcentage");
-	
-//					Array ciudadArray = rs.getArray("Lista_ciudades");
-//					Object[] ciudadObjects = (Object[]) ciudadArray.getArray();
-//					for (Object ciudadObject : ciudadObjects) {
-//					    Struct ciudadStruct = (Struct) ciudadObject;
-//					    Object[] ciudadAttributes = ciudadStruct.getAttributes();
-//					    String ciudadNombre = (String) ciudadAttributes[0];
-//					    int ciudadInfeccion = (int) ciudadAttributes[1];
-//					}
+					PanelJuegoDerecha.radioRojo.getVacuna().setPorcentaje(porcentageR);
+					PanelJuegoDerecha.labelRojo.setText(porcentageR + "%");
 
 					
+					String colorAM = rs.getString("Amarillo.color");
+					int porcentageAM = rs.getInt("Amarillo.porcentage");
 					
-//					System.out.println(Vacuna.toString());
-//					System.out.println(Ciudad.toString());
+					PanelJuegoDerecha.radioAmarillo.getVacuna().setPorcentaje(porcentageAM);
+					PanelJuegoDerecha.labelAmarillo.setText(porcentageAM + "%");
+
+
+					String colorV = rs.getString("Verde.color");
+					int porcentageV = rs.getInt("Verde.porcentage");
+					
+					PanelJuegoDerecha.radioVerde.getVacuna().setPorcentaje(porcentageV);;
+					PanelJuegoDerecha.labelVerde.setText(porcentageV + "%");
+
+					while (rs.next()) {
+						
+						
+					}
+					
+					
 
 
 					//Ciudades cd = new Ciudades();
@@ -137,7 +146,11 @@ public class controlDatos {
 
 	}
 		
-	
+	public void crarCiudadesCargado() {
+		
+		for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
+		}
+	}
 	
 	public static void guardarPartida(Connection con) {
 
@@ -165,7 +178,7 @@ public class controlDatos {
 		
 		for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
 			if (i == logicaJuego.dp.ciudades.size() -1) {
-				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +"', "+logicaJuego.dp.ciudades.get(i).getInfeccion()+" )";
+				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', "+logicaJuego.dp.ciudades.get(i).getEnfermedad()+" )";
 				ciudadesInsert += ciudadSQL;
 			}else {
 				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +"', "+logicaJuego.dp.ciudades.get(i).getInfeccion()+" ), ";

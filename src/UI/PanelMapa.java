@@ -19,6 +19,7 @@ import Backend.TxtCiudades;
 import Backend.logicaJuego;
 import Clases.CiudadBoton;
 import Clases.Ciudades;
+import Clases.controlDatos;
 	
 	public class PanelMapa extends JPanel implements ActionListener {
 		public static ImageIcon ciudad_azul0 = new ImageIcon(new ImageIcon("img/IconoCiudadAzul.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
@@ -49,7 +50,7 @@ import Clases.Ciudades;
 	
 	
 	    public PanelMapa() { // testea botones si funcionan todos con print
-	        icon = new ImageIcon("img/mapa.jpg");  //Ruta actualizada
+	       icon = new ImageIcon("img/mapa.jpg");  //Ruta actualizada
 	       scaleImage();
 	       setLayout(null);
 	       setDoubleBuffered(true);
