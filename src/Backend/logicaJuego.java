@@ -293,60 +293,20 @@ public static void empezarPartida(int dificultad){
         String enfermedad = PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).getCiudad().getEnfermedad();
         switch (enfermedad) {
         case "Alfa":
-            if (dificultad >= 2) {
-                if (rand.nextBoolean()) {
-                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_azul1);
-                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
-                } else {
-                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_azul2);
-                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(2);
-                }
-            } else {
-                PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_azul1);
-                dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
-            }
+            PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_azul1);
+            dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
             break;
         case "Beta":
-            if (dificultad >= 2) {
-                if (rand.nextBoolean()) {
-                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_roja1);
-                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
-                } else {
-                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_roja2);
-                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(2);
-                }
-            } else {
-                PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_roja1);
-                dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
-            }
+            PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_roja1);
+            dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
             break;
         case "Gama":
-            if (dificultad >= 2) {
-                if (rand.nextBoolean()) {
-                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_verde1);
-                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
-                } else {
-                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_verde2);
-                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(2);
-                }
-            } else {
-                PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_verde1);
-                dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
-            }
+            PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_verde1);
+            dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
             break;
         case "Delta":
-            if (dificultad >= 2) {
-                if (rand.nextBoolean()) {
-                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_amarilla1);
-                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
-                } else {
-                    PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_amarilla2);
-                    dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(2);
-                }
-            } else {
-                PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_amarilla1);
-                dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
-            }
+            PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_amarilla1);
+            dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
             break;
         default:
             break;
@@ -354,5 +314,11 @@ public static void empezarPartida(int dificultad){
     }
 }
 
+public static void updateAP(int cost) {
+	logicaJuego.dp.setAcciones(logicaJuego.dp.getAcciones() - cost);
+	String s = "Acciones: " + logicaJuego.dp.getAcciones();
+	PanelBotonesMenuAbajo.lblAcciones.setText(s);
+
+}
 
    }

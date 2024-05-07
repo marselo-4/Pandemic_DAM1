@@ -117,37 +117,42 @@ public void actionPerformed(ActionEvent e) {
             radioRojo.setIcon(icono_rojo);
         }
     }else if (e.getSource() == DesarollarVacuna) { 
-        // Deshabilitar el botón mientras se realiza la animación
-        DesarollarVacuna.setEnabled(false);
+    	if (logicaJuego.dp.getAcciones() == 4) {
+            // Deshabilitar el botón mientras se realiza la animación
+            DesarollarVacuna.setEnabled(false);
 
-        int int_random = rand.nextInt(5,20);
-        switch (vacunaSeleccionada) {
-            case 1:
-
-            	logicaJuego.animateJLabel(labelAzul, radioAzul.getVacuna().getPorcentaje(), int_random, radioAzul.getVacuna(), () -> {
-                    // Este bloque de código se ejecuta cuando la animación ha terminado
-                    DesarollarVacuna.setEnabled(true); // Habilitar el botón nuevamente
-                });
-                break;
-            case 2:
-                logicaJuego.animateJLabel(labelVerde, radioVerde.getVacuna().getPorcentaje(), int_random, radioVerde.getVacuna(), () -> {
-                    DesarollarVacuna.setEnabled(true);
-                });
-                break;
-            case 3:
-                logicaJuego.animateJLabel(labelAmarillo, radioAmarillo.getVacuna().getPorcentaje(), int_random, radioAmarillo.getVacuna(), () -> {
-                    DesarollarVacuna.setEnabled(true);
-                });
-                break;
-            case 4:
-                logicaJuego.animateJLabel(labelRojo, radioRojo.getVacuna().getPorcentaje(), int_random, radioRojo.getVacuna(), () -> {
-                    DesarollarVacuna.setEnabled(true);
-                });
-                break;
-            default:
-            	DesarollarVacuna.setEnabled(true);
-                break;
-        }
+            switch (vacunaSeleccionada) {
+                case 1:
+                	logicaJuego.updateAP(4);
+                	logicaJuego.animateJLabel(labelAzul, radioAzul.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioAzul.getVacuna(), () -> {
+                        // Este bloque de código se ejecuta cuando la animación ha terminado
+                        DesarollarVacuna.setEnabled(true); // Habilitar el botón nuevamente
+                        
+                    });
+                    break;
+                case 2:
+                	logicaJuego.updateAP(4);
+                    logicaJuego.animateJLabel(labelVerde, radioVerde.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioVerde.getVacuna(), () -> {
+                        DesarollarVacuna.setEnabled(true);
+                    });
+                    break;
+                case 3:
+                	logicaJuego.updateAP(4);
+                    logicaJuego.animateJLabel(labelAmarillo, radioAmarillo.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioAmarillo.getVacuna(), () -> {
+                        DesarollarVacuna.setEnabled(true);
+                    });
+                    break;
+                case 4:
+                	logicaJuego.updateAP(4);
+                    logicaJuego.animateJLabel(labelRojo, radioRojo.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioRojo.getVacuna(), () -> {
+                        DesarollarVacuna.setEnabled(true);
+                    });
+                    break;
+                default:
+                	DesarollarVacuna.setEnabled(true);
+                    break;
+            }
+		}
     }
 
 }
