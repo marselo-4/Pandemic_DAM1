@@ -176,9 +176,10 @@ public class controlDatos {
 		String ciudadesInsert = "";
 		logicaJuego.crearArrayCiudades();
 		
+		//modificar esto para que en el insert se guarden todos los datos de las ciudades necesario en el select para montar bien el constructor de ciudades.
 		for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
 			if (i == logicaJuego.dp.ciudades.size() -1) {
-				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', "+logicaJuego.dp.ciudades.get(i).getEnfermedad()+" )";
+				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', '" + logicaJuego.dp.ciudades.get(i).getEnfermedad() +"'," + logicaJuego.dp.ciudades.get(i).getInfeccion() +  ")";
 				ciudadesInsert += ciudadSQL;
 			}else {
 				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +"', "+logicaJuego.dp.ciudades.get(i).getInfeccion()+" ), ";
