@@ -13,7 +13,7 @@ import UI.PanelJuegoDerecha;
 
 public class controlDatos {
 
-	private static String URL = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; //casa cambiar ip a  jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
+	private static String URL = "jdbc:oracle:thin:@oracle.ilerna.com:1521:xe"; //casa cambiar ip a  jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
 	private static String USER = "DAM1_2324_ALE_LUJAN";
 	private static String PWD = "Lujan1234.";
 	private String ficheroTxt;
@@ -26,7 +26,7 @@ public class controlDatos {
 		if (con != null) {
 			
 			//guardarPartida(con);
-			cargarPartida(con);
+			//cargarPartida(con);
 			con.close();
 		}
 
@@ -182,16 +182,34 @@ public class controlDatos {
 		//modificar esto para que en el insert se guarden todos los datos de las ciudades necesario en el select para montar bien el constructor de ciudades.
 		for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
 			if (i == logicaJuego.dp.ciudades.size() -1) {
-				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', '" + logicaJuego.dp.ciudades.get(i).getEnfermedad() +"'," + logicaJuego.dp.ciudades.get(i).getInfeccion() +  ")";
+				
+				int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
+				String XY = Coord[0] + " , " + Coord[1];
+			
+				ArrayList<String> colindantesLista = logicaJuego.dp.ciudades.get(i).getColindantes();
+				String[] colindantes = colindantesLista.toArray(new String[0]);
+				String colindantesString = "'" + String.join(" ", colindantes);
+
+
+				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', '" + logicaJuego.dp.ciudades.get(i).getEnfermedad() +"'," + logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "') ";
 				ciudadesInsert += ciudadSQL;
 			}else {
-				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +"', "+logicaJuego.dp.ciudades.get(i).getInfeccion()+" ), ";
+				
+				int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
+				String XY = Coord[0] + " , " + Coord[1];
+				
+				ArrayList<String> colindantesLista = logicaJuego.dp.ciudades.get(i).getColindantes();
+				String[] colindantes = colindantesLista.toArray(new String[0]);
+				String colindantesString = "'" + String.join(" ", colindantes);
+				
+				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', '" + logicaJuego.dp.ciudades.get(i).getEnfermedad() +"'," + logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "'), ";				
 				ciudadesInsert += ciudadSQL;
 			}	
 		}
 			
 				String sql = "INSERT INTO PartidasGuardadas VALUES(NUM_PARTIDA.NEXTVAL, '" + NombreJ + "', '" + dificultad + "', " + rondas + ", SYSDATE, " + acciones_restantes + ", " + brotes 
-				+ ", VACUNA('" + nombreAzul + "', '" + colorAzul + "', " + porcentageAzul + ") , VACUNA('" + nombreRojo + "', '" + colorRojo + "', " + porcentageRojo + ") , VACUNA('" + nombreAmarillo + "', '" + colorAmarillo + "', " + porcentageAmarillo + ") , VACUNA('" + nombreVerde + "', '" + colorVerde + "', " + porcentageVerde + ")  Lista_ciudades(" + ciudadesInsert + "))";
+				+ ", VACUNA('" + nombreAzul + "', '" + colorAzul + "', " + porcentageAzul + ") , VACUNA('" + nombreRojo + "', '" + colorRojo + "', " + porcentageRojo + ") , VACUNA('" + nombreAmarillo + "', '" + colorAmarillo + "', " + porcentageAmarillo + ") , "
+						+ "VACUNA('" + nombreVerde + "', '" + colorVerde + "', " + porcentageVerde + ")  Lista_ciudades(" + ciudadesInsert + "))";
 
 			
 		try {
