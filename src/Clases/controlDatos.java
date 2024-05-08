@@ -14,25 +14,26 @@ import UI.PanelJuegoDerecha;
 
 public class controlDatos {
 
-	private static String URL = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; //casa cambiar ip a  jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
+	private static String URL = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; // casa cambiar ip a
+																			// jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
 	private static String USER = "DAM1_2324_ALE_LUJAN";
 	private static String PWD = "Lujan1234.";
 	private String ficheroTxt;
 	private String ficheroBin;
 	private static String ficheroXML = "parametros.xml";
-	
+
 	public static void main(String[] args) throws SQLException {
 		Connection con = conectarBaseDatos();
 
 		if (con != null) {
-			
+
 			guardarPartida(con);
-			//cargarPartida(con);
+			// cargarPartida(con);
 			con.close();
 		}
 
 	}
-	
+
 	public static Connection conectarBaseDatos() {
 		Connection con = null;
 
@@ -40,7 +41,7 @@ public class controlDatos {
 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(URL, USER, PWD);  
+			con = DriverManager.getConnection(URL, USER, PWD);
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado el driver " + e);
 		} catch (SQLException e) {
@@ -51,38 +52,22 @@ public class controlDatos {
 
 		return con;
 	}
-	
-	
-	public static void cargarCiudades() {
-		
-	}
-	
-	public static void cargarVacunas() {
-		
-	}
-	
-	public static void cargarVirus() {
-		
-	}
-	
 
-	
+	public static void cargarCiudades() {
+
+	}
+
+	public static void cargarVacunas() {
+
+	}
+
+	public static void cargarVirus() {
+
+	}
 
 	public static void cargarPartida(Connection con) {
-		
-	// El boto de cargar partida del menu te ha de deixar elegit entre tta la llista de guardados
-		
-		//setar l'estat de totes les ciutats
-		
-		//setear l'estat de totes les vacunes
-		
-		//setear el nº de brotes actius
-		
-		
-		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p. p.Azul.color, p.Azul.porcentage, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.color, p.Verde.porcentage, c.nombre, c.infeccion "
-				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c "
-				+ "where npartida = 2";
-		
+		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.nombre, p.Azul.color, p.Azul.porcentage, p.Rojo.nombre, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.nombre, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.nombre, p.Verde.color, p.Verde.porcentage, c.nombre, c.enfermedad, c.infeccion, c.CordX, c.CordY, c.Colindantes"
+				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c" + "where ROWNUM = 1 ORDER BY FECHA DESC;";
 
 		try {
 			Statement st = con.createStatement();
@@ -97,137 +82,212 @@ public class controlDatos {
 					String Fecha = rs.getString("Fecha");
 					int Acciones_restantes = rs.getInt("Acciones_restantes");
 					int Brotes = rs.getInt("Brotes");
-				
-					
+
+					String nombreA = rs.getString("Azul.nombre");
 					String colorA = rs.getString("AZUL.color");
 					int porcentageA = rs.getInt("AZUL.porcentage");
-				
+
 					PanelJuegoDerecha.radioAzul.getVacuna().setPorcentaje(porcentageA);
 					PanelJuegoDerecha.labelAzul.setText(porcentageA + "%");
-					
+
+					String nombreR = rs.getString("Rojo.nombre");
 					String colorR = rs.getString("ROJO.color");
 					int porcentageR = rs.getInt("ROJO.porcentage");
-					
+
 					PanelJuegoDerecha.radioRojo.getVacuna().setPorcentaje(porcentageR);
 					PanelJuegoDerecha.labelRojo.setText(porcentageR + "%");
 
-					
+					String nombreAM = rs.getString("Amarillo.nombre");
 					String colorAM = rs.getString("Amarillo.color");
 					int porcentageAM = rs.getInt("Amarillo.porcentage");
-					
+
 					PanelJuegoDerecha.radioAmarillo.getVacuna().setPorcentaje(porcentageAM);
 					PanelJuegoDerecha.labelAmarillo.setText(porcentageAM + "%");
 
-
+					String nombreV = rs.getString("Verde.nombre");
 					String colorV = rs.getString("Verde.color");
 					int porcentageV = rs.getInt("Verde.porcentage");
-					
-					PanelJuegoDerecha.radioVerde.getVacuna().setPorcentaje(porcentageV);;
+
+					PanelJuegoDerecha.radioVerde.getVacuna().setPorcentaje(porcentageV);
 					PanelJuegoDerecha.labelVerde.setText(porcentageV + "%");
 
 					while (rs.next()) {
-						
+						 
 						
 					}
-					
 
+					// Ciudades cd = new Ciudades();
 
-					//Ciudades cd = new Ciudades();
-
-					/*C.add(cd);*/				}
+					/* C.add(cd); */ }
 			} else {
 				System.out.println("No he encontrado nada");
 			}
-			
-			
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
-		
-	public void crarCiudadesCargado() {
-		
-		for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
-		}
-	}
-	
+
 	public static void guardarPartida(Connection con) {
-	
-		String NombreJ = "test_selectJava2";  
-		String dificultad = parametros.getEleccion(); 
+
+		String NombreJ = "test_selectJava2";
+		String dificultad = parametros.getEleccion();
 		int rondas = logicaJuego.dp.getRondas();
-		int acciones_restantes = logicaJuego.dp.getAcciones(); 
-		int brotes = logicaJuego.dp.getBrotes(); 
-		
+		int acciones_restantes = logicaJuego.dp.getAcciones();
+		int brotes = logicaJuego.dp.getBrotes();
+
 		String nombreAzul = PanelJuegoDerecha.radioAzul.getVacuna().getNombre();
 		String colorAzul = PanelJuegoDerecha.radioAzul.getVacuna().getColor();
-		int porcentageAzul =  PanelJuegoDerecha.radioAzul.getVacuna().getPorcentaje(); 
-		
-		String nombreRojo =  PanelJuegoDerecha.radioRojo.getVacuna().getNombre(); 
-		int porcentageRojo =  PanelJuegoDerecha.radioRojo.getVacuna().getPorcentaje(); 
-		String colorRojo =  PanelJuegoDerecha.radioRojo.getVacuna().getColor();
+		int porcentageAzul = PanelJuegoDerecha.radioAzul.getVacuna().getPorcentaje();
 
-		String nombreAmarillo =  PanelJuegoDerecha.radioAmarillo.getVacuna().getNombre(); 
-		int porcentageAmarillo =  PanelJuegoDerecha.radioAmarillo.getVacuna().getPorcentaje(); 
+		String nombreRojo = PanelJuegoDerecha.radioRojo.getVacuna().getNombre();
+		int porcentageRojo = PanelJuegoDerecha.radioRojo.getVacuna().getPorcentaje();
+		String colorRojo = PanelJuegoDerecha.radioRojo.getVacuna().getColor();
+
+		String nombreAmarillo = PanelJuegoDerecha.radioAmarillo.getVacuna().getNombre();
+		int porcentageAmarillo = PanelJuegoDerecha.radioAmarillo.getVacuna().getPorcentaje();
 		String colorAmarillo = PanelJuegoDerecha.radioAmarillo.getVacuna().getColor();
 
-		String nombreVerde =  PanelJuegoDerecha.radioVerde.getVacuna().getNombre(); 
-		int porcentageVerde =  PanelJuegoDerecha.radioRojo.getVacuna().getPorcentaje(); 
+		String nombreVerde = PanelJuegoDerecha.radioVerde.getVacuna().getNombre();
+		int porcentageVerde = PanelJuegoDerecha.radioRojo.getVacuna().getPorcentaje();
 		String colorVerde = PanelJuegoDerecha.radioRojo.getVacuna().getColor();
 
 		String ciudadesInsert = "";
-		
-		
-		//modificar esto para que en el insert se guarden todos los datos de las ciudades necesario en el select para montar bien el constructor de ciudades.
-			for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
-				if (i == logicaJuego.dp.ciudades.size() -1) {
-					
-					int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
-					String XY = Coord[0] + " , " + Coord[1];
-				
-					ArrayList<String> colindantesLista = logicaJuego.dp.ciudades.get(i).getColindantes();
-					String[] colindantes = colindantesLista.toArray(new String[0]);
-					String colindantesString = String.join(" ", colindantes);
-	
-	
-					String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', '" + logicaJuego.dp.ciudades.get(i).getEnfermedad() +"'," + logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "') ";
-					ciudadesInsert += ciudadSQL;
-				}else {
-					
-					int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
-					String XY = Coord[0] + " , " + Coord[1];
-					
-					ArrayList<String> colindantesLista = logicaJuego.dp.ciudades.get(i).getColindantes();
-					String[] colindantes = colindantesLista.toArray(new String[0]);
-					String colindantesString = String.join(" ", colindantes);
-					
-					String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', '" + logicaJuego.dp.ciudades.get(i).getEnfermedad() +"'," + logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "'), ";				
-					ciudadesInsert += ciudadSQL;
-				}	
+
+		for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
+			if (i == logicaJuego.dp.ciudades.size() - 1) {
+
+				int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
+				String XY = Coord[0] + " , " + Coord[1];
+
+				ArrayList<String> colindantesLista = logicaJuego.dp.ciudades.get(i).getColindantes();
+				String[] colindantes = colindantesLista.toArray(new String[0]);
+				String colindantesString = String.join(" ", colindantes);
+
+				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() + " ', '"
+						+ logicaJuego.dp.ciudades.get(i).getEnfermedad() + "',"
+						+ logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "') ";
+				ciudadesInsert += ciudadSQL;
+			} else {
+
+				int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
+				String XY = Coord[0] + " , " + Coord[1];
+
+				ArrayList<String> colindantesLista = logicaJuego.dp.ciudades.get(i).getColindantes();
+				String[] colindantes = colindantesLista.toArray(new String[0]);
+				String colindantesString = String.join(" ", colindantes);
+
+				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() + " ', '"
+						+ logicaJuego.dp.ciudades.get(i).getEnfermedad() + "',"
+						+ logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString
+						+ "'), ";
+				ciudadesInsert += ciudadSQL;
 			}
-				
-					String sql = "INSERT INTO PartidasGuardadas VALUES(NUM_PARTIDA.NEXTVAL, '" + NombreJ + "', '" + dificultad + "', " + rondas + ", SYSDATE, " + acciones_restantes + ", " + brotes 
-					+ ", VACUNA('" + nombreAzul + "', '" + colorAzul + "', " + porcentageAzul + ") , VACUNA('" + nombreRojo + "', '" + colorRojo + "', " + porcentageRojo + ") , VACUNA('" + nombreAmarillo + "', '" + colorAmarillo + "', " + porcentageAmarillo + ") , "
-							+ "VACUNA('" + nombreVerde + "', '" + colorVerde + "', " + porcentageVerde + "),  Lista_ciudades(" + ciudadesInsert + "))";
-	
-			try {
-				Statement st = con.createStatement();
-				st.execute(sql);
-				
-				System.out.println("Insert registrado correctamente");
-			} catch (SQLException e) {
-				System.out.println("Ha habido un error en el Insert " + e);
+		}
+
+		String sql = "INSERT INTO PartidasGuardadas VALUES(NUM_PARTIDA.NEXTVAL, '" + NombreJ + "', '" + dificultad
+				+ "', " + rondas + ", SYSDATE, " + acciones_restantes + ", " + brotes + ", VACUNA('" + nombreAzul
+				+ "', '" + colorAzul + "', " + porcentageAzul + ") , VACUNA('" + nombreRojo + "', '" + colorRojo + "', "
+				+ porcentageRojo + ") , VACUNA('" + nombreAmarillo + "', '" + colorAmarillo + "', " + porcentageAmarillo
+				+ ") , " + "VACUNA('" + nombreVerde + "', '" + colorVerde + "', " + porcentageVerde
+				+ "),  Lista_ciudades(" + ciudadesInsert + "))";
+
+		try {
+			Statement st = con.createStatement();
+			st.execute(sql);
+
+			System.out.println("Insert registrado correctamente");
+		} catch (SQLException e) {
+			System.out.println("Ha habido un error en el Insert " + e);
+		}
+	}
+
+	public static void cargarRecordFacil(Connection con) {
+
+		String RankingFacil = "SELECT p.NombreJ, p.NPartida, p.dificultad, p.Rondas" + "FROM PartidasGuardadas "
+				+ "WHERE p.dificultad = 'Facil'" + "ORDER BY P.Rondas ASC;";
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(RankingFacil);
+
+			if (rs.isBeforeFirst()) {
+				while (rs.next()) {
+					String[] partida = new String[4];
+					partida[0] = rs.getString("NombreJ");
+					partida[1] = rs.getString("NPartida");
+					partida[2] = rs.getString("dificultad");
+					partida[3] = rs.getString("Rondas");
+					
+					
+				}
+			} else {
+				System.out.println("No he encontrado nada");
 			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public static void cargarRecordNormal(Connection con) {
+
+		String RankingNormal = "SELECT p.NombreJ,  p.NPartida, p.dificultad, p.Rondas" + "FROM PartidasGuardadas "
+				+ "WHERE p.dificultad = 'Normal'" + "ORDER BY P.Rondas ASC;";
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(RankingNormal);
+
+			if (rs.isBeforeFirst()) {
+				while (rs.next()) {
+					String[] partida = new String[4];
+					partida[0] = rs.getString("NombreJ");
+					partida[1] = rs.getString("NPartida");
+					partida[2] = rs.getString("dificultad");
+					partida[3] = rs.getString("Rondas");
+
+				}
+			} else {
+				System.out.println("No he encontrado nada");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 	
-	public static void cargarRecord() {
-		
+	public static void cargarRecordDificil(Connection con) {
+
+		String RankingDificil = "SELECT p.NombreJ,  p.NPartida, p.dificultad, p.Rondas" + "FROM PartidasGuardadas "
+				+ "WHERE p.dificultad = 'Dificil'" + "ORDER BY P.Rondas ASC;";
+		try {
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(RankingDificil);
+
+			if (rs.isBeforeFirst()) {
+				while (rs.next()) {
+					String[] partida = new String[4];
+					partida[0] = rs.getString("NombreJ");
+					partida[1] = rs.getString("NPartida");
+					partida[2] = rs.getString("dificultad");
+					partida[3] = rs.getString("Rondas");
+				}
+			} else {
+				System.out.println("No he encontrado nada");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 	
+	
+
 	public static void guardarRecord() {
-		
+
 	}
 
 	public String getUrl() {
@@ -274,9 +334,8 @@ public class controlDatos {
 		return ficheroXML;
 	}
 
-	public  void setFicheroXML(String ficheroXML) {
+	public void setFicheroXML(String ficheroXML) {
 		this.ficheroXML = ficheroXML;
 	}
 
 }
-

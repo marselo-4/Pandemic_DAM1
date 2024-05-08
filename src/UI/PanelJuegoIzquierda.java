@@ -77,7 +77,7 @@ public class PanelJuegoIzquierda extends JPanel {
         this.circulosMaximos = circulosMaximos;
         this.circulosActuales = circulosActuales;
         
-        JButton sumarButton = new JButton("Guardar test");
+        JButton sumarButton = new JButton("Guardar");
         sumarButton.addActionListener(e -> {
             controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
         });
