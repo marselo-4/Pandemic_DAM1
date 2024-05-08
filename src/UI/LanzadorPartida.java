@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Backend.logicaJuego;
+import Clases.controlDatos;
 import Clases.datosPartida;
 
 public class LanzadorPartida extends JPanel {
@@ -36,8 +37,9 @@ public class LanzadorPartida extends JPanel {
         logicaJuego.crearVacunas(p4.vacunas, p4);
         logicaJuego.BotonesDesarollar_curar(p4);
         
+        
         p3.generarBrotesCirculos(logicaJuego.dp.getBrotes_maximos(), 0);
-
+               
         setVisible(true);
 	}
 }

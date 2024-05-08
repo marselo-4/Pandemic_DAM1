@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import Backend.logicaJuego;
+import Clases.controlDatos;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
@@ -76,12 +77,9 @@ public class PanelJuegoIzquierda extends JPanel {
         this.circulosMaximos = circulosMaximos;
         this.circulosActuales = circulosActuales;
         
-        JButton sumarButton = new JButton("Sumar");
+        JButton sumarButton = new JButton("Guardar test");
         sumarButton.addActionListener(e -> {
-            if (this.circulosActuales < this.circulosMaximos) {
-                this.circulosActuales++;
-                repaint();
-            }
+            controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
         });
         add(sumarButton);
     }

@@ -9,11 +9,12 @@ import java.util.Iterator;
 import Backend.TxtCiudades;
 import Backend.logicaJuego;
 import Backend.parametros;
+import UI.LanzadorPartida;
 import UI.PanelJuegoDerecha;
 
 public class controlDatos {
 
-	private static String URL = "jdbc:oracle:thin:@oracle.ilerna.com:1521:xe"; //casa cambiar ip a  jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
+	private static String URL = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; //casa cambiar ip a  jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
 	private static String USER = "DAM1_2324_ALE_LUJAN";
 	private static String PWD = "Lujan1234.";
 	private String ficheroTxt;
@@ -25,7 +26,7 @@ public class controlDatos {
 
 		if (con != null) {
 			
-			//guardarPartida(con);
+			guardarPartida(con);
 			//cargarPartida(con);
 			con.close();
 		}
@@ -78,9 +79,9 @@ public class controlDatos {
 		//setear el nº de brotes actius
 		
 		
-		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.color, p.Azul.porcentage, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.color, p.Verde.porcentage, c.nombre, c.infeccion "
+		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p. p.Azul.color, p.Azul.porcentage, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.color, p.Verde.porcentage, c.nombre, c.infeccion "
 				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c "
-				+ "where npartida = 5";
+				+ "where npartida = 2";
 		
 
 		try {
@@ -177,50 +178,49 @@ public class controlDatos {
 		String colorVerde = PanelJuegoDerecha.radioRojo.getVacuna().getColor();
 
 		String ciudadesInsert = "";
-		logicaJuego.crearArrayCiudades();
+		
 		
 		//modificar esto para que en el insert se guarden todos los datos de las ciudades necesario en el select para montar bien el constructor de ciudades.
-		for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
-			if (i == logicaJuego.dp.ciudades.size() -1) {
+			for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
+				if (i == logicaJuego.dp.ciudades.size() -1) {
+					
+					int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
+					String XY = Coord[0] + " , " + Coord[1];
 				
-				int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
-				String XY = Coord[0] + " , " + Coord[1];
-			
-				ArrayList<String> colindantesLista = logicaJuego.dp.ciudades.get(i).getColindantes();
-				String[] colindantes = colindantesLista.toArray(new String[0]);
-				String colindantesString = "'" + String.join(" ", colindantes);
-
-
-				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', '" + logicaJuego.dp.ciudades.get(i).getEnfermedad() +"'," + logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "') ";
-				ciudadesInsert += ciudadSQL;
-			}else {
+					ArrayList<String> colindantesLista = logicaJuego.dp.ciudades.get(i).getColindantes();
+					String[] colindantes = colindantesLista.toArray(new String[0]);
+					String colindantesString = String.join(" ", colindantes);
+	
+	
+					String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', '" + logicaJuego.dp.ciudades.get(i).getEnfermedad() +"'," + logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "') ";
+					ciudadesInsert += ciudadSQL;
+				}else {
+					
+					int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
+					String XY = Coord[0] + " , " + Coord[1];
+					
+					ArrayList<String> colindantesLista = logicaJuego.dp.ciudades.get(i).getColindantes();
+					String[] colindantes = colindantesLista.toArray(new String[0]);
+					String colindantesString = String.join(" ", colindantes);
+					
+					String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', '" + logicaJuego.dp.ciudades.get(i).getEnfermedad() +"'," + logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "'), ";				
+					ciudadesInsert += ciudadSQL;
+				}	
+			}
 				
-				int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
-				String XY = Coord[0] + " , " + Coord[1];
+					String sql = "INSERT INTO PartidasGuardadas VALUES(NUM_PARTIDA.NEXTVAL, '" + NombreJ + "', '" + dificultad + "', " + rondas + ", SYSDATE, " + acciones_restantes + ", " + brotes 
+					+ ", VACUNA('" + nombreAzul + "', '" + colorAzul + "', " + porcentageAzul + ") , VACUNA('" + nombreRojo + "', '" + colorRojo + "', " + porcentageRojo + ") , VACUNA('" + nombreAmarillo + "', '" + colorAmarillo + "', " + porcentageAmarillo + ") , "
+							+ "VACUNA('" + nombreVerde + "', '" + colorVerde + "', " + porcentageVerde + "),  Lista_ciudades(" + ciudadesInsert + "))";
+	
+			try {
+				Statement st = con.createStatement();
+				st.execute(sql);
 				
-				ArrayList<String> colindantesLista = logicaJuego.dp.ciudades.get(i).getColindantes();
-				String[] colindantes = colindantesLista.toArray(new String[0]);
-				String colindantesString = "'" + String.join(" ", colindantes);
-				
-				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() +" ', '" + logicaJuego.dp.ciudades.get(i).getEnfermedad() +"'," + logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "'), ";				
-				ciudadesInsert += ciudadSQL;
-			}	
-		}
-			
-				String sql = "INSERT INTO PartidasGuardadas VALUES(NUM_PARTIDA.NEXTVAL, '" + NombreJ + "', '" + dificultad + "', " + rondas + ", SYSDATE, " + acciones_restantes + ", " + brotes 
-				+ ", VACUNA('" + nombreAzul + "', '" + colorAzul + "', " + porcentageAzul + ") , VACUNA('" + nombreRojo + "', '" + colorRojo + "', " + porcentageRojo + ") , VACUNA('" + nombreAmarillo + "', '" + colorAmarillo + "', " + porcentageAmarillo + ") , "
-						+ "VACUNA('" + nombreVerde + "', '" + colorVerde + "', " + porcentageVerde + ")  Lista_ciudades(" + ciudadesInsert + "))";
-
-			
-		try {
-			Statement st = con.createStatement();
-			st.execute(sql);
-			
-			System.out.println("Insert registrado correctamente");
-		} catch (SQLException e) {
-			System.out.println("Ha habido un error en el Insert " + e);
-		}
-}
+				System.out.println("Insert registrado correctamente");
+			} catch (SQLException e) {
+				System.out.println("Ha habido un error en el Insert " + e);
+			}
+	}
 	
 	public static void cargarRecord() {
 		
