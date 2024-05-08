@@ -41,7 +41,7 @@ import Clases.Ciudades;
 		public static ImageIcon ciudad_amarilla2 = new ImageIcon(new ImageIcon("img/IconoCiudadAmarillo2.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_amarilla3 = new ImageIcon(new ImageIcon("img/IconoCiudadAmarillo3.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));		
 		
-		
+		public static CiudadBoton ciudadSeleccionada;
 	    private ImageIcon icon;
 	    private Image scaledImage;
 	    public static ButtonGroup IconosCiudades = new ButtonGroup();
@@ -100,6 +100,8 @@ import Clases.Ciudades;
 	    	if (e.getSource() instanceof CiudadBoton) {
 	    		logicaJuego.textosCaja("Ciudad " + selectedButton.getCiudad().getNombre() + " seleccionada. Su nivel de infeccion es "
 	    				+ selectedButton.getCiudad().getInfeccion()); 
+	    		ciudadSeleccionada = selectedButton;
+	    		System.out.println(ciudadSeleccionada.getCiudad().getNombre() + " LA CIUDAD SELECCIONADA");
 	        } 
 	    }
   
