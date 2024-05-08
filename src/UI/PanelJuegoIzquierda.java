@@ -12,15 +12,12 @@ import java.io.File;
 import java.io.IOException;
 
 public class PanelJuegoIzquierda extends JPanel {
-    private int circulosMaximos;
-    private int circulosActuales;
+    public static int circulosMaximos;
+    public static int circulosActuales;
     private BufferedImage imagen;
     private BufferedImage imagenFondo;
 
-    public PanelJuegoIzquierda(int circulosMaximos, int circulosActuales) {
-        this.circulosMaximos = circulosMaximos;
-        this.circulosActuales = circulosActuales;
-
+    public PanelJuegoIzquierda() {
         try {
             imagen = ImageIO.read(new File("img/brote.png")); // Ruta
             imagenFondo = ImageIO.read(new File("img/lateral.png")); // Ruta del fondo
@@ -31,14 +28,6 @@ public class PanelJuegoIzquierda extends JPanel {
         setLayout(new FlowLayout());
         setPreferredSize(new Dimension(150, 400));
 
-        JButton sumarButton = new JButton("Sumar");
-        sumarButton.addActionListener(e -> {
-            if (this.circulosActuales < this.circulosMaximos) {
-                this.circulosActuales++;
-                repaint();
-            }
-        });
-        add(sumarButton);
     }
 
     @Override
@@ -81,5 +70,19 @@ public class PanelJuegoIzquierda extends JPanel {
 
     public int getNumeroCirculosMaximos() {
         return circulosMaximos;
+    }
+    
+    public void generarBrotesCirculos(int circulosMaximos, int circulosActuales) {
+        this.circulosMaximos = circulosMaximos;
+        this.circulosActuales = circulosActuales;
+        
+        JButton sumarButton = new JButton("Sumar");
+        sumarButton.addActionListener(e -> {
+            if (this.circulosActuales < this.circulosMaximos) {
+                this.circulosActuales++;
+                repaint();
+            }
+        });
+        add(sumarButton);
     }
 }

@@ -14,7 +14,7 @@ import Clases.datosPartida;
 public class LanzadorPartida extends JPanel {
 	public static PanelMapa p = new PanelMapa();
 	public static PanelBotonesMenuAbajo p2 = new PanelBotonesMenuAbajo();
-	public static PanelJuegoIzquierda p3 = new PanelJuegoIzquierda(logicaJuego.dp.getBrotes_maximos(), 0);
+	public static PanelJuegoIzquierda p3 = new PanelJuegoIzquierda();
 	public static PanelJuegoDerecha p4 = new PanelJuegoDerecha();
 	
 	public LanzadorPartida() { 
@@ -35,6 +35,8 @@ public class LanzadorPartida extends JPanel {
         
         logicaJuego.crearVacunas(p4.vacunas, p4);
         logicaJuego.BotonesDesarollar_curar(p4);
+        
+        p3.generarBrotesCirculos(logicaJuego.dp.getBrotes_maximos(), 0);
 
         setVisible(true);
 	}

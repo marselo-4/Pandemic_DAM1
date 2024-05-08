@@ -57,7 +57,7 @@ public class datosPartida {
 		this.rondas = rondas;
 	}
 
-	public static float getpDesarrollo() {
+	public static int getpDesarrollo() {
 		return pDesarrollo;
 	}
 
