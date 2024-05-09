@@ -2,22 +2,22 @@
 <Parametros>
 	<dificultad id="Facil">
 		<Porcentaje_vacuna>25</Porcentaje_vacuna>
-		<Brotes_maximos>12</Brotes_maximos>
-		<Propagacion_turno>3</Propagacion_turno>
-		<Infeccion_inicial>2</Infeccion_inicial>
+		<Brotes_maximos>10</Brotes_maximos>
+		<Propagacion_turno>2</Propagacion_turno>
+		<Infeccion_inicial>8</Infeccion_inicial>
 	</dificultad>
 
 	<dificultad id="Normal">
-		<Porcentaje_vacuna>25</Porcentaje_vacuna>
-		<Brotes_maximos>10</Brotes_maximos>
-		<Propagacion_turno>4</Propagacion_turno>
-		<Infeccion_inicial>4</Infeccion_inicial>
-	</dificultad>
-
-	<dificultad id="Dificil">
 		<Porcentaje_vacuna>20</Porcentaje_vacuna>
 		<Brotes_maximos>8</Brotes_maximos>
 		<Propagacion_turno>4</Propagacion_turno>
-		<Infeccion_inicial>5</Infeccion_inicial>
+		<Infeccion_inicial>12</Infeccion_inicial>
+	</dificultad>
+
+	<dificultad id="Dificil">
+		<Porcentaje_vacuna>10</Porcentaje_vacuna>
+		<Brotes_maximos>5</Brotes_maximos>
+		<Propagacion_turno>6</Propagacion_turno>
+		<Infeccion_inicial>16</Infeccion_inicial>
 	</dificultad>
 </Parametros>

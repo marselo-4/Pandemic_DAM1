@@ -25,26 +25,22 @@ import Clases.Ciudades;
 		public static ImageIcon ciudad_azul1 = new ImageIcon(new ImageIcon("img/IconoCiudadAzul1.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_azul2 = new ImageIcon(new ImageIcon("img/IconoCiudadAzul2.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_azul3 = new ImageIcon(new ImageIcon("img/IconoCiudadAzul3.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
-		public static ImageIcon ciudad_azulBrote = new ImageIcon(new ImageIcon("img/IconoCiudadAzulBrote.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
-
+	
 		public static ImageIcon ciudad_verde0 = new ImageIcon(new ImageIcon("img/iconoCiudadVerde.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_verde1 = new ImageIcon(new ImageIcon("img/iconoCiudadVerde1.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_verde2 = new ImageIcon(new ImageIcon("img/iconoCiudadVerde2.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_verde3 = new ImageIcon(new ImageIcon("img/iconoCiudadVerde3.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
-		public static ImageIcon ciudad_verdeBrote = new ImageIcon(new ImageIcon("img/iconoCiudadVerdeBrote.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 
 		public static ImageIcon ciudad_roja0 = new ImageIcon(new ImageIcon("img/IconoCiudadRojo.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_roja1 = new ImageIcon(new ImageIcon("img/IconoCiudadRojo1.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_roja2 = new ImageIcon(new ImageIcon("img/IconoCiudadRojo2.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_roja3 = new ImageIcon(new ImageIcon("img/IconoCiudadRojo3.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
-		public static ImageIcon ciudad_rojaBrote = new ImageIcon(new ImageIcon("img/IconoCiudadRojoBrote.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
-
+		
 		public static ImageIcon ciudad_amarilla0 = new ImageIcon(new ImageIcon("img/IconoCiudadAmarillo.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_amarilla1 = new ImageIcon(new ImageIcon("img/IconoCiudadAmarillo1.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_amarilla2 = new ImageIcon(new ImageIcon("img/IconoCiudadAmarillo2.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_amarilla3 = new ImageIcon(new ImageIcon("img/IconoCiudadAmarillo3.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));		
-		public static ImageIcon ciudad_amarillaBrote = new ImageIcon(new ImageIcon("img/IconoCiudadAmarilloBrote.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));		
-
+		
 		public static CiudadBoton ciudadSeleccionada;
 	    private ImageIcon icon;
 	    private Image scaledImage;
@@ -105,6 +101,7 @@ import Clases.Ciudades;
 	    		logicaJuego.textosCaja("Ciudad " + selectedButton.getCiudad().getNombre() + " seleccionada. Su nivel de infeccion es "
 	    				+ selectedButton.getCiudad().getInfeccion()); 
 	    		ciudadSeleccionada = selectedButton;
+	    		System.out.println(ciudadSeleccionada.getCiudad().getNombre() + " LA CIUDAD SELECCIONADA");
 	        } 
 	    }
   

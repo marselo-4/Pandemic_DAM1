@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -345,10 +344,6 @@ public class logicaJuego {
 
 	public static void nuevoTurno() {
 		Random rand = new Random();
-		ArrayList<Boolean> colindantesYaInfectadas = new ArrayList<>();
-		for (int i = 0; i < dp.ciudades.size(); i++) {
-			colindantesYaInfectadas.add(true);
-		}
 
 		ArrayList<Ciudades> menores3 = new ArrayList<>();
 
@@ -362,7 +357,7 @@ public class logicaJuego {
 
 		
 		//Spawnear nuevas infecciones
-		int[] ciudadesInfectadasComienzoTurno = new int[dp.getPropagacion_ronda()];
+		int[] ciudadesInfectadasComienzo = new int[dp.getPropagacion_ronda()];
 		ArrayList<Integer> ints_ciudades = new ArrayList<>();
 
 		for (int i = 0; i < dp.ciudades.size(); i++) {
@@ -377,7 +372,7 @@ public class logicaJuego {
 		   
 		    if (dp.ciudades.get(r).getInfeccion() == 0) {
 			    System.out.println(r);
-			    ciudadesInfectadasComienzoTurno[i] = r;
+			    ciudadesInfectadasComienzo[i] = r;
 			    System.out.println(dp.ciudades.get(r).getNombre());
 			    ints_ciudades.remove((Integer)r);
 			}
@@ -456,154 +451,95 @@ public class logicaJuego {
 			} else if (dp.ciudades.get(i).getInfeccion() == 3) {
 				// Crear un array de ciudades colindantes
 				ArrayList<Ciudades> colindantes = new ArrayList<>();
-				
 				ArrayList<Integer> posicionesColindantes = new ArrayList<>();
-				
-				if (PanelMapa.botonesCiudadesArray.get(i).getHaBrotado() == true) {
-					switch (dp.ciudades.get(i).getEnfermedad()) {
-					case "Alfa": // azul
-						PanelMapa.botonesCiudadesArray.get(i).setIcon(PanelMapa.ciudad_azul3);
-						PanelMapa.botonesCiudadesArray.get(i).setHaBrotado(false);
-						break;
-					case "Beta": // roja
-						PanelMapa.botonesCiudadesArray.get(i).setIcon(PanelMapa.ciudad_roja3);
-						PanelMapa.botonesCiudadesArray.get(i).setHaBrotado(false);
-						break;
-					case "Gama": // verde
-						PanelMapa.botonesCiudadesArray.get(i).setIcon(PanelMapa.ciudad_verde3);
-						PanelMapa.botonesCiudadesArray.get(i).setHaBrotado(false);
-						break;
-					case "Delta": // amarillo
-						PanelMapa.botonesCiudadesArray.get(i).setIcon(PanelMapa.ciudad_amarilla3);
-						PanelMapa.botonesCiudadesArray.get(i).setHaBrotado(false);
-						break;
+				for (int j = 0; j < dp.ciudades.get(i).getColindantes().size(); j++) {
+					String ciudadC = dp.ciudades.get(i).getColindantes().get(j);
 
-					default:
-						break;
-					}
-				}else {
-					switch (dp.ciudades.get(i).getEnfermedad()) {
-					case "Alfa": // azul
-						PanelMapa.botonesCiudadesArray.get(i).setIcon(PanelMapa.ciudad_azulBrote);
-						PanelMapa.botonesCiudadesArray.get(i).setHaBrotado(true);
-						break;
-					case "Beta": // roja
-						PanelMapa.botonesCiudadesArray.get(i).setIcon(PanelMapa.ciudad_rojaBrote);
-						PanelMapa.botonesCiudadesArray.get(i).setHaBrotado(true);
-						break;
-					case "Gama": // verde
-						PanelMapa.botonesCiudadesArray.get(i).setIcon(PanelMapa.ciudad_verdeBrote);
-						PanelMapa.botonesCiudadesArray.get(i).setHaBrotado(true);
-						break;
-					case "Delta": // amarillo
-						PanelMapa.botonesCiudadesArray.get(i).setIcon(PanelMapa.ciudad_amarillaBrote);
-						PanelMapa.botonesCiudadesArray.get(i).setHaBrotado(true);
-						break;
+					for (int k = 0; k < dp.ciudades.size(); k++) {
+						if (dp.ciudades.get(k).getNombre().equals(ciudadC)) {
+							colindantes.add(dp.ciudades.get(k));
+							posicionesColindantes.add(k);
+						}
 
-					default:
-						break;
 					}
 				}
-				
-				if (PanelMapa.botonesCiudadesArray.get(i).getHaBrotado() == false) {
-					//HAGO UN FOR DEL TAMAÑO DE LA CANTIDAD DE COLINDANTES QUE TIENE LA CIUDAD
-					for (int j = 0; j < dp.ciudades.get(i).getColindantes().size(); j++) {
-						String ciudadC = dp.ciudades.get(i).getColindantes().get(j);
 
-						//OTRO FOR DEL TAMAÑO DE LA ARRAYLIST DE CIUDADES PARA AÑADIR A LA ARRAYLIST DE COLINDANTES LAS QUE TIENE LA CIUDAD
-						for (int k = 0; k < dp.ciudades.size(); k++) {
-							if (dp.ciudades.get(k).getNombre().equals(ciudadC)) {
-								colindantes.add(dp.ciudades.get(k));
-								posicionesColindantes.add(k);
+				for (int j = 0; j < colindantes.size(); j++) {
+
+					if (colindantes.get(j).getInfeccion() <= 2) {
+						switch (colindantes.get(j).getEnfermedad()) {
+						case "Alfa": // azul
+							switch (colindantes.get(j).getInfeccion()) {
+							case 0:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_azul1);
+								break;
+							case 1:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_azul2);
+								break;
+							case 2:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_azul3);
+								break;
+							}
+							break;
+						case "Beta": // roja
+							switch (colindantes.get(j).getInfeccion()) {
+							case 0:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_roja1);
+								break;
+							case 1:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_roja2);
+								break;
+							case 2:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_roja3);
+								break;
 							}
 
+							break;
+						case "Gama": // verde
+							switch (colindantes.get(j).getInfeccion()) {
+							case 0:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_verde1);
+								break;
+							case 1:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_verde2);
+								break;
+							case 2:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_verde3);
+								break;
+							}
+
+							break;
+						case "Delta": // amarillo
+							switch (colindantes.get(j).getInfeccion()) {
+							case 0:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_amarilla1);
+								break;
+							case 1:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_amarilla2);
+								break;
+							case 2:
+								PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
+										.setIcon(PanelMapa.ciudad_amarilla3);
+								break;
+							}
+
+							break;
 						}
+
+						colindantes.get(j).setInfeccion(colindantes.get(j).getInfeccion() + 1);
+						broteHecho = true;
 					}
-					
-					//EMPIEZO A INFECTAR LAS COLINDANTES / CHECKEAR SI YA HA SIDO INFECTADA POR UN BROTE ANTERIOR
-					for (int j = 0; j < colindantes.size(); j++) {
-
-						if (colindantes.get(j).getInfeccion() <= 2) {					
-							
-							
-							if (colindantesYaInfectadas.get(obtenerPosicionInfectada(colindantes.get(j)))) {
-								switch (colindantes.get(j).getEnfermedad()) {
-								case "Alfa": // azul
-									switch (colindantes.get(j).getInfeccion()) {
-									case 0:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_azul1);
-										break;
-									case 1:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_azul2);
-										break;
-									case 2:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_azul3);
-										break;
-									}
-									break;
-								case "Beta": // roja
-									switch (colindantes.get(j).getInfeccion()) {
-									case 0:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_roja1);
-										break;
-									case 1:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_roja2);
-										break;
-									case 2:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_roja3);
-										break;
-									}
-
-									break;
-								case "Gama": // verde
-									switch (colindantes.get(j).getInfeccion()) {
-									case 0:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_verde1);
-										break;
-									case 1:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_verde2);
-										break;
-									case 2:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_verde3);
-										break;
-									}
-
-									break;
-								case "Delta": // amarillo
-									switch (colindantes.get(j).getInfeccion()) {
-									case 0:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_amarilla1);
-										break;
-									case 1:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_amarilla2);
-										break;
-									case 2:
-										PanelMapa.botonesCiudadesArray.get(posicionesColindantes.get(j))
-												.setIcon(PanelMapa.ciudad_amarilla3);
-										break;
-									}
-
-									break;
-								}
-								colindantesYaInfectadas.set(obtenerPosicionInfectada(colindantes.get(j)), false);
-								colindantes.get(j).setInfeccion(colindantes.get(j).getInfeccion() + 1);
-								broteHecho = true;
-							}
-						}
-				}
-				
-
 
 				}
 
@@ -618,25 +554,25 @@ public class logicaJuego {
 			}
 		}
 		
-		for (int i = 0; i < ciudadesInfectadasComienzoTurno.length; i++) {
+		for (int i = 0; i < ciudadesInfectadasComienzo.length; i++) {
 
-			String enfermedad = PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzoTurno[i]).getCiudad().getEnfermedad();
+			String enfermedad = PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).getCiudad().getEnfermedad();
 			switch (enfermedad) {
 			case "Alfa":
-				PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzoTurno[i]).setIcon(PanelMapa.ciudad_azul1);
-				dp.ciudades.get(ciudadesInfectadasComienzoTurno[i]).setInfeccion(1);
+				PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_azul1);
+				dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
 				break;
 			case "Beta":
-				PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzoTurno[i]).setIcon(PanelMapa.ciudad_roja1);
-				dp.ciudades.get(ciudadesInfectadasComienzoTurno[i]).setInfeccion(1);
+				PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_roja1);
+				dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
 				break;
 			case "Gama":
-				PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzoTurno[i]).setIcon(PanelMapa.ciudad_verde1);
-				dp.ciudades.get(ciudadesInfectadasComienzoTurno[i]).setInfeccion(1);
+				PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_verde1);
+				dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
 				break;
 			case "Delta":
-				PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzoTurno[i]).setIcon(PanelMapa.ciudad_amarilla1);
-				dp.ciudades.get(ciudadesInfectadasComienzoTurno[i]).setInfeccion(1);
+				PanelMapa.botonesCiudadesArray.get(ciudadesInfectadasComienzo[i]).setIcon(PanelMapa.ciudad_amarilla1);
+				dp.ciudades.get(ciudadesInfectadasComienzo[i]).setInfeccion(1);
 				break;
 			default:
 				break;
@@ -654,18 +590,6 @@ public class logicaJuego {
 		textosCaja("");
 
 	}
-	
-public static int obtenerPosicionInfectada(Ciudades colindante) {
-	int posicionArray = -1;
-	
-	for (int i = 0; i < dp.ciudades.size(); i++) {
-		if (dp.ciudades.get(i).getNombre().equals(colindante.getNombre())) {
-			posicionArray = i;
-			break;
-		}
-	}
-	return posicionArray;
-}
 
 public static void curarCiudad(CiudadBoton c) {
     if (PanelMapa.ciudadSeleccionada == null) {

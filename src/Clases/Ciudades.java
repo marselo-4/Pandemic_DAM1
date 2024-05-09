@@ -55,6 +55,5 @@ public class Ciudades {
 	public void setInfeccion(int infeccion) {
 		this.infeccion = infeccion;
 	}
-
 	
 }
