@@ -30,6 +30,15 @@ public class PanelJuegoIzquierda extends JPanel {
 
         setLayout(new FlowLayout());
         setPreferredSize(new Dimension(150, 400));
+        
+        
+        JButton sumarButton = new JButton("Guardar");
+        sumarButton.addActionListener(e -> {
+            controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
+            //controlDatos.guardarRecord(controlDatos.conectarBaseDatos());
+        });
+        add(sumarButton);
+
 
     }
 
@@ -78,12 +87,7 @@ public class PanelJuegoIzquierda extends JPanel {
     public void generarBrotesCirculos(int circulosMaximos, int circulosActuales) {
         this.circulosMaximos = circulosMaximos;
         this.circulosActuales = circulosActuales;
+        repaint();
         
-        JButton sumarButton = new JButton("Guardar");
-        sumarButton.addActionListener(e -> {
-            //controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
-            controlDatos.guardarRecord(controlDatos.conectarBaseDatos());
-        });
-        add(sumarButton);
     }
 }
