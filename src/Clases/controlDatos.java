@@ -11,10 +11,11 @@ import Backend.logicaJuego;
 import Backend.parametros;
 import UI.LanzadorPartida;
 import UI.PanelJuegoDerecha;
+import UI.Puntuaciones;
 
 public class controlDatos {
 
-	private static String URL = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; // casa cambiar ip a
+	private static String URL = "jdbc:oracle:thin:@oracle.ilerna.com:1521:xe"; // casa cambiar ip a
 																			// jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
 	private static String USER = "DAM1_2324_ALE_LUJAN";
 	private static String PWD = "Lujan1234.";
@@ -27,8 +28,9 @@ public class controlDatos {
 
 		if (con != null) {
 
-			guardarPartida(con);
+			//guardarPartida(con);
 			// cargarPartida(con);
+			//cargarRecordNormal(con);
 			con.close();
 		}
 
@@ -67,7 +69,7 @@ public class controlDatos {
 
 	public static void cargarPartida(Connection con) {
 		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.nombre, p.Azul.color, p.Azul.porcentage, p.Rojo.nombre, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.nombre, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.nombre, p.Verde.color, p.Verde.porcentage, c.nombre, c.enfermedad, c.infeccion, c.CordX, c.CordY, c.Colindantes"
-				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c" + "where ROWNUM = 1 ORDER BY FECHA DESC;";
+				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c" + "where ROWNUM = 1 ORDER BY FECHA DESC";
 
 		try {
 			Statement st = con.createStatement();
@@ -131,7 +133,7 @@ public class controlDatos {
 
 	public static void guardarPartida(Connection con) {
 
-		String NombreJ = "test_selectJava2";
+		String NombreJ = "Ramon";
 		String dificultad = parametros.getEleccion();
 		int rondas = logicaJuego.dp.getRondas();
 		int acciones_restantes = logicaJuego.dp.getAcciones();
@@ -202,24 +204,59 @@ public class controlDatos {
 			System.out.println("Ha habido un error en el Insert " + e);
 		}
 	}
+	
+	public static void guardarRecord(Connection con) { //Tirar esta funcion cuando se gane una partida
+
+		String NombreJ = "Mereuqtengue";
+		String dificultad = parametros.getEleccion();
+		int rondas = logicaJuego.dp.getRondas();
+
+
+		String sql = "INSERT INTO RANKING VALUES(NUM_PARTIDA.NEXTVAL, '" + NombreJ + "', '" + dificultad + "', " + rondas +  ")";
+
+		try {
+			Statement st = con.createStatement();
+			st.execute(sql);
+
+			System.out.println("Insert registrado correctamente");
+		} catch (SQLException e) {
+			System.out.println("Ha habido un error en el Insert " + e);
+		}
+		
+	}
+
 
 	public static void cargarRecordFacil(Connection con) {
-
-		String RankingFacil = "SELECT p.NombreJ, p.NPartida, p.dificultad, p.Rondas" + "FROM PartidasGuardadas "
-				+ "WHERE p.dificultad = 'Facil'" + "ORDER BY P.Rondas ASC;";
+		
+		String Ranking = "";
+		int num = 0;
+		String posicion = num + "#"; 
+		
+		String RankingFacil = "SELECT r.NombreJ, r.NPartida, r.dificultad, r.Rondas " + "FROM Ranking r "
+				+ "WHERE r.dificultad = 'Facil'" + "ORDER BY r.Rondas ASC";
 		try {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(RankingFacil);
 
 			if (rs.isBeforeFirst()) {
 				while (rs.next()) {
+					
+
 					String[] partida = new String[4];
 					partida[0] = rs.getString("NombreJ");
 					partida[1] = rs.getString("NPartida");
 					partida[2] = rs.getString("dificultad");
 					partida[3] = rs.getString("Rondas");
-					
-					
+
+				 num++;
+			     posicion = num + "#";
+				 String registro = posicion + " Nickname: " + partida[0] + " Partida: " +
+		                    partida[1] + "#  Dificultad: " + partida[2] + " Rondas: " + partida[3];
+
+		            if (!Ranking.isEmpty()) {
+		                Ranking += "\n"; 
+		            }
+		            Ranking += registro;
 				}
 			} else {
 				System.out.println("No he encontrado nada");
@@ -228,25 +265,42 @@ public class controlDatos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		 Puntuaciones.textosCajaRanking(Ranking);
 
 	}
 
 	public static void cargarRecordNormal(Connection con) {
-
-		String RankingNormal = "SELECT p.NombreJ,  p.NPartida, p.dificultad, p.Rondas" + "FROM PartidasGuardadas "
-				+ "WHERE p.dificultad = 'Normal'" + "ORDER BY P.Rondas ASC;";
+		
+		String Ranking = "";
+		int num = 0;
+		String posicion = num + "#"; 
+		
+		String RankingNormal = "SELECT r.NombreJ,  r.NPartida, r.dificultad, r.Rondas " + " FROM Ranking r "
+				+ "WHERE r.dificultad = 'Normal' " + "ORDER BY r.Rondas ASC";
+		
+		
 		try {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(RankingNormal);
 
 			if (rs.isBeforeFirst()) {
 				while (rs.next()) {
+					
 					String[] partida = new String[4];
 					partida[0] = rs.getString("NombreJ");
 					partida[1] = rs.getString("NPartida");
 					partida[2] = rs.getString("dificultad");
 					partida[3] = rs.getString("Rondas");
 
+				 num++;
+			     posicion = num + "#";
+				 String registro = posicion + " Nickname: " + partida[0] + " Partida: " +
+		                    partida[1] + "#  Dificultad: " + partida[2] + " Rondas: " + partida[3];
+
+		            if (!Ranking.isEmpty()) {
+		                Ranking += "\n"; 
+		            }
+		            Ranking += registro;
 				}
 			} else {
 				System.out.println("No he encontrado nada");
@@ -255,24 +309,40 @@ public class controlDatos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		 Puntuaciones.textosCajaRanking(Ranking);
 
 	}
 	
 	public static void cargarRecordDificil(Connection con) {
+		
+		String Ranking = "";
+		int num = 0;
+		String posicion = num + "#"; 
 
-		String RankingDificil = "SELECT p.NombreJ,  p.NPartida, p.dificultad, p.Rondas" + "FROM PartidasGuardadas "
-				+ "WHERE p.dificultad = 'Dificil'" + "ORDER BY P.Rondas ASC;";
+		String RankingDificil = "SELECT r.NombreJ,  r.NPartida, r.dificultad, r.Rondas " + "FROM Ranking r "
+				+ "WHERE r.dificultad = 'Dificil' " + "ORDER BY r.Rondas ASC";
 		try {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(RankingDificil);
 
 			if (rs.isBeforeFirst()) {
 				while (rs.next()) {
+
 					String[] partida = new String[4];
 					partida[0] = rs.getString("NombreJ");
 					partida[1] = rs.getString("NPartida");
 					partida[2] = rs.getString("dificultad");
 					partida[3] = rs.getString("Rondas");
+
+				 num++;
+			     posicion = num + "#";
+				 String registro = posicion + " Nickname: " + partida[0] + " Partida: " +
+		                    partida[1] + "#  Dificultad: " + partida[2] + " Rondas: " + partida[3];
+
+		            if (!Ranking.isEmpty()) {
+		                Ranking += "\n"; 
+		            }
+		            Ranking += registro;
 				}
 			} else {
 				System.out.println("No he encontrado nada");
@@ -281,14 +351,12 @@ public class controlDatos {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		 Puntuaciones.textosCajaRanking(Ranking);
 
 	}
 	
 	
 
-	public static void guardarRecord() {
-
-	}
 
 	public String getUrl() {
 		return URL;

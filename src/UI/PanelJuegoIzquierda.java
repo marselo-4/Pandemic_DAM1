@@ -11,6 +11,8 @@ import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.util.ResourceBundle.Control;
 
 public class PanelJuegoIzquierda extends JPanel {
     public static int circulosMaximos;
@@ -80,6 +82,7 @@ public class PanelJuegoIzquierda extends JPanel {
         JButton sumarButton = new JButton("Guardar");
         sumarButton.addActionListener(e -> {
             controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
+            //controlDatos.guardarRecord(controlDatos.conectarBaseDatos());
         });
         add(sumarButton);
     }

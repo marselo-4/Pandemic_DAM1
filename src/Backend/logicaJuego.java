@@ -32,6 +32,7 @@ import UI.PanelJuegoDerecha;
 import UI.PanelJuegoIzquierda;
 import UI.PanelMapa;
 import UI.PanelPrincipal;
+import UI.Puntuaciones;
 
 public class logicaJuego {
 	public static controlDatos cd = new controlDatos();
@@ -86,7 +87,7 @@ public class logicaJuego {
 			}
 		}).start();
 	}
-
+	
 	public static void textosCajaColor(String texto, Color color) {
 		// Creamos un hilo para el efecto de escritura
 		new Thread(() -> {
