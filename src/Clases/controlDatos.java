@@ -4,12 +4,14 @@ package Clases;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 import Backend.TxtCiudades;
 import Backend.logicaJuego;
 import Backend.parametros;
 import UI.LanzadorPartida;
+import UI.PanelBotonesMenuAbajo;
 import UI.PanelJuegoDerecha;
 import UI.Puntuaciones;
 
@@ -29,8 +31,9 @@ public class controlDatos {
 		if (con != null) {
 
 			//guardarPartida(con);
-			// cargarPartida(con);
+			cargarPartida(con);
 			//cargarRecordNormal(con);
+			
 			con.close();
 		}
 
@@ -68,23 +71,41 @@ public class controlDatos {
 	}
 
 	public static void cargarPartida(Connection con) {
-		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.nombre, p.Azul.color, p.Azul.porcentage, p.Rojo.nombre, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.nombre, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.nombre, p.Verde.color, p.Verde.porcentage, c.nombre, c.enfermedad, c.infeccion, c.CordX, c.CordY, c.Colindantes"
-				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c" + "where ROWNUM = 1 ORDER BY FECHA DESC";
-
+		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.nombre, p.Azul.color, p.Azul.porcentage, p.Rojo.nombre, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.nombre, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.nombre, p.Verde.color, p.Verde.porcentage, c.nombre, c.enfermedad, c.infeccion, c.CordX, c.CordY, c.Colindantes "
+				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c " + "WHERE p.NPartida = (SELECT MAX(NPartida) FROM PartidasGuardadas) ORDER BY FECHA DESC";
+		
 		try {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 
 			if (rs.isBeforeFirst()) {
 				while (rs.next()) {
+					
 					int Npartida = rs.getInt("Npartida");
+										
 					String NombreJ = rs.getString("NombreJ");
+					
 					String Dificultad = rs.getString("dificultad");
+					parametros.setEleccion(Dificultad);
+					
 					int Rondas = rs.getInt("Rondas");
+					logicaJuego.dp.setRondas(8);
+					String RondasStr = String.valueOf(Rondas);
+					PanelBotonesMenuAbajo.lblTurno.setText(RondasStr);
+					
+					
 					String Fecha = rs.getString("Fecha");
+					
 					int Acciones_restantes = rs.getInt("Acciones_restantes");
+					logicaJuego.dp.setAcciones(Acciones_restantes);
+					
 					int Brotes = rs.getInt("Brotes");
+					logicaJuego.dp.setBrotes(Brotes);
+					String BrotesStr = String.valueOf(Brotes);
+					PanelBotonesMenuAbajo.lblTurno.setText(BrotesStr);
+					
 
+					
 					String nombreA = rs.getString("Azul.nombre");
 					String colorA = rs.getString("AZUL.color");
 					int porcentageA = rs.getInt("AZUL.porcentage");
@@ -113,10 +134,33 @@ public class controlDatos {
 					PanelJuegoDerecha.radioVerde.getVacuna().setPorcentaje(porcentageV);
 					PanelJuegoDerecha.labelVerde.setText(porcentageV + "%");
 
-					while (rs.next()) {
-						 
+			
+
+						String nombre = rs.getString("nombre");
+//						String enfermedad = rs.getString("c.enfermedad");
+						int infeccion = rs.getInt("infeccion");
+//						int[] XY = new int[2];
+//						XY[0] = rs.getInt("c.CordX");
+//						XY[1] = rs.getInt("c.CordY");
+//						String colindantes = rs.getString("c.colindantes");
+//
+//						ArrayList<String> Acolindantes = new ArrayList<>();
+//
+//						String[] ciudades = colindantes.split(" ");
+//
+//						Collections.addAll(Acolindantes, ciudades);
 						
-					}
+						logicaJuego.crearArrayCiudades();
+						
+						for (int i = 0; i < 48; i++) {
+							if (logicaJuego.dp.ciudades.get(i).getNombre().equals(nombre)) {
+								logicaJuego.dp.ciudades.get(i).setInfeccion(infeccion);
+							}
+						}
+
+						
+
+					
 
 					// Ciudades cd = new Ciudades();
 
@@ -245,13 +289,12 @@ public class controlDatos {
 					String[] partida = new String[4];
 					partida[0] = rs.getString("NombreJ");
 					partida[1] = rs.getString("NPartida");
-					partida[2] = rs.getString("dificultad");
 					partida[3] = rs.getString("Rondas");
 
 				 num++;
 			     posicion = num + "#";
-				 String registro = posicion + " NICKNAME: " + partida[0] + " / PARTIDA: " +
-		                    partida[1] + "# / DIFICULTAD: " + partida[2] + " / RONDAS: " + partida[3];
+				 String registro = posicion + " NICKNAME: " + partida[0] + "  PARTIDA: " +
+		                    partida[1] + "#  " + " RONDAS: " + partida[3];
 
 		            if (!Ranking.isEmpty()) {
 		                Ranking += "\n \n"; 
@@ -289,13 +332,12 @@ public class controlDatos {
 					String[] partida = new String[4];
 					partida[0] = rs.getString("NombreJ");
 					partida[1] = rs.getString("NPartida");
-					partida[2] = rs.getString("dificultad");
 					partida[3] = rs.getString("Rondas");
 
 				 num++;
 			     posicion = num + "#";
-				 String registro = posicion + " NICKNAME: " + partida[0] + " / PARTIDA: " +
-		                    partida[1] + "# /  DIFICULTAD: " + partida[2] + " / RONDAS: " + partida[3];
+				 String registro = posicion + " NICKNAME: " + partida[0] + "  PARTIDA: " +
+		                    partida[1] + "#  " + " RONDAS: " + partida[3];
 
 		            if (!Ranking.isEmpty()) {
 		                Ranking += "\n \n";
@@ -320,7 +362,7 @@ public class controlDatos {
 		int num = 0;
 		String posicion = num + "#"; 
 
-		String RankingDificil = "SELECT r.NombreJ,  r.NPartida, r.dificultad, r.Rondas " + "FROM Ranking r "
+		String RankingDificil = "SELECT r.NombreJ,  r.NPartida, r.Rondas, r.dificultad " + "FROM Ranking r "
 				+ "WHERE r.dificultad = 'Dificil' AND ROWNUM BETWEEN 1 AND 10"  + "ORDER BY r.Rondas ASC";
 		try {
 			Statement st = con.createStatement();
@@ -332,13 +374,12 @@ public class controlDatos {
 					String[] partida = new String[4];
 					partida[0] = rs.getString("NombreJ");
 					partida[1] = rs.getString("NPartida");
-					partida[2] = rs.getString("dificultad");
 					partida[3] = rs.getString("Rondas");
 
 				 num++;
 			     posicion = num + "#";
-				 String registro = posicion + " NICKNAME: " + partida[0] + " / PARTIDA: " +
-		                    partida[1] + "# /  DIFICULTAD: " + partida[2] + " / RONDAS: " + partida[3];
+				 String registro = posicion + " NICKNAME: " + partida[0] + "  PARTIDA: " +
+		                    partida[1] + "#  " + " RONDAS: " + partida[3];
 
 		            if (!Ranking.isEmpty()) {
 		                Ranking += "\n \n"; 

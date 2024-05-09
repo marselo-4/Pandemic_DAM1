@@ -118,7 +118,7 @@ public class Puntuaciones extends JPanel implements ActionListener {
         
         try {
             fuentePersonalizada = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-            fuentePersonalizada = fuentePersonalizada.deriveFont(25f); 
+            fuentePersonalizada = fuentePersonalizada.deriveFont(29f); 
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
         }

@@ -2,7 +2,7 @@ package UI;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.ImageIcon;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -101,7 +101,12 @@ public class PanelPrincipal extends JPanel implements ActionListener {
         else if(e.getSource() == cargarpartida){
             // Es minimitza nose perque
             //JOptionPane.showMessageDialog(this, "Última partida cargada");
-            System.out.println("Última partida cargada");
+        	LanzadorPartida.setCargarGuardada(true);
+        	  JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(PanelPrincipal.this);
+              frame.remove(PanelPrincipal.this);
+              frame.add(new LanzadorPartida());
+              frame.setVisible(true);
+        	System.out.println("Última partida cargada");
         }
         else if(e.getSource() == puntuaciones){
             JFrame marco = (JFrame) SwingUtilities.getWindowAncestor(this);
