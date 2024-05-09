@@ -81,21 +81,31 @@ public class Puntuaciones extends JPanel implements ActionListener {
     
     public void BotoneraYCajatxtRanking () {
 
-    	facilRadio = new JRadioButton("Fácil");
+    	facilRadio = new JRadioButton();
+    	facilRadio.setIcon(new ImageIcon(new ImageIcon("src/assets/facil.png").getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH)));
     	facilRadio.addActionListener(this);
-        normalRadio = new JRadioButton("Normal");
-    	normalRadio.addActionListener(this);
-        dificilRadio = new JRadioButton("Difícil");
-    	dificilRadio.addActionListener(this);
-        dificultadGroup = new ButtonGroup();
-        dificultadGroup.add(facilRadio);
-        dificultadGroup.add(normalRadio);
-        dificultadGroup.add(dificilRadio);
+    	facilRadio.setContentAreaFilled(false);
+    	facilRadio.setBorderPainted(false);
+    	facilRadio.setFocusPainted(false);
         add(facilRadio);
+
+        normalRadio = new JRadioButton();
+        normalRadio.setIcon(new ImageIcon(new ImageIcon("src/assets/medio.png").getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH)));
+        normalRadio.addActionListener(this);
+        normalRadio.setContentAreaFilled(false);
+        normalRadio.setBorderPainted(false);
+        normalRadio.setFocusPainted(false);
         add(normalRadio);
+
+        dificilRadio = new JRadioButton();
+        dificilRadio.setIcon(new ImageIcon(new ImageIcon("src/assets/dificil.png").getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH)));
+        dificilRadio.addActionListener(this);
+        dificilRadio.setContentAreaFilled(false);
+        dificilRadio.setBorderPainted(false);
+        dificilRadio.setFocusPainted(false);
         add(dificilRadio);
         
-        textArea = new JTextArea(20, 50);
+        textArea = new JTextArea(20, 60);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setOpaque(false);
@@ -114,7 +124,7 @@ public class Puntuaciones extends JPanel implements ActionListener {
         }
         textArea.setFont(fuentePersonalizada);
         
-        textArea.setText("ai ai ai como me dueleee");
+        textArea.setText("SELECCIONE UNA DIFICULTAD PARA MOSTRAR LAS 10 MEJORES PUNTUACIONES");
 
     }
     

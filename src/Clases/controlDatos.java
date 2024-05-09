@@ -15,7 +15,7 @@ import UI.Puntuaciones;
 
 public class controlDatos {
 
-	private static String URL = "jdbc:oracle:thin:@oracle.ilerna.com:1521:xe"; // casa cambiar ip a
+	private static String URL = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; // casa cambiar ip a
 																			// jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
 	private static String USER = "DAM1_2324_ALE_LUJAN";
 	private static String PWD = "Lujan1234.";
@@ -207,7 +207,7 @@ public class controlDatos {
 	
 	public static void guardarRecord(Connection con) { //Tirar esta funcion cuando se gane una partida
 
-		String NombreJ = "Mereuqtengue";
+		String NombreJ = "bazoka";
 		String dificultad = parametros.getEleccion();
 		int rondas = logicaJuego.dp.getRondas();
 
@@ -233,7 +233,7 @@ public class controlDatos {
 		String posicion = num + "#"; 
 		
 		String RankingFacil = "SELECT r.NombreJ, r.NPartida, r.dificultad, r.Rondas " + "FROM Ranking r "
-				+ "WHERE r.dificultad = 'Facil'" + "ORDER BY r.Rondas ASC";
+				+ "WHERE r.dificultad = 'Facil' AND ROWNUM BETWEEN 1 AND 10" + "ORDER BY r.Rondas ASC";
 		try {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(RankingFacil);
@@ -250,11 +250,11 @@ public class controlDatos {
 
 				 num++;
 			     posicion = num + "#";
-				 String registro = posicion + " Nickname: " + partida[0] + " Partida: " +
-		                    partida[1] + "#  Dificultad: " + partida[2] + " Rondas: " + partida[3];
+				 String registro = posicion + " NICKNAME: " + partida[0] + " / PARTIDA: " +
+		                    partida[1] + "# / DIFICULTAD: " + partida[2] + " / RONDAS: " + partida[3];
 
 		            if (!Ranking.isEmpty()) {
-		                Ranking += "\n"; 
+		                Ranking += "\n \n"; 
 		            }
 		            Ranking += registro;
 				}
@@ -276,7 +276,7 @@ public class controlDatos {
 		String posicion = num + "#"; 
 		
 		String RankingNormal = "SELECT r.NombreJ,  r.NPartida, r.dificultad, r.Rondas " + " FROM Ranking r "
-				+ "WHERE r.dificultad = 'Normal' " + "ORDER BY r.Rondas ASC";
+				+ "WHERE r.dificultad = 'Normal' AND ROWNUM BETWEEN 1 AND 10 " + "ORDER BY r.Rondas ASC";
 		
 		
 		try {
@@ -294,11 +294,12 @@ public class controlDatos {
 
 				 num++;
 			     posicion = num + "#";
-				 String registro = posicion + " Nickname: " + partida[0] + " Partida: " +
-		                    partida[1] + "#  Dificultad: " + partida[2] + " Rondas: " + partida[3];
+				 String registro = posicion + " NICKNAME: " + partida[0] + " / PARTIDA: " +
+		                    partida[1] + "# /  DIFICULTAD: " + partida[2] + " / RONDAS: " + partida[3];
 
 		            if (!Ranking.isEmpty()) {
-		                Ranking += "\n"; 
+		                Ranking += "\n \n";
+		                
 		            }
 		            Ranking += registro;
 				}
@@ -320,7 +321,7 @@ public class controlDatos {
 		String posicion = num + "#"; 
 
 		String RankingDificil = "SELECT r.NombreJ,  r.NPartida, r.dificultad, r.Rondas " + "FROM Ranking r "
-				+ "WHERE r.dificultad = 'Dificil' " + "ORDER BY r.Rondas ASC";
+				+ "WHERE r.dificultad = 'Dificil' AND ROWNUM BETWEEN 1 AND 10"  + "ORDER BY r.Rondas ASC";
 		try {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(RankingDificil);
@@ -336,11 +337,11 @@ public class controlDatos {
 
 				 num++;
 			     posicion = num + "#";
-				 String registro = posicion + " Nickname: " + partida[0] + " Partida: " +
-		                    partida[1] + "#  Dificultad: " + partida[2] + " Rondas: " + partida[3];
+				 String registro = posicion + " NICKNAME: " + partida[0] + " / PARTIDA: " +
+		                    partida[1] + "# /  DIFICULTAD: " + partida[2] + " / RONDAS: " + partida[3];
 
 		            if (!Ranking.isEmpty()) {
-		                Ranking += "\n"; 
+		                Ranking += "\n \n"; 
 		            }
 		            Ranking += registro;
 				}
