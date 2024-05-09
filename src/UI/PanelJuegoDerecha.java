@@ -26,6 +26,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import Backend.logicaJuego;
+import Clases.CiudadBoton;
 import Clases.VacunaBoton;
 
 public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemListener{
@@ -118,54 +119,73 @@ public void actionPerformed(ActionEvent e) {
         }
     }else if (e.getSource() == DesarollarVacuna) { 
         // Deshabilitar el botón mientras se realiza la animación
-        DesarollarVacuna.setEnabled(false);
 
         switch (vacunaSeleccionada) {
             case 1:
-            	boolean b = logicaJuego.updateAP(4);
-            	if(b) {
-                    logicaJuego.textosCajaColor("Vacuna azul desarrollada con exito!", Color.blue);
-                	logicaJuego.animateJLabel(labelAzul, radioAzul.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioAzul.getVacuna(), () -> {
-                        DesarollarVacuna.setEnabled(true);
-                        });
+            	if(radioAzul.getVacuna().getPorcentaje() != 100) {
+                	boolean b = logicaJuego.updateAP(2);
+            		if (b) {
+                        DesarollarVacuna.setEnabled(false);
+                        logicaJuego.textosCajaColor("Vacuna azul desarrollada con exito!", Color.blue);
+                    	logicaJuego.animateJLabel(labelAzul, radioAzul.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioAzul.getVacuna(), () -> {
+                            DesarollarVacuna.setEnabled(true);
+                            });
+					}
+            	}else {
+            		logicaJuego.textosCaja("La vacuna ya esta al maximo!!");
             	}
-            	DesarollarVacuna.setEnabled(true);
 
                 break;
             case 2:
-            	boolean b1 = logicaJuego.updateAP(4);
-            	if(b1) {
-                    logicaJuego.textosCajaColor("Vacuna verde desarrollada con exito!", Color.green);
-                    logicaJuego.animateJLabel(labelVerde, radioVerde.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioVerde.getVacuna(), () -> {
-                        DesarollarVacuna.setEnabled(true);
-                    });
+            	if(radioVerde.getVacuna().getPorcentaje() != 100) {
+                	boolean b1 = logicaJuego.updateAP(2);
+                	if (b1) {
+                        DesarollarVacuna.setEnabled(false);
+                        logicaJuego.textosCajaColor("Vacuna verde desarrollada con exito!", Color.green);
+                        logicaJuego.animateJLabel(labelVerde, radioVerde.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioVerde.getVacuna(), () -> {
+                            DesarollarVacuna.setEnabled(true);
+                        });
+					}
+            	}else {
+            		logicaJuego.textosCaja("La vacuna ya esta al maximo!!");
             	}
-            	DesarollarVacuna.setEnabled(true);
-                break;
+            	break;
             case 3:
-            	boolean b2 = logicaJuego.updateAP(4);
-            	if(b2) {
-                    logicaJuego.textosCajaColor("Vacuna amarilla desarrollada con exito!", Color.yellow);
-                    logicaJuego.animateJLabel(labelAmarillo, radioAmarillo.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioAmarillo.getVacuna(), () -> {
-                        DesarollarVacuna.setEnabled(true);
-                    });
+
+            	if(radioAmarillo.getVacuna().getPorcentaje() != 100) {
+                	boolean b2 = logicaJuego.updateAP(2);
+                	if (b2) {
+                        DesarollarVacuna.setEnabled(false);
+                        logicaJuego.textosCajaColor("Vacuna amarilla desarrollada con exito!", Color.yellow);
+                        logicaJuego.animateJLabel(labelAmarillo, radioAmarillo.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioAmarillo.getVacuna(), () -> {
+                            DesarollarVacuna.setEnabled(true);
+                        });
+					}                    
+            	}else {
+            		logicaJuego.textosCaja("La vacuna ya esta al maximo!!");
             	}
-            	DesarollarVacuna.setEnabled(true);
-                break;
+            	break;
             case 4:
-            	boolean b3 = logicaJuego.updateAP(4);
-            	if(b3) {
-                    logicaJuego.textosCajaColor("Vacuna roja desarrollada con exito!", Color.red);
-                    logicaJuego.animateJLabel(labelRojo, radioRojo.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioRojo.getVacuna(), () -> {
-                        DesarollarVacuna.setEnabled(true);
-                    });
+            	if(radioRojo.getVacuna().getPorcentaje() != 100) {
+                	boolean b3 = logicaJuego.updateAP(2);
+            		if (b3) {
+                        DesarollarVacuna.setEnabled(false);
+                        logicaJuego.textosCajaColor("Vacuna roja desarrollada con exito!", Color.red);
+                        logicaJuego.animateJLabel(labelRojo, radioRojo.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioRojo.getVacuna(), () -> {
+                            DesarollarVacuna.setEnabled(true);
+                        });
+					}
+            	}else {
+            		logicaJuego.textosCaja("La vacuna ya esta al maximo!!");
             	}
-            	DesarollarVacuna.setEnabled(true);
-                break;
+            	break;
             default:
             	DesarollarVacuna.setEnabled(true);
                 break;
         }
+    }else if(e.getSource() == curarCiudad) {
+    	System.out.println("Intentando curar");
+    	logicaJuego.curarCiudad(PanelMapa.ciudadSeleccionada);
     }
 
 }
