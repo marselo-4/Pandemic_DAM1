@@ -105,6 +105,7 @@ public class NuevaPartida extends JPanel implements ActionListener {
             frame.remove(NuevaPartida.this);
             frame.add(new PanelPrincipal());
             frame.setVisible(true);
+            
         }else if (e.getSource() == facil) {
             parametros.setEleccion("Facil");
             System.out.println("Has escogido el nivel fácil");

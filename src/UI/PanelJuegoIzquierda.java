@@ -4,12 +4,15 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import Backend.logicaJuego;
+import Clases.controlDatos;
 
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.util.ResourceBundle.Control;
 
 public class PanelJuegoIzquierda extends JPanel {
     public static int circulosMaximos;
@@ -76,12 +79,10 @@ public class PanelJuegoIzquierda extends JPanel {
         this.circulosMaximos = circulosMaximos;
         this.circulosActuales = circulosActuales;
         
-        JButton sumarButton = new JButton("Sumar");
+        JButton sumarButton = new JButton("Guardar");
         sumarButton.addActionListener(e -> {
-            if (this.circulosActuales < this.circulosMaximos) {
-                this.circulosActuales++;
-                repaint();
-            }
+            //controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
+            controlDatos.guardarRecord(controlDatos.conectarBaseDatos());
         });
         add(sumarButton);
     }
