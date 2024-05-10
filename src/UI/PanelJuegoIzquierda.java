@@ -83,6 +83,8 @@ public class PanelJuegoIzquierda extends JPanel {
         sumarButton.addActionListener(e -> {
             //controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
             controlDatos.guardarRecord(controlDatos.conectarBaseDatos());
+            logicaJuego.resultadoFinal();
+
         });
         add(sumarButton);
     }
