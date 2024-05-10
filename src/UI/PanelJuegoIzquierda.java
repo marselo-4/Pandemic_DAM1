@@ -31,13 +31,19 @@ public class PanelJuegoIzquierda extends JPanel {
         setLayout(new FlowLayout());
         setPreferredSize(new Dimension(150, 400));
         
-        
-        JButton sumarButton = new JButton("Guardar");
-        sumarButton.addActionListener(e -> {
+        ImageIcon icono = new ImageIcon("src/assets/guardar.png");
+  
+
+        JButton GuardarButton = new JButton("Guardar");
+        GuardarButton.setContentAreaFilled(false);
+        GuardarButton.setBorderPainted(false);
+        GuardarButton.setFocusPainted(false);
+        GuardarButton.setIcon(new ImageIcon(new ImageIcon("src/assets/guardar.png").getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH)));
+        GuardarButton.addActionListener(e -> {
             controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
             //controlDatos.guardarRecord(controlDatos.conectarBaseDatos());
         });
-        add(sumarButton);
+        add(GuardarButton);
 
 
     }
