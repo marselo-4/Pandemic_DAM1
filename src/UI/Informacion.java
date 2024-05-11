@@ -19,6 +19,7 @@ public class Informacion extends JPanel implements ActionListener {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        
         volver = new JButton();
         volver.setIcon(new ImageIcon(new ImageIcon("src/assets/5.png").getImage().getScaledInstance(300, 30, java.awt.Image.SCALE_SMOOTH)));
         volver.addActionListener(this);

@@ -96,7 +96,7 @@ public class LanzadorPartida extends JPanel {
 		CargarGuardada = cargarGuardada;
 	}
 	
-}
+
 
 
 

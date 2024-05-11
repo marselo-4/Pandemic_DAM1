@@ -95,7 +95,8 @@ public class PanelPrincipal extends JPanel implements ActionListener {
         if(e.getSource() == nuevapartida){
             JFrame marco = (JFrame) SwingUtilities.getWindowAncestor(this);
             marco.remove(this);
-            marco.add(new NuevaPartida());
+            marco.setSize(1920, 1080);
+            marco.add(new Nickname());
             marco.setVisible(true);
         }
         else if(e.getSource() == cargarpartida){

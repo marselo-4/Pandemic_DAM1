@@ -95,13 +95,6 @@ public class PanelJuegoIzquierda extends JPanel {
         this.circulosActuales = circulosActuales;
         repaint();
         
-        JButton sumarButton = new JButton("Guardar");
-        sumarButton.addActionListener(e -> {
-            //controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
-            controlDatos.guardarRecord(controlDatos.conectarBaseDatos());
-            logicaJuego.resultadoFinal();
 
-        });
-        add(sumarButton);
     }
 }

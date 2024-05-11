@@ -130,6 +130,7 @@ public void actionPerformed(ActionEvent e) {
                         logicaJuego.textosCajaColor("Vacuna azul desarrollada con exito!", Color.blue);
                     	logicaJuego.animateJLabel(labelAzul, radioAzul.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioAzul.getVacuna(), () -> {
                             DesarollarVacuna.setEnabled(true);
+                            logicaJuego.resultadoFinal();
                             });
 					}
             	}else {
@@ -145,6 +146,8 @@ public void actionPerformed(ActionEvent e) {
                         logicaJuego.textosCajaColor("Vacuna verde desarrollada con exito!", Color.green);
                         logicaJuego.animateJLabel(labelVerde, radioVerde.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioVerde.getVacuna(), () -> {
                             DesarollarVacuna.setEnabled(true);
+                            logicaJuego.resultadoFinal();
+
                         });
 					}
             	}else {
@@ -160,8 +163,11 @@ public void actionPerformed(ActionEvent e) {
                         logicaJuego.textosCajaColor("Vacuna amarilla desarrollada con exito!", Color.yellow);
                         logicaJuego.animateJLabel(labelAmarillo, radioAmarillo.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioAmarillo.getVacuna(), () -> {
                             DesarollarVacuna.setEnabled(true);
+                            logicaJuego.resultadoFinal();
                         });
-					}                    
+					}      
+                    logicaJuego.resultadoFinal();
+
             	}else {
             		logicaJuego.textosCaja("La vacuna ya esta al maximo!!");
             	}
@@ -174,6 +180,7 @@ public void actionPerformed(ActionEvent e) {
                         logicaJuego.textosCajaColor("Vacuna roja desarrollada con exito!", Color.red);
                         logicaJuego.animateJLabel(labelRojo, radioRojo.getVacuna().getPorcentaje(), logicaJuego.dp.getpDesarrollo(), radioRojo.getVacuna(), () -> {
                             DesarollarVacuna.setEnabled(true);
+                            logicaJuego.resultadoFinal();
                         });
 					}
             	}else {
@@ -184,7 +191,6 @@ public void actionPerformed(ActionEvent e) {
             	DesarollarVacuna.setEnabled(true);
                 break;
         }
-        logicaJuego.resultadoFinal();
     }else if(e.getSource() == curarCiudad) {
     	logicaJuego.curarCiudad(PanelMapa.ciudadSeleccionada);
     }

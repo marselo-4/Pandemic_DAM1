@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Parametros>
 	<dificultad id="Facil">
-		<Porcentaje_vacuna>25</Porcentaje_vacuna>
+		<Porcentaje_vacuna>100</Porcentaje_vacuna>
 		<Brotes_maximos>12</Brotes_maximos>
 		<Propagacion_turno>3</Propagacion_turno>
 		<Infeccion_inicial>2</Infeccion_inicial>

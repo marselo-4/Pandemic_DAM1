@@ -675,7 +675,7 @@ public static int obtenerPosicionInfectada(Ciudades colindante) {
 	return posicionArray;
 }
 	public static void resultadoFinal(){
-		
+				
 		int suma1 = PanelJuegoDerecha.radioVerde.getVacuna().getPorcentaje();
 		int suma2 = PanelJuegoDerecha.radioAzul.getVacuna().getPorcentaje();
 		int suma3 = PanelJuegoDerecha.radioAmarillo.getVacuna().getPorcentaje();
@@ -683,8 +683,7 @@ public static int obtenerPosicionInfectada(Ciudades colindante) {
 		
 		int sumafinal = suma1+suma2+suma3+suma4;
 		
-		if(sumafinal >= 400) {resultadoPartida(true);}else {System.out.println("no has ganado aun");}
-		
+		if(sumafinal >= 400) {controlDatos.guardarRecord(controlDatos.conectarBaseDatos()); resultadoPartida(true); }else {System.out.println("No has ganado aun");}
 	}
 
 public static void curarCiudad(CiudadBoton c) {
@@ -780,7 +779,7 @@ public static void curarCiudad(CiudadBoton c) {
             }
 
         } else {
-            textosCaja("¡La ciudad ya está sana!");
+            textosCaja("¡La ciudad ya esta sana!");
 }
     }
 }
