@@ -42,6 +42,8 @@ public class logicaJuego {
 
 	// LÓGICA GENERAL PARA LA PARTIDA
 
+
+
 	public static void crearArrayCiudades() {
 		String linea = "";
 
@@ -377,9 +379,7 @@ public class logicaJuego {
 		    } while (!ints_ciudades.contains(r));
 		   
 		    if (dp.ciudades.get(r).getInfeccion() == 0) {
-			    System.out.println(r);
 			    ciudadesInfectadasComienzoTurno[i] = r;
-			    System.out.println(dp.ciudades.get(r).getNombre());
 			    ints_ciudades.remove((Integer)r);
 			}
 
@@ -506,7 +506,7 @@ public class logicaJuego {
 					}
 				}
 				
-				if (PanelMapa.botonesCiudadesArray.get(i).getHaBrotado() == false) {
+				if (!PanelMapa.botonesCiudadesArray.get(i).getHaBrotado()) {
 					//HAGO UN FOR DEL TAMAÑO DE LA CANTIDAD DE COLINDANTES QUE TIENE LA CIUDAD
 					for (int j = 0; j < dp.ciudades.get(i).getColindantes().size(); j++) {
 						String ciudadC = dp.ciudades.get(i).getColindantes().get(j);

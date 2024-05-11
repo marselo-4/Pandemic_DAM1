@@ -184,7 +184,6 @@ public void actionPerformed(ActionEvent e) {
                 break;
         }
     }else if(e.getSource() == curarCiudad) {
-    	System.out.println("Intentando curar");
     	logicaJuego.curarCiudad(PanelMapa.ciudadSeleccionada);
     }
 
