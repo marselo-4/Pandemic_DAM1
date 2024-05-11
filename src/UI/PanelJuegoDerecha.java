@@ -51,6 +51,7 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
     public static JLabel labelVerde = new JLabel("0%");
     public static JLabel labelRojo = new JLabel("0%");
     public static JLabel labelAmarillo = new JLabel("0%");
+    public JButton test = new JButton();
     
     public static JButton curarCiudad = new JButton();
     public static JButton DesarollarVacuna = new JButton();
@@ -183,6 +184,7 @@ public void actionPerformed(ActionEvent e) {
             	DesarollarVacuna.setEnabled(true);
                 break;
         }
+        logicaJuego.resultadoFinal();
     }else if(e.getSource() == curarCiudad) {
     	logicaJuego.curarCiudad(PanelMapa.ciudadSeleccionada);
     }

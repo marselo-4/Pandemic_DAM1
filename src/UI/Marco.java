@@ -5,7 +5,6 @@ import java.awt.*;
 public class Marco extends JFrame {
 
     public PanelPrincipal lamina;
-    public LanzadorPartida lamina1;
     public Marco(){
 
     	setSize(1920,1080);

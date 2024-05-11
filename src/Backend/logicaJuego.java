@@ -34,11 +34,14 @@ import UI.PanelJuegoIzquierda;
 import UI.PanelMapa;
 import UI.PanelPrincipal;
 import UI.Puntuaciones;
+import UI.hasGanado;
+import UI.hasPerdido;
 
 public class logicaJuego {
 	public static controlDatos cd = new controlDatos();
 	public static datosPartida dp = new datosPartida();
 	public static controlPartida cp = new controlPartida();
+	
 
 	// LÓGICA GENERAL PARA LA PARTIDA
 
@@ -647,9 +650,13 @@ public class logicaJuego {
 		if (PanelJuegoIzquierda.circulosActuales < PanelJuegoIzquierda.circulosMaximos && broteHecho) {
 			LanzadorPartida.p3.setNumeroCirculosActuales(PanelJuegoIzquierda.circulosActuales + 1);
 			if (PanelJuegoIzquierda.circulosActuales == PanelJuegoIzquierda.circulosMaximos) {
-				cambiarPantalla();
+				resultadoPartida(false);
 			}
 		}
+		
+		
+		
+		
 
 		PanelMapa.ciudadSeleccionada = null;
 		textosCaja("");
@@ -667,6 +674,18 @@ public static int obtenerPosicionInfectada(Ciudades colindante) {
 	}
 	return posicionArray;
 }
+	public static void resultadoFinal(){
+		
+		int suma1 = PanelJuegoDerecha.radioVerde.getVacuna().getPorcentaje();
+		int suma2 = PanelJuegoDerecha.radioAzul.getVacuna().getPorcentaje();
+		int suma3 = PanelJuegoDerecha.radioAmarillo.getVacuna().getPorcentaje();
+		int suma4 = PanelJuegoDerecha.radioRojo.getVacuna().getPorcentaje();
+		
+		int sumafinal = suma1+suma2+suma3+suma4;
+		
+		if(sumafinal >= 400) {resultadoPartida(true);}else {System.out.println("no has ganado aun");}
+		
+	}
 
 public static void curarCiudad(CiudadBoton c) {
     if (PanelMapa.ciudadSeleccionada == null) {
@@ -762,7 +781,7 @@ public static void curarCiudad(CiudadBoton c) {
 
         } else {
             textosCaja("¡La ciudad ya está sana!");
-        }
+}
     }
 }
 
@@ -801,18 +820,25 @@ public static void curarCiudad(CiudadBoton c) {
 
 	}
 
-	public static void cambiarPantalla() {
-		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(LanzadorPartida.p);
-		frame.remove(LanzadorPartida.p);
-		frame.remove(LanzadorPartida.p2);
-		frame.remove(LanzadorPartida.p3);
-		frame.remove(LanzadorPartida.p4);
+	public static void resultadoPartida(boolean hasGanado) {
 
-		frame.add(new Informacion());
-		frame.repaint();
-		frame.revalidate();
-		frame.setVisible(true);
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(LanzadorPartida.p6);
 
+		// con esto "funciona"
+		//LanzadorPartida.p.setVisible(false);
+		//LanzadorPartida.p2.setVisible(false);
+		//LanzadorPartida.p3.setVisible(false);
+		//LanzadorPartida.p4.setVisible(false);
+		
+		if( hasGanado == true){
+		LanzadorPartida.mec = true;
+		LanzadorPartida.test();
+		System.out.println("Has Ganado");
+		}else{
+			LanzadorPartida.mecmec = true;
+			LanzadorPartida.test();
+			System.out.println("Has Perdido");
+		}
 	}
 
 }
