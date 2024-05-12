@@ -20,7 +20,7 @@ public class hasGanado extends JPanel implements ActionListener {
             throw new RuntimeException(e);
         }
         volver = new JButton();
-        volver.setIcon(new ImageIcon(new ImageIcon("src/assets/5.png").getImage().getScaledInstance(300, 30, java.awt.Image.SCALE_SMOOTH)));
+        volver.setIcon(new ImageIcon(new ImageIcon("src/assets/salirtemp.png").getImage().getScaledInstance(300, 30, java.awt.Image.SCALE_SMOOTH)));
         volver.addActionListener(this);
         volver.setContentAreaFilled(false);
         volver.setBorderPainted(false);
@@ -52,10 +52,7 @@ public class hasGanado extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == volver) {
-            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(hasGanado.this);
-            frame.remove(hasGanado.this);
-            frame.add(new PanelPrincipal()); // Suponiendo que PreviousPanel es el panel al que quieres volver
-            frame.setVisible(true);
+        	System.exit(0);
         }
     }
 }
