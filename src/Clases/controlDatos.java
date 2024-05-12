@@ -1,6 +1,7 @@
 
 package Clases;
 
+import java.awt.Panel;
 import java.sql.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -74,7 +75,7 @@ public class controlDatos {
 	}
 
 	public static void cargarPartida(Connection con) {
-		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.nombre, p.Azul.color, p.Azul.porcentage, p.Rojo.nombre, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.nombre, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.nombre, p.Verde.color, p.Verde.porcentage, c.nombre, c.enfermedad, c.infeccion, c.CordX, c.CordY, c.Colindantes "
+		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.nombre, p.Azul.color, p.Azul.porcentage, p.Rojo.nombre, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.nombre, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.nombre, p.Verde.color, p.Verde.porcentage, c.nombre, c.enfermedad, c.infeccion, c.CordX, c.CordY, c.Colindantes, c.campoWarning "
 				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c " + "WHERE p.NPartida = (SELECT MAX(NPartida) FROM PartidasGuardadas) ORDER BY FECHA DESC";
 		
 		try {
@@ -162,9 +163,11 @@ public class controlDatos {
 //						(Es solo una ciudad)
 						String colindantes = rs.getString("colindantes");
 						String[] ciudadesC = colindantes.split(";");
+						
+						int campoWarning = rs.getInt("campoWarning");
 
 						
-						updatearCiudadesBackendUI(nombre, enfermedad, infeccion, XY, ciudadesC);
+						updatearCiudadesBackendUI(nombre, enfermedad, infeccion, XY, ciudadesC, campoWarning);
 						
 						
 						//Para que es el for????
@@ -191,7 +194,7 @@ public class controlDatos {
 
 	}
 	//He creado esta funcion para updatear las ciudades más fácilmente
-	public static void updatearCiudadesBackendUI(String nombre, String enfermedad, int infeccion, int[] coords, String[] colindantes) {
+	public static void updatearCiudadesBackendUI(String nombre, String enfermedad, int infeccion, int[] coords, String[] colindantes, int warning) {
 		int posicionCiudad = -1;
 		
 		//Le quito el ultimo char a el nombre pq se ha colado un espacio al final
@@ -209,79 +212,108 @@ public class controlDatos {
 		logicaJuego.dp.ciudades.get(posicionCiudad).setEnfermedad(enfermedad);
 		logicaJuego.dp.ciudades.get(posicionCiudad).setInfeccion(infeccion);
 		
-		//Updatear imagenes de las ciudades
-		switch (enfermedad) {
-		case "Alfa": // azul
-			switch (infeccion) {
-			case 0:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_azul0);
-				break;
-			case 1:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_azul1);
-				break;
-			case 2:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_azul2);
-				break;
-			case 3:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_azul3);
-				break;
-			}
-			break;
-		case "Beta": // roja
-			switch (infeccion) {
-			case 0:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_roja0);
-				break;
-			case 1:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_roja1);
-				break;
-			case 2:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_roja2);
-				break;
-			case 3:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_roja3);
-				break;
-			}
-
-			break;
-		case "Gama": // verde
-			switch (infeccion) {
-			case 0:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_verde0);
-				break;
-			case 1:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_verde1);
-				break;
-			case 2:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_verde2);
-				break;
-			case 3:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_verde3);
-				break;
-			}
-
-			break;
-		case "Delta": // amarillo
-			switch (infeccion) {
-			case 0:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_amarilla0);
-				break;
-			case 1:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_amarilla1);
-				break;
-			case 2:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_amarilla2);
-				break;
-			case 3:
-				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_amarilla3);
-				break;
-			}
-
-			break;
-
-		default:
-			break;
+		boolean campowarning = false;
+		if (warning == 1) {
+			campowarning = true;
 		}
+		
+		PanelMapa.botonesCiudadesArray.get(posicionCiudad).setHaBrotado(campowarning);
+		
+		//Updatear imagenes de las ciudades
+		if (PanelMapa.botonesCiudadesArray.get(posicionCiudad).getHaBrotado() == true) {
+			switch (enfermedad) {
+			case "Alfa": // azul
+				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_azulBrote);
+				break;
+			case "Beta": // roja
+				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_rojaBrote);
+				break;
+			case "Gama": // verde
+				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_verdeBrote);
+				break;
+			case "Delta": // amarillo
+				PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_amarillaBrote);
+				break;
+
+			default:
+				break;
+			}
+		}else {
+			switch (enfermedad) {
+			case "Alfa": // azul
+				switch (infeccion) {
+				case 0:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_azul0);
+					break;
+				case 1:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_azul1);
+					break;
+				case 2:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_azul2);
+					break;
+				case 3:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_azul3);
+					break;
+				}
+				break;
+			case "Beta": // roja
+				switch (infeccion) {
+				case 0:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_roja0);
+					break;
+				case 1:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_roja1);
+					break;
+				case 2:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_roja2);
+					break;
+				case 3:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_roja3);
+					break;
+				}
+
+				break;
+			case "Gama": // verde
+				switch (infeccion) {
+				case 0:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_verde0);
+					break;
+				case 1:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_verde1);
+					break;
+				case 2:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_verde2);
+					break;
+				case 3:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_verde3);
+					break;
+				}
+
+				break;
+			case "Delta": // amarillo
+				switch (infeccion) {
+				case 0:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_amarilla0);
+					break;
+				case 1:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_amarilla1);
+					break;
+				case 2:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_amarilla2);
+					break;
+				case 3:
+					PanelMapa.botonesCiudadesArray.get(posicionCiudad).setIcon(PanelMapa.ciudad_amarilla3);
+					break;
+				}
+
+				break;
+
+			default:
+				break;
+			}
+		}
+		
+
 		
 	}
 
