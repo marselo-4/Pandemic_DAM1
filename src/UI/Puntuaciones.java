@@ -27,27 +27,17 @@ public class Puntuaciones extends JPanel implements ActionListener {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        
-        
-        BotoneraYCajatxtRanking();
-
-        
-        
         volver = new JButton();
         volver.setIcon(new ImageIcon(new ImageIcon("src/assets/5.png").getImage().getScaledInstance(300, 30, java.awt.Image.SCALE_SMOOTH)));
         volver.addActionListener(this);
         volver.setContentAreaFilled(false);
         volver.setBorderPainted(false);
         volver.setFocusPainted(false);
-        add(volver);
+        
+        BotoneraYCajatxtRanking();
 
-        Box box = Box.createVerticalBox();
-        box.add(Box.createVerticalStrut(850)); // Añadimos margen
-        box.add(volver);
-
-        add(Box.createVerticalGlue());
-        add(box);
-        add(Box.createVerticalGlue());
+        
+        
 
 
 
@@ -82,7 +72,7 @@ public class Puntuaciones extends JPanel implements ActionListener {
     public void BotoneraYCajatxtRanking () {
 
     	facilRadio = new JRadioButton();
-    	facilRadio.setIcon(new ImageIcon(new ImageIcon("src/assets/facil.png").getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH)));
+    	facilRadio.setIcon(new ImageIcon(new ImageIcon("src/assets/facil.png").getImage().getScaledInstance(180, 180, java.awt.Image.SCALE_SMOOTH)));
     	facilRadio.addActionListener(this);
     	facilRadio.setContentAreaFilled(false);
     	facilRadio.setBorderPainted(false);
@@ -90,7 +80,7 @@ public class Puntuaciones extends JPanel implements ActionListener {
         add(facilRadio);
 
         normalRadio = new JRadioButton();
-        normalRadio.setIcon(new ImageIcon(new ImageIcon("src/assets/medio.png").getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH)));
+        normalRadio.setIcon(new ImageIcon(new ImageIcon("src/assets/medio.png").getImage().getScaledInstance(180, 180, java.awt.Image.SCALE_SMOOTH)));
         normalRadio.addActionListener(this);
         normalRadio.setContentAreaFilled(false);
         normalRadio.setBorderPainted(false);
@@ -98,7 +88,7 @@ public class Puntuaciones extends JPanel implements ActionListener {
         add(normalRadio);
 
         dificilRadio = new JRadioButton();
-        dificilRadio.setIcon(new ImageIcon(new ImageIcon("src/assets/dificil.png").getImage().getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH)));
+        dificilRadio.setIcon(new ImageIcon(new ImageIcon("src/assets/dificil.png").getImage().getScaledInstance(180, 180, java.awt.Image.SCALE_SMOOTH)));
         dificilRadio.addActionListener(this);
         dificilRadio.setContentAreaFilled(false);
         dificilRadio.setBorderPainted(false);
@@ -113,6 +103,26 @@ public class Puntuaciones extends JPanel implements ActionListener {
         textArea.setForeground(Color.WHITE); 
         add(textArea);
         
+        Box box = Box.createVerticalBox();
+        box.add(Box.createVerticalStrut(200)); // Añadimos margen
+        box.add(facilRadio);
+        box.add(Box.createVerticalStrut(50)); // Añadimos margen
+        box.add(normalRadio);
+        box.add(Box.createVerticalStrut(50)); // Añadimos margen
+        box.add(dificilRadio);
+        box.add(Box.createVerticalStrut(50)); // Añadimos margen
+        
+        Box box2 = Box.createHorizontalBox();
+        box2.add(Box.createHorizontalStrut(50));
+        box2.add(volver);
+        
+        add(Box.createVerticalGlue());
+        add(box);
+        add(Box.createVerticalGlue());
+        
+        add(Box.createVerticalGlue());
+        add(box2);
+        add(Box.createVerticalGlue());
         File fontFile = new File("fonts/DisposableDroidBB.ttf");
         Font fuentePersonalizada = null;
         

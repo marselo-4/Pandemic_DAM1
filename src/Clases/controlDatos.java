@@ -11,6 +11,7 @@ import Backend.TxtCiudades;
 import Backend.logicaJuego;
 import Backend.parametros;
 import UI.LanzadorPartida;
+import UI.Nickname;
 import UI.PanelBotonesMenuAbajo;
 import UI.PanelJuegoDerecha;
 import UI.PanelJuegoIzquierda;
@@ -286,7 +287,7 @@ public class controlDatos {
 
 	public static void guardarPartida(Connection con) {
 
-		String NombreJ = "BAZOKA GOD";
+		String NombreJ = Nickname.getNombreJ();
 		String dificultad = parametros.getEleccion();
 		int rondas = logicaJuego.dp.getRondas();
 		int acciones_restantes = logicaJuego.dp.getAcciones();
@@ -367,8 +368,9 @@ public class controlDatos {
 	}
 	
 	public static void guardarRecord(Connection con) { //Tirar esta funcion cuando se gane una partida
-
-		String NombreJ = "bazoka";
+		
+		
+		String NombreJ = Nickname.getNombreJ();
 		String dificultad = parametros.getEleccion();
 		int rondas = logicaJuego.dp.getRondas();
 

@@ -34,13 +34,18 @@ import UI.PanelJuegoIzquierda;
 import UI.PanelMapa;
 import UI.PanelPrincipal;
 import UI.Puntuaciones;
+import UI.hasGanado;
+import UI.hasPerdido;
 
 public class logicaJuego {
 	public static controlDatos cd = new controlDatos();
 	public static datosPartida dp = new datosPartida();
 	public static controlPartida cp = new controlPartida();
+	
 
 	// LÓGICA GENERAL PARA LA PARTIDA
+
+
 
 	public static void crearArrayCiudades() {
 		String linea = "";
@@ -377,9 +382,7 @@ public class logicaJuego {
 		    } while (!ints_ciudades.contains(r));
 		   
 		    if (dp.ciudades.get(r).getInfeccion() == 0) {
-			    System.out.println(r);
 			    ciudadesInfectadasComienzoTurno[i] = r;
-			    System.out.println(dp.ciudades.get(r).getNombre());
 			    ints_ciudades.remove((Integer)r);
 			}
 
@@ -506,7 +509,7 @@ public class logicaJuego {
 					}
 				}
 				
-				if (PanelMapa.botonesCiudadesArray.get(i).getHaBrotado() == false) {
+				if (!PanelMapa.botonesCiudadesArray.get(i).getHaBrotado()) {
 					//HAGO UN FOR DEL TAMAÑO DE LA CANTIDAD DE COLINDANTES QUE TIENE LA CIUDAD
 					for (int j = 0; j < dp.ciudades.get(i).getColindantes().size(); j++) {
 						String ciudadC = dp.ciudades.get(i).getColindantes().get(j);
@@ -647,9 +650,13 @@ public class logicaJuego {
 		if (PanelJuegoIzquierda.circulosActuales < PanelJuegoIzquierda.circulosMaximos && broteHecho) {
 			LanzadorPartida.p3.setNumeroCirculosActuales(PanelJuegoIzquierda.circulosActuales + 1);
 			if (PanelJuegoIzquierda.circulosActuales == PanelJuegoIzquierda.circulosMaximos) {
-				cambiarPantalla();
+				resultadoPartida(false);
 			}
 		}
+		
+		
+		
+		
 
 		PanelMapa.ciudadSeleccionada = null;
 		textosCaja("");
@@ -667,6 +674,17 @@ public static int obtenerPosicionInfectada(Ciudades colindante) {
 	}
 	return posicionArray;
 }
+	public static void resultadoFinal(){
+				
+		int suma1 = PanelJuegoDerecha.radioVerde.getVacuna().getPorcentaje();
+		int suma2 = PanelJuegoDerecha.radioAzul.getVacuna().getPorcentaje();
+		int suma3 = PanelJuegoDerecha.radioAmarillo.getVacuna().getPorcentaje();
+		int suma4 = PanelJuegoDerecha.radioRojo.getVacuna().getPorcentaje();
+		
+		int sumafinal = suma1+suma2+suma3+suma4;
+		
+		if(sumafinal >= 400) {controlDatos.guardarRecord(controlDatos.conectarBaseDatos()); resultadoPartida(true); }else {System.out.println("No has ganado aun");}
+	}
 
 public static void curarCiudad(CiudadBoton c) {
     if (PanelMapa.ciudadSeleccionada == null) {
@@ -761,8 +779,8 @@ public static void curarCiudad(CiudadBoton c) {
             }
 
         } else {
-            textosCaja("¡La ciudad ya está sana!");
-        }
+            textosCaja("¡La ciudad ya esta sana!");
+}
     }
 }
 
@@ -801,18 +819,25 @@ public static void curarCiudad(CiudadBoton c) {
 
 	}
 
-	public static void cambiarPantalla() {
-		JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(LanzadorPartida.p);
-		frame.remove(LanzadorPartida.p);
-		frame.remove(LanzadorPartida.p2);
-		frame.remove(LanzadorPartida.p3);
-		frame.remove(LanzadorPartida.p4);
+	public static void resultadoPartida(boolean hasGanado) {
 
-		frame.add(new Informacion());
-		frame.repaint();
-		frame.revalidate();
-		frame.setVisible(true);
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(LanzadorPartida.p6);
 
+		// con esto "funciona"
+		//LanzadorPartida.p.setVisible(false);
+		//LanzadorPartida.p2.setVisible(false);
+		//LanzadorPartida.p3.setVisible(false);
+		//LanzadorPartida.p4.setVisible(false);
+		
+		if( hasGanado == true){
+		LanzadorPartida.mec = true;
+		LanzadorPartida.test();
+		System.out.println("Has Ganado");
+		}else{
+			LanzadorPartida.mecmec = true;
+			LanzadorPartida.test();
+			System.out.println("Has Perdido");
+		}
 	}
 
 }

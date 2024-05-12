@@ -18,16 +18,33 @@ public class LanzadorPartida extends JPanel {
 	public static PanelBotonesMenuAbajo p2 = new PanelBotonesMenuAbajo();
 	public static PanelJuegoIzquierda p3 = new PanelJuegoIzquierda();
 	public static PanelJuegoDerecha p4 = new PanelJuegoDerecha();
+	public static hasGanado p5 = new hasGanado();
+	public static hasPerdido p6 = new hasPerdido();
+	public static boolean mec = false;
+	public static boolean mecmec = false;
+
+
 	
 	public LanzadorPartida() { 
+		boolean mec1;
+
     	setSize(1920,1080);
     	Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         setLayout(new BorderLayout());
         
+
         this.add(p, BorderLayout.CENTER);
         this.add(p2, BorderLayout.SOUTH);
         this.add(p3, BorderLayout.WEST);
         this.add(p4, BorderLayout.EAST);
+
+    	
+        p.setVisible(true);
+        p2.setVisible(true);
+        p3.setVisible(true);
+        p4.setVisible(true);
+        
+
 
 
      
@@ -78,5 +95,27 @@ public class LanzadorPartida extends JPanel {
 	public static void setCargarGuardada(boolean cargarGuardada) {
 		CargarGuardada = cargarGuardada;
 	}
+	
+
+
+
+
+	public static void test() {
+		// TODO Auto-generated method stub
+        if(mec == true) {
+        	LanzadorPartida lanzadorPartida = new LanzadorPartida();
+			lanzadorPartida.remove(p);
+			lanzadorPartida.add(p5);
+        	p5.setVisible(true);
+        }else if(mecmec == true) {
+        	LanzadorPartida lanzadorPartida = new LanzadorPartida();
+        	lanzadorPartida.remove(p);
+        	lanzadorPartida.add(p6);
+            p6.setVisible(true);
+        }
+		
+	}
+
+
 	
 }
