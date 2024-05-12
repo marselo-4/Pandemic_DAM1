@@ -432,6 +432,7 @@ public class logicaJuego {
 						break;
 					case 2:
 						PanelMapa.botonesCiudadesArray.get(i).setIcon(PanelMapa.ciudad_verde3);
+						System.out.println();
 						break;
 					}
 
@@ -824,10 +825,10 @@ public static void curarCiudad(CiudadBoton c) {
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(LanzadorPartida.p6);
 
 		// con esto "funciona"
-		//LanzadorPartida.p.setVisible(false);
-		//LanzadorPartida.p2.setVisible(false);
-		//LanzadorPartida.p3.setVisible(false);
-		//LanzadorPartida.p4.setVisible(false);
+//		LanzadorPartida.p.setVisible(false);
+//		LanzadorPartida.p2.setVisible(false);
+//		LanzadorPartida.p3.setVisible(false);
+//		LanzadorPartida.p4.setVisible(false);
 		
 		if( hasGanado == true){
 		LanzadorPartida.mec = true;

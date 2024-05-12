@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import Backend.logicaJuego;
 import Clases.controlDatos;
@@ -103,15 +104,19 @@ public class LanzadorPartida extends JPanel {
 	public static void test() {
 		// TODO Auto-generated method stub
         if(mec == true) {
-        	LanzadorPartida lanzadorPartida = new LanzadorPartida();
-			lanzadorPartida.remove(p);
-			lanzadorPartida.add(p5);
-        	p5.setVisible(true);
+            JFrame marco = (JFrame) SwingUtilities.getRoot(LanzadorPartida.p);
+            marco.getContentPane().removeAll();
+            marco.getContentPane().add(new hasGanado());
+            marco.setSize(1920, 1080);
+            marco.setVisible(true);
+
         }else if(mecmec == true) {
-        	LanzadorPartida lanzadorPartida = new LanzadorPartida();
-        	lanzadorPartida.remove(p);
-        	lanzadorPartida.add(p6);
-            p6.setVisible(true);
+            JFrame marco = (JFrame) SwingUtilities.getRoot(LanzadorPartida.p);
+            marco.getContentPane().removeAll();
+            marco.getContentPane().add(new hasPerdido());
+            marco.setSize(1920, 1080);
+            marco.setVisible(true);
+
         }
 		
 	}
