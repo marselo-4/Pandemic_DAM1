@@ -22,7 +22,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
     public PanelPrincipal() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Cambiamos a BoxLayout
         try {
-            fondo = ImageIO.read(new File("src/assets/fondo.jpg"));
+            fondo = ImageIO.read(new File("src/assets/fondo_main.jpg"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
