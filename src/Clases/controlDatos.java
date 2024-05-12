@@ -317,6 +317,13 @@ public class controlDatos {
 		//Tenga un ; para separar las colindantes (así no se separan por espacios, por ejemplo Los Angeles quedaría separado)
 		for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
 			if (i == logicaJuego.dp.ciudades.size() - 1) {
+				boolean campoWarningbool = PanelMapa.botonesCiudadesArray.get(i).getHaBrotado();
+				int warning = -1;
+				if (campoWarningbool){
+					warning = 1;
+				}else{
+					warning = 0;
+				}
 
 				int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
 				String XY = Coord[0] + " , " + Coord[1];
@@ -327,9 +334,17 @@ public class controlDatos {
 
 				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() + " ', '"
 						+ logicaJuego.dp.ciudades.get(i).getEnfermedad() + "',"
-						+ logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "') ";
+						+ logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString + "', "+ warning + ") ";
 				ciudadesInsert += ciudadSQL;
 			} else {
+				boolean campoWarningbool = PanelMapa.botonesCiudadesArray.get(i).getHaBrotado();
+				int warning = -1;
+				if (campoWarningbool){
+					warning = 1;
+				}else{
+					warning = 0;
+				}
+
 
 				int[] Coord = logicaJuego.dp.ciudades.get(i).getCoords();
 				String XY = Coord[0] + " , " + Coord[1];
@@ -341,10 +356,11 @@ public class controlDatos {
 				String ciudadSQL = "CIUDAD('" + logicaJuego.dp.ciudades.get(i).getNombre() + " ', '"
 						+ logicaJuego.dp.ciudades.get(i).getEnfermedad() + "',"
 						+ logicaJuego.dp.ciudades.get(i).getInfeccion() + ", " + XY + ", '" + colindantesString
-						+ "'), ";
+						+ "', " + warning +"), ";
 				ciudadesInsert += ciudadSQL;
 			}
 		}
+
 
 		String sql = "INSERT INTO PartidasGuardadas VALUES(NUM_PARTIDA.NEXTVAL, '" + NombreJ + "', '" + dificultad
 				+ "', " + rondas + ", SYSDATE, " + acciones_restantes + ", " + brotes + ", VACUNA('" + nombreAzul
