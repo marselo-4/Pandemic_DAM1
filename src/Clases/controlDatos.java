@@ -20,7 +20,7 @@ import UI.PanelMapa;
 import UI.Puntuaciones;
 
 public class controlDatos {
-
+	public static Connection con = null; 
 	private static String URL = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; 
 	private static String URL2 = "jdbc:oracle:thin:@oracle.ilerna.com:1521:xe"; 
 	private static String USER = "DAM1_2324_ALE_LUJAN";
@@ -30,7 +30,7 @@ public class controlDatos {
 	private static String ficheroXML = "parametros.xml";
 
 	public static void main(String[] args) throws SQLException {
-		Connection con = conectarBaseDatos();
+		conectarBaseDatos();
 
 		if (con != null) {
 
@@ -43,8 +43,8 @@ public class controlDatos {
 
 	}
 
-	public static Connection conectarBaseDatos() {
-		Connection con = null;
+	public static void conectarBaseDatos() {
+
 		
 		System.out.println("Intentando conectarse a la base de datos");
 
@@ -65,7 +65,6 @@ public class controlDatos {
 
 		System.out.println("Conectados a la base de datos");
 
-		return con;
 	}
 
 	public static void cargarCiudades() {

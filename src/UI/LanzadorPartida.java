@@ -59,7 +59,7 @@ public class LanzadorPartida extends JPanel {
         p3.generarBrotesCirculos(logicaJuego.dp.getBrotes_maximos(), 0);
               
         if (CargarGuardada == true)  {
-        	controlDatos.cargarPartida(controlDatos.conectarBaseDatos());
+        	controlDatos.cargarPartida(controlDatos.con);
         }
         setVisible(true);
 	}

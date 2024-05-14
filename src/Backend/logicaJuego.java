@@ -690,7 +690,7 @@ public static int obtenerPosicionInfectada(Ciudades colindante) {
 		
 		int sumafinal = suma1+suma2+suma3+suma4;
 		
-		if(sumafinal >= 400) {controlDatos.guardarRecord(controlDatos.conectarBaseDatos()); resultadoPartida(true); }else {System.out.println("No has ganado aun");}
+		if(sumafinal >= 400) {controlDatos.guardarRecord(controlDatos.con); resultadoPartida(true); }else {System.out.println("No has ganado aun");}
 	}
 
 public static void curarCiudad(CiudadBoton c) {

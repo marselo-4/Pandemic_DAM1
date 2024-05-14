@@ -81,11 +81,11 @@ public class Puntuaciones extends JPanel implements ActionListener { // Pantalla
             frame.add(new PanelPrincipal()); // Suponiendo que PreviousPanel es el panel al que quieres volver
             frame.setVisible(true);
         } else if (e.getSource() == facilRadio) {
-        	controlDatos.cargarRecordFacil(controlDatos.conectarBaseDatos());
+        	controlDatos.cargarRecordFacil(controlDatos.con);
         } else if (e.getSource() == normalRadio) {
-        	controlDatos.cargarRecordNormal(controlDatos.conectarBaseDatos());
+        	controlDatos.cargarRecordNormal(controlDatos.con);
         }else if (e.getSource() == dificilRadio) {
-        	controlDatos.cargarRecordDificil(controlDatos.conectarBaseDatos());
+        	controlDatos.cargarRecordDificil(controlDatos.con);
 
         }
     }

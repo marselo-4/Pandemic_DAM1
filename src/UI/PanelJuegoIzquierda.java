@@ -46,7 +46,7 @@ public class PanelJuegoIzquierda extends JPanel { // Panel de la izquierda
         GuardarButton.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         GuardarButton.setIcon(new ImageIcon(new ImageIcon("src/assets/guardar.png").getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH)));
         GuardarButton.addActionListener(e -> {
-            controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
+            controlDatos.guardarPartida(controlDatos.con);
             //controlDatos.guardarRecord(controlDatos.conectarBaseDatos());
             try {
                 // Cargar el archivo de sonido
