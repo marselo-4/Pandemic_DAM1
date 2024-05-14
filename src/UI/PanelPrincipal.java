@@ -15,12 +15,12 @@ import java.io.File;
 import java.io.IOException;
 
 public class PanelPrincipal extends JPanel implements ActionListener {
-    public JButton nuevapartida;
-    public JButton cargarpartida;
-    public JButton informacion;
-    public JButton puntuaciones;
-    public JButton salir;
-    private Image fondo;
+    public JButton nuevapartida; // Boton
+    public JButton cargarpartida; // Boton
+    public JButton informacion; // Boton
+    public JButton puntuaciones; // Boton
+    public JButton salir; // Boton
+    private Image fondo; // Boton
 
 
 

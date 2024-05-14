@@ -19,11 +19,11 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.ResourceBundle.Control;
 
-public class PanelJuegoIzquierda extends JPanel {
+public class PanelJuegoIzquierda extends JPanel { // Panel de la izquierda
     public static int circulosMaximos;
     public static int circulosActuales;
-    private BufferedImage imagen;
-    private BufferedImage imagenFondo;
+    private BufferedImage imagen; // imagen
+    private BufferedImage imagenFondo; // imagen
 
     public PanelJuegoIzquierda() {
         try {

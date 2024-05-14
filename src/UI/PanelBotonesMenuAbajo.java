@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class PanelBotonesMenuAbajo extends JPanel {
+public class PanelBotonesMenuAbajo extends JPanel { // Panel abajo partida
 
 	public static JLabel lblAcciones = new JLabel();
 	public static JLabel lblTurno = new JLabel();

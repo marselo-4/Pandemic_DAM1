@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-public class hasGanado extends JPanel implements ActionListener {
+public class hasGanado extends JPanel implements ActionListener { // Pantalla has Ganado
 
     JButton volver;
     private Image Fondo;

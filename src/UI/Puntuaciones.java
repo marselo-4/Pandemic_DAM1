@@ -16,12 +16,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-public class Puntuaciones extends JPanel implements ActionListener {
+public class Puntuaciones extends JPanel implements ActionListener { // Pantalla puntuaciones
 
-    JButton volver;
-    private Image Fondo;
-    JRadioButton facilRadio, normalRadio, dificilRadio;
-    ButtonGroup dificultadGroup;
+    JButton volver; // Boton volver
+    private Image Fondo; // fondo de la pantalla
+    JRadioButton facilRadio, normalRadio, dificilRadio; // botones 
+    ButtonGroup dificultadGroup; // Botones dificultad
    static JTextArea textArea;
 
     

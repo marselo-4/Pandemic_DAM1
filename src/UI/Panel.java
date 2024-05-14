@@ -7,8 +7,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Panel extends JPanel {
-    private ImageIcon icon;
-    private Image scaledImage;
+    private ImageIcon icon; // imagen
+    private Image scaledImage; // imagen
 
     public Panel() {
         icon = new ImageIcon("img/world_map.png"); // Ruta actualizada

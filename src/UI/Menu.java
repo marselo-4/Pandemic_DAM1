@@ -1,7 +1,7 @@
 package UI;
 
-public class Menu {
-public static void main(String[] args) {
+public class Menu { // lanzador programa
+public static void main(String[] args) { // funcion principal
 	
 	Marco marco = new Marco();
 	

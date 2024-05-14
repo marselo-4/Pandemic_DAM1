@@ -14,19 +14,19 @@ import Clases.controlDatos;
 import Clases.datosPartida;
 
 public class LanzadorPartida extends JPanel {
-	public static boolean CargarGuardada = false;
-	public static PanelMapa p = new PanelMapa();
-	public static PanelBotonesMenuAbajo p2 = new PanelBotonesMenuAbajo();
-	public static PanelJuegoIzquierda p3 = new PanelJuegoIzquierda();
-	public static PanelJuegoDerecha p4 = new PanelJuegoDerecha();
-	public static hasGanado p5 = new hasGanado();
-	public static hasPerdido p6 = new hasPerdido();
-	public static boolean mec = false;
-	public static boolean mecmec = false;
+	public static boolean CargarGuardada = false; // bool cargar
+	public static PanelMapa p = new PanelMapa(); // panel
+	public static PanelBotonesMenuAbajo p2 = new PanelBotonesMenuAbajo(); // panel
+	public static PanelJuegoIzquierda p3 = new PanelJuegoIzquierda(); // panel
+	public static PanelJuegoDerecha p4 = new PanelJuegoDerecha(); // panel
+	public static hasGanado p5 = new hasGanado(); // panel
+	public static hasPerdido p6 = new hasPerdido();  // panel
+	public static boolean mec = false; // bool panel
+	public static boolean mecmec = false; // bool panel
 
 
 	
-	public LanzadorPartida() { 
+	public LanzadorPartida() { // se lanza la partida
 		boolean mec1;
 
     	setSize(1920,1080);
@@ -50,7 +50,7 @@ public class LanzadorPartida extends JPanel {
 
      
         
-        //Álvaro: he puesto los paneles públicos para poder editarlos desde el backend si es necesario
+        // Alvaro: he puesto los paneles públicos para poder editarlos desde el backend si es necesario
         logicaJuego.crearArrayCiudades();
         logicaJuego.crearBotonesCiudades();
         logicaJuego.empezarPartida(3);
@@ -75,7 +75,7 @@ public class LanzadorPartida extends JPanel {
 //        this.add(p4, BorderLayout.EAST);
 //
 //
-//        //Álvaro: he puesto los paneles públicos para poder editarlos desde el backend si es necesario
+//        // Alvaro: he puesto los paneles públicos para poder editarlos desde el backend si es necesario
 //        logicaJuego.crearArrayCiudades();
 //        logicaJuego.crearBotonesCiudades();
 //        logicaJuego.empezarPartida(3);
@@ -89,11 +89,11 @@ public class LanzadorPartida extends JPanel {
 //        setVisible(true);
 //	}
 
-	public static boolean isCargarGuardada() {
+	public static boolean isCargarGuardada() { // esta guardada cargar?
 		return CargarGuardada;
 	}
 
-	public static void setCargarGuardada(boolean cargarGuardada) {
+	public static void setCargarGuardada(boolean cargarGuardada) { // cargar
 		CargarGuardada = cargarGuardada;
 	}
 	
@@ -101,7 +101,7 @@ public class LanzadorPartida extends JPanel {
 
 
 
-	public static void test() {
+	public static void test() { // marcos
 		// TODO Auto-generated method stub
         if(mec == true) {
             JFrame marco = (JFrame) SwingUtilities.getRoot(LanzadorPartida.p);

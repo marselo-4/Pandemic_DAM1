@@ -7,10 +7,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
-public class hasPerdido extends JPanel implements ActionListener {
+public class hasPerdido extends JPanel implements ActionListener { // pantalla has perdido
 
-    JButton volver;
-    private Image Fondo;
+    JButton volver; // boton volver
+    private Image Fondo; // img fondo
 
     public hasPerdido() {
         setLayout(new FlowLayout());

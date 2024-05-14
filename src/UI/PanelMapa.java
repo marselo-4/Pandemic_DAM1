@@ -28,7 +28,7 @@ import Clases.CiudadBoton;
 import Clases.Ciudades;
 import Clases.controlDatos;
 	
-	public class PanelMapa extends JPanel implements ActionListener {
+	public class PanelMapa extends JPanel implements ActionListener { // Panel del mapa
 		public static ImageIcon ciudad_azul0 = new ImageIcon(new ImageIcon("img/IconoCiudadAzul.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_azul1 = new ImageIcon(new ImageIcon("img/IconoCiudadAzul1.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
 		public static ImageIcon ciudad_azul2 = new ImageIcon(new ImageIcon("img/IconoCiudadAzul2.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));
@@ -54,8 +54,8 @@ import Clases.controlDatos;
 		public static ImageIcon ciudad_amarillaBrote = new ImageIcon(new ImageIcon("img/IconoCiudadAmarilloBrote.png").getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH));		
 
 		public static CiudadBoton ciudadSeleccionada;
-	    private ImageIcon icon;
-	    private Image scaledImage;
+	    private ImageIcon icon; // icono
+	    private Image scaledImage; // imagen
 	    public static ButtonGroup IconosCiudades = new ButtonGroup();
 	    public static ArrayList<CiudadBoton> botonesCiudadesArray = new ArrayList<>();
 	

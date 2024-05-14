@@ -34,8 +34,8 @@ import Backend.logicaJuego;
 import Clases.CiudadBoton;
 import Clases.VacunaBoton;
 
-public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemListener{
-	Random rand = new Random();
+public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemListener{ // Panel derecha partida
+	Random rand = new Random(); // numero random
 	
 	public static ImageIcon icono_azul = new ImageIcon(new ImageIcon("img/azul.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
     public static ImageIcon icono_azul_grande = new ImageIcon(new ImageIcon("img/azulS.png").getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH));
@@ -56,14 +56,14 @@ public class PanelJuegoDerecha extends JPanel implements ActionListener, ItemLis
     public static JLabel labelVerde = new JLabel("0%");
     public static JLabel labelRojo = new JLabel("0%");
     public static JLabel labelAmarillo = new JLabel("0%");
-    public JButton test = new JButton();
+    public JButton test = new JButton(); // boton
     
     public static JButton curarCiudad = new JButton();
     public static JButton DesarollarVacuna = new JButton();
    
-    private int vacunaSeleccionada = -1;
+    private int vacunaSeleccionada = -1; // int vacuna selec
 
-    private BufferedImage imagenFondo;
+    private BufferedImage imagenFondo; // imagen de fondo
 
     public PanelJuegoDerecha() {
         setLayout(new FlowLayout());

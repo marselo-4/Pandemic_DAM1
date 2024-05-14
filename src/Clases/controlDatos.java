@@ -94,7 +94,7 @@ public class controlDatos {
 					int Rondas = rs.getInt("Rondas");
 					logicaJuego.dp.setRondas(Rondas);
 					String RondasStr = String.valueOf(Rondas);
-					//Álvaro: he hardcodeado "Turno: " nada importante
+					// Alvaro: he hardcodeado "Turno: " nada importante
 					PanelBotonesMenuAbajo.lblTurno.setText("Turno: " + RondasStr);
 					
 					
@@ -102,12 +102,12 @@ public class controlDatos {
 					
 					int Acciones_restantes = rs.getInt("Acciones_restantes");
 					logicaJuego.dp.setAcciones(Acciones_restantes);
-					//Álvaro: he puesto que las acciones se actualizen en la UI
+					// Alvaro: he puesto que las acciones se actualizen en la UI
 					PanelBotonesMenuAbajo.lblAcciones.setText("Acciones: " + Acciones_restantes);
 					
 					int Brotes = rs.getInt("Brotes");
 					logicaJuego.dp.setBrotes(Brotes);
-					//Alvaro: Aquí estaba puesto esto--> PanelBotonesMenuAbajo.lblTurno.setText(BrotesStr); || Supongo que estabas demasiado quemado ya xd (lo he arreglado)
+					// Alvaro: Aquí estaba puesto esto--> PanelBotonesMenuAbajo.lblTurno.setText(BrotesStr); || Supongo que estabas demasiado quemado ya xd (lo he arreglado)
 					logicaJuego.dp.cargarDatos();
 					LanzadorPartida.p3.generarBrotesCirculos(logicaJuego.dp.getBrotes_maximos(), Brotes);
 					
@@ -146,14 +146,14 @@ public class controlDatos {
 			
 
 						String nombre = rs.getString("nombre");
-						//Álvaro: literal el error en enfermedad era que tenias "c.enfermedad" :(
+						// Alvaro: literal el error en enfermedad era que tenias "c.enfermedad" :(
 						String enfermedad = rs.getString("enfermedad");
 						int infeccion = rs.getInt("infeccion");
 						int[] XY = new int[2];
 						//EL C. || c.CordX c.CordY
 						XY[0] = rs.getInt("CordX");
 						XY[1] = rs.getInt("CordY");
-						//Álvaro: literal el error en enfermedad era que tenias "c.colindantes" :(
+						// Alvaro: literal el error en enfermedad era que tenias "c.colindantes" :(
 						
 //						Cambio el insert para que las colindantes se guarden con ; entre medias por esto:
 //						Colindante de Hong Kong : Ho
@@ -169,7 +169,7 @@ public class controlDatos {
 						updatearCiudadesBackendUI(nombre, enfermedad, infeccion, XY, ciudadesC, campoWarning);
 						
 						
-						//Para que es el for????
+						// Para que es el for????
 //						for (int i = 0; i < 48; i++) {
 //							if (logicaJuego.dp.ciudades.get(i).getNombre().equals(nombre)) {
 //								logicaJuego.dp.ciudades.get(i).setInfeccion(infeccion);
@@ -337,15 +337,15 @@ public class controlDatos {
 		int porcentageAmarillo = PanelJuegoDerecha.radioAmarillo.getVacuna().getPorcentaje();
 		String colorAmarillo = PanelJuegoDerecha.radioAmarillo.getVacuna().getColor();
 		
-		//Álvaro: tenías puesto radioRojo en lugar de radioVerde :D
+		// Alvaro: tenías puesto radioRojo en lugar de radioVerde :D
 		String nombreVerde = PanelJuegoDerecha.radioVerde.getVacuna().getNombre();
 		int porcentageVerde = PanelJuegoDerecha.radioVerde.getVacuna().getPorcentaje();
 		String colorVerde = PanelJuegoDerecha.radioVerde.getVacuna().getColor();
 
 		String ciudadesInsert = "";
 
-		//En el for, he cambiado "String colindantesString = String.join(" ", colindantes);" Para que el primer parámetro 
-		//Tenga un ; para separar las colindantes (así no se separan por espacios, por ejemplo Los Angeles quedaría separado)
+		// En el for, he cambiado "String colindantesString = String.join(" ", colindantes);" Para que el primer parámetro 
+		// Tenga un ; para separar las colindantes (así no se separan por espacios, por ejemplo Los Angeles quedaría separado)
 		for (int i = 0; i < logicaJuego.dp.ciudades.size(); i++) {
 			if (i == logicaJuego.dp.ciudades.size() - 1) {
 				boolean campoWarningbool = PanelMapa.botonesCiudadesArray.get(i).getHaBrotado();

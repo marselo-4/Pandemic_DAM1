@@ -14,8 +14,8 @@ import java.io.IOException;
 
 public class Informacion extends JPanel implements ActionListener {
 
-    JButton volver;
-    private Image Fondo;
+    JButton volver; // boton 
+    private Image Fondo; // foto
 
     public Informacion() {
         setLayout(new FlowLayout());

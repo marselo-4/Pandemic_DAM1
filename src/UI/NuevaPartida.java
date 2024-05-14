@@ -18,11 +18,11 @@ import java.io.IOException;
 
 public class NuevaPartida extends JPanel implements ActionListener {
 
-    JButton facil;
-    JButton medio;
-    JButton dificil;
-    JButton volver;
-    private Image Fondo;
+    JButton facil; // boton
+    JButton medio; // boton
+    JButton dificil; // boton
+    JButton volver; // boton
+    private Image Fondo; // foto
 
     public NuevaPartida() {
         setLayout(new FlowLayout());
