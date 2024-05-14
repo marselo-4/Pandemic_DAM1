@@ -1,43 +1,72 @@
 package UI;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.RenderingHints;
+import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.*;
+
+import Backend.logicaJuego;
+import Clases.controlDatos;
+
+import java.awt.*;
 import java.awt.geom.Ellipse2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Connection;
+import java.util.ResourceBundle.Control;
 
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+public class PanelJuegoIzquierda extends JPanel { // Panel de la izquierda
+    public static int circulosMaximos;
+    public static int circulosActuales;
+    private BufferedImage imagen; // imagen
+    private BufferedImage imagenFondo; // imagen
 
-public class PanelJuegoIzquierda extends JPanel {
-    private int circulosMaximos;
-    private int circulosActuales;
-    private ImageIcon icono_amarillo = new ImageIcon(new ImageIcon("img/amarillo.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH));
-
-
-    public PanelJuegoIzquierda(int circulosMaximos, int circulosActuales) {
-        this.circulosMaximos = circulosMaximos;
-        this.circulosActuales = circulosActuales;
+    public PanelJuegoIzquierda() {
+        try {
+            imagen = ImageIO.read(new File("img/brote.png")); // Ruta
+            imagenFondo = ImageIO.read(new File("img/lateral.png")); // Ruta del fondo
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         setLayout(new FlowLayout());
-        setBackground(new Color(20, 20, 30)); // Fondo negro azulado
-        setPreferredSize(new Dimension(130, 400));
-        setBorder(BorderFactory.createLineBorder(new Color(255, 255, 255), 2));
+        setPreferredSize(new Dimension(150, 400));
+        
+        ImageIcon icono = new ImageIcon("src/assets/guardar.png");
+  
 
-        JButton sumarButton = new JButton("Sumar");
-        sumarButton.addActionListener(e -> {
-            if (this.circulosActuales < this.circulosMaximos) {
-                this.circulosActuales++;
-                repaint();
+        JButton GuardarButton = new JButton("Guardar");
+        GuardarButton.setContentAreaFilled(false);
+        GuardarButton.setBorderPainted(false);
+        GuardarButton.setFocusPainted(false);
+        GuardarButton.setIcon(new ImageIcon(new ImageIcon("src/assets/guardar.png").getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH)));
+        GuardarButton.addActionListener(e -> {
+            controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
+            //controlDatos.guardarRecord(controlDatos.conectarBaseDatos());
+            try {
+                // Cargar el archivo de sonido
+                File soundFile = new File("src/assets/gfx/finturno.wav");
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+                
+                // Obtener un clip de sonido
+                Clip clip = AudioSystem.getClip();
+                
+                // Abrir el flujo de audio y cargar datos
+                clip.open(audioIn);
+                
+                // Reproducir el sonido
+                clip.start();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+                e1.printStackTrace();
             }
         });
-        add(sumarButton);
+        add(GuardarButton);
+
+
     }
 
     @Override
@@ -45,23 +74,33 @@ public class PanelJuegoIzquierda extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        int circleSize = 30; // Tamaño del círculo
-        int padding = 5; // Espacio entre los círculos
-        int startX = 25; // Posición inicial en X
-        int startY = 45; // Posición inicial en Y
+        // Dibujar fondo lateral
+        if (imagenFondo != null) {
+            g2d.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+        }
+
+        int circleSize = 50; // Tamaño del círculo
+        int padding = 8; // Espacio entre los círculos
+        int startX = 23; // Posición inicial en X
+        int startY = 130; // Posición inicial en Y
 
         for (int i = 0; i < circulosMaximos; i++) {
             int x = startX + (i % 2 == 0 ? 0 : circleSize + padding);
             int y = startY + (i * (circleSize + padding));
-            Color color = i < circulosActuales ? Color.RED : Color.GRAY;
-            g2d.setColor(color);
-            g2d.fill(new Ellipse2D.Double(x, y, circleSize, circleSize));
+            Image image = i < circulosActuales ? imagen : null;
+            if (image != null) {
+                g2d.drawImage(image, x, y, circleSize, circleSize, null);
+            } else {
+                Color color = Color.GRAY;
+                g2d.setColor(color);
+                g2d.fill(new Ellipse2D.Double(x, y, circleSize, circleSize));
+            }
         }
     }
 
     public void setNumeroCirculosActuales(int circulosActuales) {
         this.circulosActuales = circulosActuales;
-        repaint(); // Vuelve a pintar los círculos cuando cambia el número de círculos actuales
+        repaint();
     }
 
     public int getNumeroCirculosActuales() {
@@ -70,5 +109,13 @@ public class PanelJuegoIzquierda extends JPanel {
 
     public int getNumeroCirculosMaximos() {
         return circulosMaximos;
+    }
+    
+    public void generarBrotesCirculos(int circulosMaximos, int circulosActuales) {
+        this.circulosMaximos = circulosMaximos;
+        this.circulosActuales = circulosActuales;
+        repaint();
+        
+
     }
 }

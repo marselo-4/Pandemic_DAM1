@@ -2,7 +2,7 @@ package Clases;
 
 import java.util.ArrayList;
 
-import programa.parametros;
+import Backend.parametros;
 
 public class datosPartida {
 
@@ -19,6 +19,12 @@ public class datosPartida {
 	private int rondas;
 	private int acciones;
 	
+	public void print() {
+		System.out.println("brotes_maximos: " + brotes_maximos);
+		System.out.println("pDesarrollo: " + pDesarrollo);
+		System.out.println("propagacion_ronda: " + propagacion_ronda);
+		System.out.println("propagacion_inicio: " + propagacion_inicio);
+	}
 	public static void modificarCiudad(String nCiudad, int modificacion) {
 		
 	}
@@ -27,8 +33,12 @@ public class datosPartida {
 		
 	}
 	
-	public static void cargarDatos() {
-		parametros.cargarXML(pDesarrollo, brotes_maximos, propagacion_ronda, propagacion_inicio);
+	public void cargarDatos() {
+		int[] datos = parametros.cargarXML(pDesarrollo, brotes_maximos, propagacion_ronda, propagacion_inicio);
+		pDesarrollo = datos[0];
+		brotes_maximos = datos[1];
+		propagacion_ronda = datos[2];
+		propagacion_inicio = datos[3];
 	}
 
 	public int getBrotes() {
@@ -47,7 +57,7 @@ public class datosPartida {
 		this.rondas = rondas;
 	}
 
-	public static float getpDesarrollo() {
+	public static int getpDesarrollo() {
 		return pDesarrollo;
 	}
 
