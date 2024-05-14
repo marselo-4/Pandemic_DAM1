@@ -7,9 +7,16 @@
 	import java.awt.event.ActionListener;
 	import java.awt.event.ItemEvent;
 	import java.awt.event.ItemListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 	import javax.swing.ImageIcon;
 	import javax.swing.JPanel;
@@ -101,6 +108,22 @@ import Clases.controlDatos;
 	    
 	    public void actionPerformed(ActionEvent e) {
 	    	CiudadBoton selectedButton = (CiudadBoton) e.getSource();
+	        try {
+	            // Cargar el archivo de sonido
+	            File soundFile = new File("src/assets/gfx/selec.wav");
+	            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+	            
+	            // Obtener un clip de sonido
+	            Clip clip = AudioSystem.getClip();
+	            
+	            // Abrir el flujo de audio y cargar datos
+	            clip.open(audioIn);
+	            
+	            // Reproducir el sonido
+	            clip.start();
+	        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+	            e1.printStackTrace();
+	        }
 	
 	    	if (e.getSource() instanceof CiudadBoton) {
 	    		logicaJuego.textosCaja("Ciudad " + selectedButton.getCiudad().getNombre() + " seleccionada. Su nivel de infeccion es "
