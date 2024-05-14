@@ -22,6 +22,7 @@ import UI.Puntuaciones;
 public class controlDatos {
 
 	private static String URL = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; 
+	private static String URL2 = "jdbc:oracle:thin:@oracle.ilerna.com:1521:xe"; 
 	private static String USER = "DAM1_2324_ALE_LUJAN";
 	private static String PWD = "Lujan1234.";
 	private String ficheroTxt;
@@ -53,7 +54,13 @@ public class controlDatos {
 		} catch (ClassNotFoundException e) {
 			System.out.println("No se ha encontrado el driver " + e);
 		} catch (SQLException e) {
-			System.out.println("Error en las credenciales o en la URL " + e);
+			try {
+				con = DriverManager.getConnection(URL2, USER, PWD);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			System.out.println("Conectadio desde casa");
 		}
 
 		System.out.println("Conectados a la base de datos");
