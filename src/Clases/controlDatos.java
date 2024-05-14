@@ -21,8 +21,7 @@ import UI.Puntuaciones;
 
 public class controlDatos {
 
-	private static String URL = "jdbc:oracle:thin:@oracle.ilerna.com:1521:xe"; // casa cambiar ip a
-																			// jdbc:oracle:thin:@oracle.ilerna.com:1521:xe
+	private static String URL = "jdbc:oracle:thin:@192.168.3.26:1521:xe"; 
 	private static String USER = "DAM1_2324_ALE_LUJAN";
 	private static String PWD = "Lujan1234.";
 	private String ficheroTxt;
@@ -45,7 +44,7 @@ public class controlDatos {
 
 	public static Connection conectarBaseDatos() {
 		Connection con = null;
-
+		
 		System.out.println("Intentando conectarse a la base de datos");
 
 		try {

@@ -283,7 +283,7 @@ public class logicaJuego {
 						}
 					});
 
-					Thread.sleep(50); // Pausa de 50 milisegundos entre cada actualización
+					Thread.sleep(10); // Pausa de 50 milisegundos entre cada actualización
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
