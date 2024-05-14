@@ -1,6 +1,11 @@
 package UI;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 import java.awt.*;
@@ -92,6 +97,22 @@ public class PanelPrincipal extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        try {
+            // Cargar el archivo de sonido
+            File soundFile = new File("src/assets/gfx/selec.wav");
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+            
+            // Obtener un clip de sonido
+            Clip clip = AudioSystem.getClip();
+            
+            // Abrir el flujo de audio y cargar datos
+            clip.open(audioIn);
+            
+            // Reproducir el sonido
+            clip.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+            e1.printStackTrace();
+        }
         if(e.getSource() == nuevapartida){
             JFrame marco = (JFrame) SwingUtilities.getWindowAncestor(this);
             marco.remove(this);

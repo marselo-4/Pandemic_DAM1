@@ -16,6 +16,11 @@ import java.io.IOException;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -132,6 +137,15 @@ public void actionPerformed(ActionEvent e) {
                             DesarollarVacuna.setEnabled(true);
                             logicaJuego.resultadoFinal();
                             });
+                        try {
+                            File soundFile = new File("src/assets/gfx/pocion.wav");
+                            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(audioIn);
+                            clip.start();
+                        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+                            e1.printStackTrace();
+                        }
 					}
             	}else {
             		logicaJuego.textosCaja("La vacuna ya esta al maximo!!");
@@ -149,6 +163,15 @@ public void actionPerformed(ActionEvent e) {
                             logicaJuego.resultadoFinal();
 
                         });
+                        try {
+                            File soundFile = new File("src/assets/gfx/pocion.wav");
+                            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(audioIn);
+                            clip.start();
+                        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+                            e1.printStackTrace();
+                        }
 					}
             	}else {
             		logicaJuego.textosCaja("La vacuna ya esta al maximo!!");
@@ -165,6 +188,15 @@ public void actionPerformed(ActionEvent e) {
                             DesarollarVacuna.setEnabled(true);
                             logicaJuego.resultadoFinal();
                         });
+                        try {
+                            File soundFile = new File("src/assets/gfx/pocion.wav");
+                            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(audioIn);
+                            clip.start();
+                        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+                            e1.printStackTrace();
+                        }
 					}      
                     logicaJuego.resultadoFinal();
 
@@ -182,6 +214,15 @@ public void actionPerformed(ActionEvent e) {
                             DesarollarVacuna.setEnabled(true);
                             logicaJuego.resultadoFinal();
                         });
+                        try {
+                            File soundFile = new File("src/assets/gfx/pocion.wav");
+                            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(audioIn);
+                            clip.start();
+                        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+                            e1.printStackTrace();
+                        }
 					}
             	}else {
             		logicaJuego.textosCaja("La vacuna ya esta al maximo!!");

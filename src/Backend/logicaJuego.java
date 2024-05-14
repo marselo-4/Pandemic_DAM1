@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Panel;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,6 +13,11 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -778,7 +784,15 @@ public static void curarCiudad(CiudadBoton c) {
                 }
                 textosCajaColor("Ciudad curada correctamente, su nivel ha bajado a " + c.getCiudad().getInfeccion(), Color.green);
             }
-
+            try {
+                File soundFile = new File("src/assets/gfx/curar.wav");
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioIn);
+                clip.start();
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+                e1.printStackTrace();
+            }
         } else {
             textosCaja("¡La ciudad ya esta sana!");
 }
@@ -834,10 +848,28 @@ public static void curarCiudad(CiudadBoton c) {
 		LanzadorPartida.mec = true;
 		LanzadorPartida.test();
 		System.out.println("Has Ganado");
+        try {
+            File soundFile = new File("src/assets/gfx/ganaste.wav");
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            clip.start();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+            e1.printStackTrace();
+        }
 		}else{
 			LanzadorPartida.mecmec = true;
 			LanzadorPartida.test();
 			System.out.println("Has Perdido");
+	        try {
+	            File soundFile = new File("src/assets/gfx/perdiste.wav");
+	            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+	            Clip clip = AudioSystem.getClip();
+	            clip.open(audioIn);
+	            clip.start();
+	        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e1) {
+	            e1.printStackTrace();
+	        }
 		}
 	}
 
