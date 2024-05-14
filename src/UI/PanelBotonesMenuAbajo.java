@@ -52,13 +52,13 @@ public void agregarCajadialogo() {
     
     JPanel panelSuperior = new JPanel();
     panelSuperior.setLayout(new BoxLayout(panelSuperior, BoxLayout.X_AXIS)); // Usar BoxLayout horizontal
-    panelSuperior.setBackground(new Color(20, 20, 30));
+    panelSuperior.setBackground(new Color(0, 0, 0));
     
     lblAcciones.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10));
     
     
     lblAcciones.setForeground(Color.WHITE);
-    lblAcciones.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 10)); // Agregar margen a la derecha
+    lblAcciones.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 10)); // Agregar margen a la derecha
     panelSuperior.add(lblAcciones);
     panelSuperior.add(Box.createHorizontalStrut(20)); // Espacio horizontal entre Acciones y Turno
     
@@ -67,7 +67,7 @@ public void agregarCajadialogo() {
     panelSuperior.add(lblTurno);
     
     JPanel panelCaja = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
-    panelCaja.setBackground(new Color(20, 20, 30));
+    panelCaja.setBackground(new Color(0,0,0));
     Caja = new JTextArea();
     panelCaja.add(Caja);
     Caja.setEditable(false);
@@ -75,9 +75,11 @@ public void agregarCajadialogo() {
     Caja.setWrapStyleWord(true);
     Caja.setPreferredSize(new Dimension(500, 117));
     Caja.setForeground(Color.WHITE); 
-    Caja.setBackground(new Color(20, 20, 30));
+    Caja.setBackground(new Color(0, 0, 0));
     panelSuperior.add(panelCaja);
     
+    // btn finalizar turno
+    panelSuperior.add(Box.createHorizontalGlue());
     JButton btnFinalizarTurno = new JButton("Finalizar turno");
     btnFinalizarTurno.setForeground(Color.WHITE);
     btnFinalizarTurno.setBackground(new Color(50, 50, 100));
@@ -103,6 +105,7 @@ public void agregarCajadialogo() {
         }
     });
     panelSuperior.add(btnFinalizarTurno);
+    panelSuperior.add(Box.createHorizontalStrut(20));
     
     add(panelSuperior, BorderLayout.NORTH);
 

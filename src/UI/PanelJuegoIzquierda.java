@@ -39,10 +39,11 @@ public class PanelJuegoIzquierda extends JPanel { // Panel de la izquierda
         ImageIcon icono = new ImageIcon("src/assets/guardar.png");
   
 
-        JButton GuardarButton = new JButton("Guardar");
+        JButton GuardarButton = new JButton();
         GuardarButton.setContentAreaFilled(false);
         GuardarButton.setBorderPainted(false);
         GuardarButton.setFocusPainted(false);
+        GuardarButton.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         GuardarButton.setIcon(new ImageIcon(new ImageIcon("src/assets/guardar.png").getImage().getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH)));
         GuardarButton.addActionListener(e -> {
             controlDatos.guardarPartida(controlDatos.conectarBaseDatos());
