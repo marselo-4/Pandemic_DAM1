@@ -52,7 +52,7 @@ public class logicaJuego {
 	// LÓGICA GENERAL PARA LA PARTIDA
 
 
-
+	// Crear Array Ciudades - Extreu del txt info sobre ciutats, genera els objectes i els exporta a la arraylist
 	public static void crearArrayCiudades() {
 		String linea = "";
 
@@ -80,6 +80,8 @@ public class logicaJuego {
 
 	}
 
+	// Funció que crea els textos de la caixa, agafant una string per parametre i 
+	// els mostra a la caixa inferior fent servir un efecte d'escriptura
 	public static void textosCaja(String texto) {
 		// Creamos un hilo para el efecto de escritura
 		new Thread(() -> {
@@ -100,6 +102,7 @@ public class logicaJuego {
 		}).start();
 	}
 	
+	// El mateix pero amb color diferent amb SetForeground(color) per param
 	public static void textosCajaColor(String texto, Color color) {
 		// Creamos un hilo para el efecto de escritura
 		new Thread(() -> {
@@ -149,7 +152,8 @@ public class logicaJuego {
 
 		}
 	}
-
+	
+	// Crea el boton/icono de la ciudad -- Entra por parametro el panel, la ciudad y la imagen de fondo + pos + tamaño
 	public static void crearBotonciudad(PanelMapa p, CiudadBoton Ciudad, String rutaimg, int x, int y, int w, int h) {
 
 		Ciudad.setOpaque(false);
@@ -166,7 +170,7 @@ public class logicaJuego {
 		PanelMapa.botonesCiudadesArray.add(Ciudad);
 	}
 
-	// VACUNAS
+	// CREAR VACUNAS -- crea 4 obj de vacunes i les mostra al panell dret
 	public static void crearVacunas(ButtonGroup vacunas, PanelJuegoDerecha p) {
 
 		Vacuna v = new Vacuna("Alpha", "azul", 0);
@@ -237,6 +241,7 @@ public class logicaJuego {
 
 	}
 
+	// El mateix que a dalt pero amb els botons de desarrollar cura i curar ciutat
 	public static void BotonesDesarollar_curar(PanelJuegoDerecha p) {
 
 		PanelJuegoDerecha.curarCiudad.setOpaque(false);
@@ -266,7 +271,8 @@ public class logicaJuego {
 		p.add(PanelJuegoDerecha.DesarollarVacuna);
 
 	}
-
+	
+	// Funció similar a la del textarea que actualitza la etiqueta del % de desenvolupament
 	public static void animateJLabel(JLabel label, int percentage, int sumar, Vacuna v, Runnable callback) {
 		int resultado_final = percentage + sumar;
 
@@ -305,7 +311,7 @@ public class logicaJuego {
 		}).start();
 	}
 
-	// GAMEPLAY
+	// GAMEPLAY - entra dificultad per parametro, que viene de parametros.xml
 	public static void empezarPartida(int dificultad) {
 		Random rand = new Random();
 		int numCiudadesInfectadas = 0;
@@ -313,6 +319,7 @@ public class logicaJuego {
 		dp.cargarDatos();
 
 		// Definir el tamaño del array según la dificultad
+		// Defineix quines ciutats infecta, el numero ja ve definit
 		int[] ciudadesInfectadasComienzo = new int[dp.getPropagacion_inicio()];
 
 		for (int i = 0; i < dp.getPropagacion_inicio(); i++) {
@@ -354,7 +361,8 @@ public class logicaJuego {
 			}
 		}
 	}
-
+	
+	// Reinicia las acciones restantes, actualitza el turno i infecta de nou ciutats 
 	public static void nuevoTurno() {
 		Random rand = new Random();
 		ArrayList<Boolean> colindantesYaInfectadas = new ArrayList<>();
@@ -621,7 +629,7 @@ public class logicaJuego {
 			}
 		}
 		
-		//infectar nuevas
+		// infectar nuevas ciudades
 		ArrayList<Ciudades> ciudadesCero = new ArrayList<>();
 		for (int i = 0; i < dp.ciudades.size(); i++) {
 			if (dp.ciudades.get(i).getInfeccion() == 0) {
@@ -669,7 +677,7 @@ public class logicaJuego {
 		textosCaja("");
 
 	}
-	
+	// Coge colindantes por parametros y quiero comodin BAZOKA PORFAVOR COMENTA
 public static int obtenerPosicionInfectada(Ciudades colindante) {
 	int posicionArray = -1;
 	
@@ -680,7 +688,9 @@ public static int obtenerPosicionInfectada(Ciudades colindante) {
 		}
 	}
 	return posicionArray;
-}
+}	
+	
+	// Comprueba el resultado actual por si has ganado o aún no
 	public static void resultadoFinal(){
 				
 		int suma1 = PanelJuegoDerecha.radioVerde.getVacuna().getPorcentaje();
@@ -692,7 +702,8 @@ public static int obtenerPosicionInfectada(Ciudades colindante) {
 		
 		if(sumafinal >= 400) {controlDatos.guardarRecord(controlDatos.con); resultadoPartida(true); }else {System.out.println("No has ganado aun");}
 	}
-
+	// Función para curar las ciudades, obligatoriamente selecciona una y cuando curas, si la vacuna esta desarrollada, si lo esta te baja a 0 y sino
+	// te baja 1. Actualiza el icono de la ciudad dependiendo del nivel de infección
 public static void curarCiudad(CiudadBoton c) {
     if (PanelMapa.ciudadSeleccionada == null) {
         textosCaja("Selecciona una ciudad para poder curarla");
@@ -798,7 +809,8 @@ public static void curarCiudad(CiudadBoton c) {
 }
     }
 }
-
+	
+	
 	public static void cambiarImagenCiudad(CiudadBoton c, int nivInfeccion, String id) {
 		switch (id) {
 		case "Alfa":
@@ -818,6 +830,7 @@ public static void curarCiudad(CiudadBoton c) {
 	}
 
 
+	// Actualitza el comptador de accions.
 	public static boolean updateAP(int cost) {
 
 		if (dp.getAcciones() >= cost) {
@@ -833,7 +846,8 @@ public static void curarCiudad(CiudadBoton c) {
 		}
 
 	}
-
+	
+	// muestra el resultado de la partida y llama a las pantallas referenciadas. Usa por parametro la hasGanado(), el cual hemos explicado mas arriba
 	public static void resultadoPartida(boolean hasGanado) {
 
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(LanzadorPartida.p6);

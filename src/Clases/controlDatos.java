@@ -42,7 +42,8 @@ public class controlDatos {
 		}
 
 	}
-
+	
+	// Funcion optimizada para conectarse a la base de datos
 	public static void conectarBaseDatos() {
 
 		
@@ -79,6 +80,8 @@ public class controlDatos {
 
 	}
 
+	// Cargar Partida - Tira una select a la BD que recupera les dades de la ultima partida guardada i setea aquestes dades al backend.
+	// Un cop té les dades actualitza la pantalla de partida.
 	public static void cargarPartida(Connection con) {
 		String sql = "SELECT p.NPartida, p.NombreJ, p.dificultad, p.Rondas , p.Fecha , p.Acciones_restantes, p.Brotes, p.Azul.nombre, p.Azul.color, p.Azul.porcentage, p.Rojo.nombre, p.Rojo.color, p.Rojo.porcentage, p.Amarillo.nombre, p.Amarillo.color, p.Amarillo.porcentage, p.Verde.nombre, p.Verde.color, p.Verde.porcentage, c.nombre, c.enfermedad, c.infeccion, c.CordX, c.CordY, c.Colindantes, c.campoWarning "
 				+ "FROM PartidasGuardadas p, TABLE(p.lista_ciudades) c " + "WHERE p.NPartida = (SELECT MAX(NPartida) FROM PartidasGuardadas) ORDER BY FECHA DESC";
@@ -321,7 +324,8 @@ public class controlDatos {
 
 		
 	}
-
+	
+	// Recupera todos los datos del backend de la partida y posteriormente los envía a la BD con un INSERT
 	public static void guardarPartida(Connection con) {
 
 		String NombreJ = Nickname.getNombreJ();
@@ -420,6 +424,7 @@ public class controlDatos {
 		}
 	}
 	
+	// Recupera los datos relevantes del Backend y los envia a la BD usando INSERT
 	public static void guardarRecord(Connection con) { //Tirar esta funcion cuando se gane una partida
 		
 		
@@ -441,7 +446,7 @@ public class controlDatos {
 		
 	}
 
-
+	// X2 pero en facil -- Ho separem perque son botons diferents
 	public static void cargarRecordFacil(Connection con) {
 		
 		String Ranking = "";
@@ -484,6 +489,7 @@ public class controlDatos {
 
 	}
 
+	// X2 pero en normal -- Ho separem perque son botons diferents
 	public static void cargarRecordNormal(Connection con) {
 		
 		String Ranking = "";
@@ -528,6 +534,7 @@ public class controlDatos {
 
 	}
 	
+	// X2 pero en dificil -- Ho separem perque son botons diferents
 	public static void cargarRecordDificil(Connection con) {
 		
 		String Ranking = "";
